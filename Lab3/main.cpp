@@ -52,10 +52,12 @@ Restaurant uInput()
     char open;
     cout << "Is the restaurant open. (y/n) ";
     cin >> open;
+    cin.ignore();
     while (open != 'y' && open != 'n')
     {
         cout <<" Please enter (y)es or (n)o. ";
         cin >> open;
+        cin.ignore();
     }
     if (open == 'y')
         temp.open = 1;
@@ -68,9 +70,9 @@ Restaurant uInput()
 void output(const Restaurant &temp)
 {
     cout << "Name: " << temp.name;
-    cout << "\nTables/Chairs: " << temp.tables << "/" << temp.chairs;
+    cout << "\tTables/Chairs: " << temp.tables << "/" << temp.chairs;
     if (temp.open == 1) 
-        cout << "\nThe store is open!";
+        cout << "\tThe store is open!\n";
     else
-        cout << "\nThe store is closed...";
+        cout << "\tThe store is closed...\n";
 }
