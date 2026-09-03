@@ -27,10 +27,24 @@ int main()
    // Output the struct.
 
 }
+// Make a temp restaurant to store data then pass that over to main.
 Restaurant uInput()
 {
+    Restaurant temp;
 
+    cout << "What the name of the restaurant?";
+    getline(cin, temp.name);
+
+    cout << "How many Chairs?";
+    cin >> temp.chairs;
+
+    cout << "How many Tables?";
+    cin >> temp.tables;
+
+    // ok more complicated, uhhh, check their string input (y/n) and set the bool acordingly?
+    cout << "Is the restaurant open. (y/n)";
 }
+// simple cout
 void output(const Restaurant&)
 {
 
