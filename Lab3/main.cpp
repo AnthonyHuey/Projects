@@ -41,8 +41,21 @@ Restaurant uInput()
     cout << "How many Tables?";
     cin >> temp.tables;
 
-    // ok more complicated, uhhh, check their string input (y/n) and set the bool acordingly?
+    // ok more complicated,check their string input (y/n) and set the bool? 
+    char open;
     cout << "Is the restaurant open. (y/n)";
+    cin >> open;
+    while (open != 'y' || open != 'n')
+    {
+        cout <<" Please enter (y)es or (n)o.";
+        cin >> open;
+    }
+    if (open = 'y')
+        temp.open = 1;
+    else
+        temp.open = 0;
+    
+    return temp;
 }
 // simple cout
 void output(const Restaurant&)
