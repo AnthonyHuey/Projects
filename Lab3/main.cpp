@@ -22,10 +22,16 @@ void output(const Restaurant &);
 int main()
 {
    // Make the struct,
-   Restaurant test = uInput();
+    for (int i = 0; i < 4; i++)
+    {
+        string temp;
+        cout << "What the name of restaurant " << i+1 << ": ";
+        getline(cin, temp);
+        Restaurant temp = uInput(); 
+    }
 
    // Output the struct.
-   output(test);
+  // output(test);
 }
 // Make a temp restaurant to store data then pass that over to main.
 Restaurant uInput()
