@@ -32,22 +32,24 @@ Restaurant uInput()
 {
     Restaurant temp;
 
-    cout << "What the name of the restaurant?";
+    cout << "What the name of the restaurant? ";
     getline(cin, temp.name);
 
-    cout << "How many Chairs?";
+    cout << "How many Chairs? ";
     cin >> temp.chairs;
+    cin.ignore();
 
-    cout << "How many Tables?";
+    cout << "How many Tables? ";
     cin >> temp.tables;
+    cin.ignore();
 
     // ok more complicated,check their string input (y/n) and set the bool? 
     char open;
-    cout << "Is the restaurant open. (y/n)";
+    cout << "Is the restaurant open. (y/n) ";
     cin >> open;
-    while (open != 'y' || open != 'n')
+    while (open != 'y' && open != 'n')
     {
-        cout <<" Please enter (y)es or (n)o.";
+        cout <<" Please enter (y)es or (n)o. ";
         cin >> open;
     }
     if (open = 'y')
