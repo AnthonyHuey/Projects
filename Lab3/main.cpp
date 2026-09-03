@@ -17,15 +17,15 @@ struct Restaurant
 // Function for filling struct with user data
 Restaurant uInput();
 // Function for outputting struct to console
-void output(const Restaurant&);
+void output(const Restaurant &);
 
 int main()
 {
-
    // Make the struct,
    Restaurant test = uInput();
-   // Output the struct.
 
+   // Output the struct.
+   output(test);
 }
 // Make a temp restaurant to store data then pass that over to main.
 Restaurant uInput()
@@ -52,7 +52,7 @@ Restaurant uInput()
         cout <<" Please enter (y)es or (n)o. ";
         cin >> open;
     }
-    if (open = 'y')
+    if (open == 'y')
         temp.open = 1;
     else
         temp.open = 0;
@@ -60,7 +60,12 @@ Restaurant uInput()
     return temp;
 }
 // simple cout
-void output(const Restaurant&)
+void output(const Restaurant &temp)
 {
-
+    cout << "Name: " << temp.name;
+    cout << "\nTables/Chairs: " << temp.tables << "/" << temp.chairs;
+    if (temp.open == 1) 
+        cout << "\nThe store is open!";
+    else
+        cout << "\nThe store is closed...";
 }
