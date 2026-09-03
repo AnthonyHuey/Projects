@@ -19,19 +19,18 @@ Restaurant uInput();
 // Function for outputting struct to console
 void output(const Restaurant &);
 
+const int MAX = 4;
+
 int main()
 {
-   // Make the struct,
-    for (int i = 0; i < 4; i++)
-    {
-        string temp;
-        cout << "What the name of restaurant " << i+1 << ": ";
-        getline(cin, temp);
-        Restaurant temp = uInput(); 
-    }
+   // Make the struct, 
+   Restaurant list[MAX];
+   for (int i = 0; i < MAX; i++)
+     list[i] = uInput(); 
 
    // Output the struct.
-  // output(test);
+   for (int i = 0; i < MAX; i++)
+     output(list[i]);
 }
 // Make a temp restaurant to store data then pass that over to main.
 Restaurant uInput()
