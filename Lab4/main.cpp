@@ -4,6 +4,7 @@
 // Output neatly to console.
 
 #include <iostream>
+#include <iomanip>
 #include <vector> 
 
 using namespace std;
@@ -49,12 +50,13 @@ int main()
    
     // output
     
-    cout << "\n\n" << "Color#\tR Value\tG Value\tB Value\n";
+    cout << "\n\n" << "Color #\tR Value\tG Value\tB Value\n";
+    cout << "-------\t-------\t-------\t-------\n";
+     int number = 1;
     for (const auto& f : list)
     { 
-        int i = 1;
-        cout << i << "\t" << f.r << "\t" << f.g << "\t" << f.b << "\n";
-        i++;
+        cout << number << "\t" << f.r << "\t" << f.g << "\t" << f.b << "\n";
+        number++;
     }
 
 
