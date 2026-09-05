@@ -48,8 +48,14 @@ int main()
         cout << a.r << " " << a.g << " " << a.b << " \n";
    
     // output
-
-
+    
+    cout << "\n\n" << "Color#\tR Value\tG Value\tB Value\n";
+    for (const auto& f : list)
+    { 
+        int i = 1;
+        cout << i << "\t" << f.r << "\t" << f.g << "\t" << f.b << "\n";
+        i++;
+    }
 
 
     /*never used rand so doing some tests/learning
