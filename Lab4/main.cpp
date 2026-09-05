@@ -14,6 +14,10 @@ struct Color
    int g;
    int b;
 };
+const int MAX = 50;
+const int MIN = 25;
+const int CMAX = 255;
+const int CMIN = 1;
 
 int main()
 {
@@ -26,21 +30,38 @@ int main()
     {
         cout << a.r << " " << a.g << " " << a.b << " \n";
     }
-    // fill it with random data
+    // Generate a # between 25 - 50
+    srand(time(0));
+    int n = (rand() % (MAX-MIN+1) + MIN);
+    cout << " " << n;
 
-    //never used rand so doing some tests/learning
+    // fill temp struct with n random data
+    for (int i = 0; i < n; i++)
+    {
+        vector<Color> temp;
+        temp.push_back(rand() % (CMAX-CMIN+1) + CMIN);
+    }
+
+    // fill it with the random data
+
+   
+    // output
+
+
+
+
+    /*never used rand so doing some tests/learning
     vector<int> learn;
     const int MIN = 25;
     const int MAX = 50;
-    
+
     srand(time(0));
     for (int i = 0; i < 3; i++)
     {
-        learn.push_back(rand());
+        learn.push_back(rand() % (MAX-MIN+1) + MIN);
     }
     for (int val : learn) cout << val << " ";
-        // output
-
+    */
 }
 
 
