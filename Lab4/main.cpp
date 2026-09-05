@@ -21,29 +21,31 @@ const int CMIN = 1;
 
 int main()
 {
-    Color test{25, 50, 75};
-    cout << test.r << " " << test.g << " " << test.b << "\n\n";
-
     // create a struct vector.
     vector<Color> list = { {75,50,25} , {1,2,3} };
+     cout << "\n----------PRE SWAP--------------\n";
     for (const auto& a : list)
-    {
         cout << a.r << " " << a.g << " " << a.b << " \n";
-    }
+    
     // Generate a # between 25 - 50
     srand(time(0));
     int n = (rand() % (MAX-MIN+1) + MIN);
-    cout << " " << n;
+    cout << "\n LIST SIZE: " << n;
 
     // fill temp struct with n random data
+    vector<Color> temp;
     for (int i = 0; i < n; i++)
     {
-        vector<Color> temp;
-        temp.push_back(rand() % (CMAX-CMIN+1) + CMIN);
+        
+        temp.push_back({rand() % (CMAX-CMIN+1) + CMIN, 
+                        rand() % (CMAX-CMIN+1) + CMIN,
+                        rand() % (CMAX-CMIN+1) + CMIN});
     }
-
-    // fill it with the random data
-
+    // copy the structs data over
+    list.swap(temp);
+    cout << "\n----------POST SWAP--------------\n";
+    for (const auto& a : list)
+        cout << a.r << " " << a.g << " " << a.b << " \n";
    
     // output
 
