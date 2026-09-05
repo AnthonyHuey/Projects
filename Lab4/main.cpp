@@ -15,6 +15,8 @@ struct Color
    int g;
    int b;
 };
+
+// used for the random #'s
 const int MAX = 50;
 const int MIN = 25;
 const int CMAX = 255;
@@ -24,20 +26,19 @@ int main()
 {
     // create a struct vector.
     vector<Color> list = { {75,50,25} , {1,2,3} };
-     cout << "\n----------PRE SWAP--------------\n";
+    cout << "\n----------PRE SWAP--------------\n";
     for (const auto& a : list)
         cout << a.r << " " << a.g << " " << a.b << " \n";
     
     // Generate a # between 25 - 50
     srand(time(0));
     int n = (rand() % (MAX-MIN+1) + MIN);
-    cout << "\n LIST SIZE: " << n;
+    cout << "\nLIST SIZE: " << n;
 
     // fill temp struct with n random data
     vector<Color> temp;
     for (int i = 0; i < n; i++)
     {
-        
         temp.push_back({rand() % (CMAX-CMIN+1) + CMIN, 
                         rand() % (CMAX-CMIN+1) + CMIN,
                         rand() % (CMAX-CMIN+1) + CMIN});
@@ -47,31 +48,20 @@ int main()
     cout << "\n----------POST SWAP--------------\n";
     for (const auto& a : list)
         cout << a.r << " " << a.g << " " << a.b << " \n";
-   
-    // output
-    
+
+    // output  
     cout << "\n\n" << "Color #\tR Value\tG Value\tB Value\n";
     cout << "-------\t-------\t-------\t-------\n";
-     int number = 1;
+    int num = 1;
     for (const auto& f : list)
     { 
-        cout << number << "\t" << f.r << "\t" << f.g << "\t" << f.b << "\n";
-        number++;
+        cout << right
+             << setw(4) << num << "\t" 
+             << setw(5) << f.r << "\t" 
+             << setw(5) << f.g << "\t" 
+             << setw(5) << f.b << "\n";
+        num++;
     }
-
-
-    /*never used rand so doing some tests/learning
-    vector<int> learn;
-    const int MIN = 25;
-    const int MAX = 50;
-
-    srand(time(0));
-    for (int i = 0; i < 3; i++)
-    {
-        learn.push_back(rand() % (MAX-MIN+1) + MIN);
-    }
-    for (int val : learn) cout << val << " ";
-    */
 }
 
 
