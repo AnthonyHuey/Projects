@@ -21,7 +21,8 @@ int main()
     cout << test.r << " " << test.g << " " << test.b << "\n\n";
 
     // create a struct vector.
-
+    vector<Color> list {(75,50,25)};
+    cout << list.r <<
     // fill it with random data
 
     // output
