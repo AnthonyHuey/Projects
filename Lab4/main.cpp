@@ -24,11 +24,18 @@ int main()
     vector<Color> list = { {75,50,25} , {1,2,3} };
     for (const auto& a : list)
     {
-        cout << a.r << " " << a.g << " " << a.b;
+        cout << a.r << " " << a.g << " " << a.b << " \n";
     }
     // fill it with random data
 
-    // output
+    //never used rand so doing some tests/learning
+    vector<int> learn;
+    for (int i = 0; i < 3; i++)
+    {
+        learn.push_back(rand());
+    }
+    for (int val : learn) cout << val << " ";
+        // output
 
 }
 
