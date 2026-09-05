@@ -30,6 +30,10 @@ int main()
 
     //never used rand so doing some tests/learning
     vector<int> learn;
+    const int MIN = 25;
+    const int MAX = 50;
+    
+    srand(time(0));
     for (int i = 0; i < 3; i++)
     {
         learn.push_back(rand());
