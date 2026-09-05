@@ -4,6 +4,7 @@
 // Output neatly to console.
 
 #include <iostream>
+#include <vector> 
 
 using namespace std;
 
@@ -17,7 +18,13 @@ struct Color
 int main()
 {
     Color test{25, 50, 75};
-    cout << test.r << " " << test.g << " " << test.b;
+    cout << test.r << " " << test.g << " " << test.b << "\n\n";
+
+    // create a struct vector.
+
+    // fill it with random data
+
+    // output
 
 }
 
