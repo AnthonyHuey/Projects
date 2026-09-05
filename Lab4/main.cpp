@@ -3,5 +3,22 @@
 // Use said struct in a vector and fill with random values.
 // Output neatly to console.
 
+#include <iostream>
+
+using namespace std;
+
+struct Color
+{
+   int r;
+   int g;
+   int b;
+};
+
+int main()
+{
+    Color test{25, 50, 75};
+    cout << test.r << " " << test.g << " " << test.b;
+
+}
 
 
