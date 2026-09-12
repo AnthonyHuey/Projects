@@ -61,6 +61,8 @@ int main()
     double *testptr = nullptr;
     testptr = enterArrayData();
     sumArray(testptr);
+
+    delete [] testptr;
 }
 double* enterArrayData()
 {
@@ -73,7 +75,7 @@ double* enterArrayData()
         cout << "Element#" << i << ": ";
         cin >> entry;
         cin.ignore();
-        *(array + i) = entry; 
+        array[i] = entry; 
     }
     return array;
 }
