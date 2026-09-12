@@ -7,7 +7,7 @@
 using namespace std;
 
 // Fill Array with data
-double enterArrayData();
+double* enterArrayData();
 
 // Output the arrays data on a single line
 //double outputArrayData(double[]);
@@ -38,7 +38,7 @@ int main()
    
     for (int i = 0; i < MAX; i++)
         cout <<"\n Another list: " << *(ptr + i) << " ";
-    */
+    
     cout << "\n\nDYNAMIC MEMORY\n\n";
 
     double *newptr = nullptr;
@@ -51,29 +51,31 @@ int main()
     for (int i = 0; i < MAX; i++)
         cout << newptr[i] << " ";
 
-    // passing the tests to a function now
+    //passing the tests to a function now
     cout << "\nTESTING SUM FUNCTION\n";
     sumArray(newptr);
 
     delete newptr;
+    */
 
     double *testptr = nullptr;
-    testptr = new double[MAX];
-    testptr[] = enterArrayData(testptr);
+    testptr = enterArrayData();
     sumArray(testptr);
 }
-double enterArrayData()
+double* enterArrayData()
 {
-    cout << "Data entry fo the array: \n";
+    double *array = nullptr;
+    array = new double[MAX];
+    cout << "\nData entry fo the array: \n";
     for (int i = 0; i < MAX; i++)
     {
         double entry = 0;
         cout << "Element#" << i << ": ";
         cin >> entry;
         cin.ignore();
-        array[i] = entry; 
+        *(array + i) = entry; 
     }
-    return array[MAX]
+    return array;
 }
 void sumArray(double array[])
 {
