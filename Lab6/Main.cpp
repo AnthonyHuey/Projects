@@ -12,7 +12,7 @@ using namespace std;
 //outputArrayData();
 
 // Add all the values of the array up and output the sum
-//void sumArray();
+void sumArray(&double[]);
 
 // Max size of the array
 const int MAX = 5;
@@ -33,23 +33,32 @@ int main()
     ptr = array;
 
     for (int i = 0; i < MAX; i++)
-    {
         cout << "List: " << ptr[i] << " ";
-    }
-       for (int i = 0; i < MAX; i++)
-    {
-       cout <<"\n Another list: " << *(ptr + i) << " ";
-    }
+   
+    for (int i = 0; i < MAX; i++)
+        cout <<"\n Another list: " << *(ptr + i) << " ";
 
-    }
- 
+    cout << "\n\nDYNAMIC MEMORY\n\n";
+
+    double *newptr = nullptr;
+    newptr = new double[MAX];
+
+    for (int i = 0; i < MAX; i++)
+        newptr[i] = i + 1;
+
+    cout << "List: "; 
+    for (int i = 0; i < MAX; i++)
+        cout << newptr[i] << " ";
+
+    // passing the tests to a function now
 
 
-/*
-void sumArray()
+}
+
+void sumArray(&array[MAX])
 {
     double sum;
     
     cout << "Sum of all values: " << sum;
 }
-    */
+    
