@@ -27,7 +27,7 @@ int main()
     cout << "\n";
 
    // Reverse it
-   reverseArray(names);
+   names = reverseArray(names);
 
    // Output it
    displayArray(names);
@@ -38,12 +38,13 @@ int main()
 string* reverseArray(string array[])
 {
     string temp;
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX / 2; i++)
     {
-        temp = array[i];
-        array[i] = array[MAX-i];
-        array[MAX - i] = temp;
+        temp = *(array + i);
+        *(array + i) = *(array + (MAX - 1 - i));
+        *(array + (MAX - 1 - i)) = temp;
     }
+    return array;
 }
 
 void displayArray(string array[])
