@@ -6,13 +6,13 @@
 using namespace std;
 
 // Fill Array with data
-enterArrayData();
+//enterArrayData();
 
 // Output the arrays data on a single line
-outputArrayData();
+//outputArrayData();
 
 // Add all the values of the array up and output the sum
-void sumArray();
+//void sumArray();
 
 // Max size of the array
 const int MAX = 5;
@@ -25,13 +25,31 @@ int main()
 
     // Sum
     
-}
+    // quick tests
+    double array[MAX] = {1,2,3,4,5};
+
+    double *ptr = nullptr; 
+
+    ptr = array;
+
+    for (int i = 0; i < MAX; i++)
+    {
+        cout << "List: " << ptr[i] << " ";
+    }
+       for (int i = 0; i < MAX; i++)
+    {
+       cout <<"\n Another list: " << *(ptr + i) << " ";
+    }
+
+    }
+ 
 
 
-
+/*
 void sumArray()
 {
     double sum;
     
     cout << "Sum of all values: " << sum;
 }
+    */
