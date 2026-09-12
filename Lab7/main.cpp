@@ -18,6 +18,13 @@ const int MAX = 5;
 int main()
 {
    // Create/populate the array
+   string *names = nullptr;
+   names = new string[MAX]{"Janet","Jeffe","Jin","Joe","Junio"}; 
+
+   // sanity check
+   for (int i = 0; i < MAX; i++)
+   cout << *(names + i) << " ";
+    
 
    // Reverse it
 
