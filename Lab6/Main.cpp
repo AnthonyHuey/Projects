@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 // Fill Array with data
 enterArrayData();
 
@@ -10,7 +12,7 @@ enterArrayData();
 outputArrayData();
 
 // Add all the values of the array up and output the sum
-sumArray();
+void sumArray();
 
 // Max size of the array
 const int MAX = 5;
@@ -22,5 +24,14 @@ int main()
     // Output
 
     // Sum
+    
+}
 
+
+
+void sumArray()
+{
+    double sum;
+    
+    cout << "Sum of all values: " << sum;
 }
