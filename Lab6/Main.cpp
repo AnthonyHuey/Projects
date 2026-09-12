@@ -1,19 +1,19 @@
 // Anthony Huey - 9/12/2026 - Arrays & Functions 1
 // Use functions to manipulate dynamically allocated arrays
+// USE POINTER NOTATION
 
 #include <iostream>
 
 using namespace std;
 
 // Fill Array with data
-//enterArrayData();
+double enterArrayData(double[]);
 
 // Output the arrays data on a single line
-//outputArrayData();
+double outputArrayData(double[]);
 
 // Add all the values of the array up and output the sum
-void sumArray(&double[]);
-
+void sumArray(double[]);
 // Max size of the array
 const int MAX = 5;
 
@@ -51,14 +51,17 @@ int main()
         cout << newptr[i] << " ";
 
     // passing the tests to a function now
+    cout << "\nTESTING SUM FUNCTION\n";
+    sumArray(newptr);
 
-
+    delete newptr;
 }
 
-void sumArray(&array[MAX])
+void sumArray(double array[])
 {
-    double sum;
-    
+    double sum = 0;
+    for (int i = 0; i < MAX; i++)
+        sum = *(array + i) + sum;
     cout << "Sum of all values: " << sum;
 }
     
