@@ -21,22 +21,34 @@ int main()
    string *names = nullptr;
    names = new string[MAX]{"Janet","Jeffe","Jin","Joe","Junio"}; 
 
-   // sanity check
+   cout << "Original array: ";
    for (int i = 0; i < MAX; i++)
-   cout << *(names + i) << " ";
-    
+        cout << *(names + i) << " ";
+    cout << "\n";
 
    // Reverse it
+   reverseArray(names);
 
    // Output it
+   displayArray(names);
+
+   delete [] names;
 }
 
 string* reverseArray(string array[])
 {
-
+    string temp;
+    for (int i = 0; i < MAX; i++)
+    {
+        temp = array[i];
+        array[i] = array[MAX-i];
+        array[MAX - i] = temp;
+    }
 }
 
 void displayArray(string array[])
 {
-
+    cout << "Reversed array: ";
+    for (int i = 0; i < MAX; i++)
+        cout << *(array + i) << " ";
 }
