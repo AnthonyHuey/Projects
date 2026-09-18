@@ -20,14 +20,21 @@ int main()
     ifstream fin;
     fin.open("list.txt");
     if (fin.good())
+    {
        for (int i = 0; i < list.size(); i++)
             fin >> list.at(i);
+        fin.close();  
+    }    
     else
         cout << "File not found.\n";
 
-    for (int val : list) cout << val << " "; cout <<endl;
+    for (int val : list) cout << val << " ";
 
     // have some fun with <array> functions
+    srand(time(0));
+    int r = 0;
+    cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
+
 
     // do it all again for <vector>
 
