@@ -4,14 +4,13 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <algorithm>
 #include <fstream>
 
 
 using namespace std;
 
 const int MAX = 30;
-
-//array<int, MAX> find(?,? int);
 
 int main()
 {
@@ -43,9 +42,7 @@ int main()
     int r = 0;
     for (int i = 0; i < 5; i++) 
         cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
-    
-    
-/*
+
     int search = 0;
     cout << "What # would you like to search for: ";
     cin >> search;
@@ -58,7 +55,7 @@ int main()
         cout << " found in position " << it - list.begin();
     else
         cout << " was not found.";
-*/
+
 
     // do it all again for <vector>
 
