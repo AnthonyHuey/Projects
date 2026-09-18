@@ -32,17 +32,24 @@ int main()
 
     // have some fun with <array> functions
 
-    // sets r to a random #, get the # from array at r
+    // sets r toa random #, get the # from array at r
     srand(time(0));
     int r = 0;
     for (int i = 0; i < 5; i++) 
     cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
 
-    cout << "\nMax: " << *max_element(list.begin(), list.end());
-    cout << "\nMin: " << &min_element(list.begin(), list.end());
+    int search = 0;
+    cout << "What # would you like to search for: ";
+    cin >> search;
+    cin.ignore();
 
-
-    
+    array<int, MAX>::iterator it;
+    it = find(list.begin(), list.end(), search);
+    cout << "Value " << search;
+    if (it != list.end())
+        cout << " found in position " << it - list.begin();
+    else
+        cout << " was not found.";
 
 
     // do it all again for <vector>
