@@ -31,9 +31,18 @@ int main()
     for (int val : list) cout << val << " ";
 
     // have some fun with <array> functions
+
+    // sets r to a random #, get the # from array at r
     srand(time(0));
     int r = 0;
+    for (int i = 0; i < 5; i++) 
     cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
+
+    cout << "\nMax: " << *max_element(list.begin(), list.end());
+    cout << "\nMin: " << &min_element(list.begin(), list.end());
+
+
+    
 
 
     // do it all again for <vector>
