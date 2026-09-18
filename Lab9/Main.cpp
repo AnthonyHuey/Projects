@@ -20,14 +20,12 @@ int main()
     ifstream fin;
     fin.open("list.txt");
     if (fin.good())
-    {
-       for (int i = 0; i < MAX; i++)
-            fin >> list.at(i) ;
-    }
+       for (int i = 0; i < list.size(); i++)
+            fin >> list.at(i);
     else
         cout << "File not found.\n";
 
-    for (int val : list) cout << val << " "; cout << endl;
+    for (int val : list) cout << val << " "; cout <<endl;
 
     // have some fun with <array> functions
 
