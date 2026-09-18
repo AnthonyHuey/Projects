@@ -72,7 +72,7 @@ int main()
     vector<int> table;
         
 // Fill it with fin
-    ifstream fin;
+    //ifstream fin;
     fin.open("list.txt");
     if (fin.good())
     {
@@ -93,7 +93,7 @@ int main()
 
 // sets r to a random #, get the # from array at r
     srand(time(0));
-    int r = 0;
+    r = 0;
     for (int i = 0; i < 5; i++) 
         cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << table.at(r);
 
@@ -102,7 +102,7 @@ int main()
     cout << "sorted.";
     for (int val : table) cout << val << " ";
 
-    int search = 0;
+    search = 0;
     cout << "\nWhat # would you like to search for: ";
     cin >> search;
     cin.ignore();
@@ -116,7 +116,7 @@ int main()
         cout << " was not found.";
 
 //not using #include <numeric> for accumulate.
-    int total = 0; 
+    total = 0; 
     for (int i = 0; i < table.size(); i++)
         total = table.at(i) + total;
     cout <<  "\nTotal of all #'s is: " << total;
