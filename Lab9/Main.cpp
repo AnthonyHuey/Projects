@@ -44,7 +44,7 @@ int main()
 
     cout << "\n\t-----SORTING-----\t\n";
     sort(list.begin(), list.end());
-    cout << "sorted.";
+    cout << "sorted: ";
     for (int val : list) cout << val << " ";
 
     int search = 0;
@@ -104,7 +104,7 @@ int main()
 
     cout << "\n\t-----SORTING-----\t\n";
     sort(table.begin(), table.end());
-    cout << "sorted.";
+    cout << "sorted: ";
     for (int val : table) cout << val << " ";
 
     search = 0;
