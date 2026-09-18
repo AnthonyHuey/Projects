@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <fstream>
 
-
 using namespace std;
 
 const int MAX = 30;
@@ -37,14 +36,19 @@ int main()
     cout << "\nLast: " << list.back();
     cout << "\nAddress? " << list.data();
 
-    // sets r toa random #, get the # from array at r
+    // sets r to a random #, get the # from array at r
     srand(time(0));
     int r = 0;
     for (int i = 0; i < 5; i++) 
         cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
 
+    cout << "\n\t-----SORTING-----\t\n";
+    sort(list.begin(), list.end());
+    cout << "sorted.";
+    for (int val : list) cout << val << " ";
+
     int search = 0;
-    cout << "What # would you like to search for: ";
+    cout << "\nWhat # would you like to search for: ";
     cin >> search;
     cin.ignore();
 
@@ -56,6 +60,10 @@ int main()
     else
         cout << " was not found.";
 
+    int total = 0;
+    for (int i = 0; i < MAX; i++)
+        total = list.at(i) + total;
+    cout <<  "\nTotal of all #'s is: " << total;
 
     // do it all again for <vector>
 
