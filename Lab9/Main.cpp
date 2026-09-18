@@ -9,7 +9,9 @@
 
 using namespace std;
 
-const int MAX = 10;
+const int MAX = 30;
+
+//array<int, MAX> find(?,? int);
 
 int main()
 {
@@ -31,13 +33,19 @@ int main()
     for (int val : list) cout << val << " ";
 
     // have some fun with <array> functions
+    cout << "\nEmpty? " << (list.empty() == 0? "False" : "True"); // neat
+    cout << "\nFirst: " << list.front();
+    cout << "\nLast: " << list.back();
+    cout << "\nAddress? " << list.data();
 
     // sets r toa random #, get the # from array at r
     srand(time(0));
     int r = 0;
     for (int i = 0; i < 5; i++) 
-    cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
-
+        cout << "\nElement " << ((r = rand() % MAX) + 1) << ": " << list.at(r);
+    
+    
+/*
     int search = 0;
     cout << "What # would you like to search for: ";
     cin >> search;
@@ -50,7 +58,7 @@ int main()
         cout << " found in position " << it - list.begin();
     else
         cout << " was not found.";
-
+*/
 
     // do it all again for <vector>
 
