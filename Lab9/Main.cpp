@@ -14,7 +14,7 @@ const int MAX = 30;
 int main()
 {
 // Create the STD::array
-    vector<int, MAX> list;
+    array<int, MAX> list; //why
         
 // Fill it with fin
     ifstream fin;
