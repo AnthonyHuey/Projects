@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const int MAX = 30;
+const int MAX = 10;
 
 int main()
 {
@@ -21,12 +21,13 @@ int main()
     fin.open("list.txt");
     if (fin.good())
     {
-        fin >> list;
-
-
+       for (int i = 0; i < MAX; i++)
+            fin >> list.at(i) ;
     }
     else
         cout << "File not found.\n";
+
+    for (int val : list) cout << val << " "; cout << endl;
 
     // have some fun with <array> functions
 
