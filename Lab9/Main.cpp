@@ -14,7 +14,7 @@ const int MAX = 30;
 int main()
 {
 // Create the STD::array
-    array<int, MAX> list; //why
+    array<int, MAX> list; 
         
 // Fill it with fin
     ifstream fin;
@@ -65,6 +65,7 @@ int main()
     for (int i = 0; i < MAX; i++)
         total = list.at(i) + total;
     cout <<  "\nTotal of all #'s is: " << total;
+    cout << "\n\n\t-----VECTOR-----\t\n\n";
 
 // do it all again for <vector>
 
@@ -73,11 +74,15 @@ int main()
         
 // Fill it with fin
     //ifstream fin;
-    fin.open("list.txt");
+    fin.open("table.txt");
     if (fin.good())
     {
-       for (int i = 0; i < table.size(); i++)
-            fin >> table.at(i);
+       for (int i = 0; i < MAX; i++)
+       {    
+            int temp;
+            fin >> temp;
+            table.push_back(temp);
+       }
         fin.close();  
     }    
     else
