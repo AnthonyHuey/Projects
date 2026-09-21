@@ -14,17 +14,29 @@ const int MAX = 2;
 
 struct Customer 
 {
-   string fName;
+   string fName; 
    string lName;
-   int days;
-   //some dynamic array idk
+
+   int count; // How many cars rented
+   int *vin; //  VIN of the cars rented.
+   
 };
 
 int main()
 {
+    //ok, get the amount of customers.
+    int c = 0;
+    cout << "How many customers are renting today: ";
+    cin >> c;
+    cin.ignore();
+    cout << "\n";
+
+    // build the array
     array<Customer, MAX> *ptr = nullptr;
     ptr = new array<Customer, MAX>;
 
+    for (int i = 0; i < c; i++)
+    //
 
 
 }
