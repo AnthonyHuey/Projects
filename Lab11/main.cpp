@@ -57,4 +57,9 @@ int main()
         for (int n = 0; n < customers[i].count; n++)
             cout << "\n#" << customers[i].vin[n];
     }
+
+    // Deleting the memnory
+    for (int i = 0; i < c; i++)
+        delete[] customers[i].vin;
+    delete[] customers;
 }
