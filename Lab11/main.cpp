@@ -10,6 +10,7 @@
 
 using namespace std;
 
+const int MAX = 2;
 
 struct Customer 
 {
@@ -21,6 +22,8 @@ struct Customer
 
 int main()
 {
+    array<Customer, MAX> *ptr = nullptr;
+    ptr = new array<Customer, MAX>;
 
 
 
