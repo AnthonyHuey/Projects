@@ -10,13 +10,11 @@
 
 using namespace std;
 
-const int MAX = 2;
-
 struct Customer 
 {
    string name; 
    int count; // How many cars rented
-   int *vin; //  VIN of the cars rented.
+   int *vin; //  VIN of the cars rented. 
    
 };
 
@@ -45,11 +43,19 @@ int main()
         for (int n = 0; n < customers[i].count; n++)
         {
             cout << " VIN of car #" << (n + 1) << ": ";
-            getline(cin, )
+            cin >> customers[i].vin[n];
         }
-
     }
     
+    cout << "\n\nDid it work?\n\n";
+    for (int i = 0; i < c; i++)
+    {
+        cout << customers[i].name << " rented " << customers[i].count
+             << " car(s)." << "\nCar(s) VIN is:";
+        for (int n = 0; n < customers[i].count; i++)
+            cout << "\n#" << customers[i].vin[n];
+    }
+
 
 
 }
