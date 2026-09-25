@@ -15,7 +15,7 @@ struct Student
     double grade;
 };
 
-const int MAX = 151; // just for testing now, probably
+const int MAX = 150; // just for testing now, probably
 
 int main()
 {
@@ -38,11 +38,31 @@ int main()
     // checking that the file input worked;
     cout << " ID \t GRADE ";
     for (int i = 0; i < (list.size() - 1); i++)
+        cout << "\n" << list[i].id << "\t" << list[i].grade;
+    
+    // sort array, somewhat familiar from CS 200 minus the c style array
+        // from what i remember, compare each i to a j if j is < swap.
+        for (int i = 0; i < list.size(); i++)
         {
-            cout << "\n" << list[i].id << "\t" << list[i].grade;
+            // starts at beginning then increments
+            int min = i;
+
+            // setup second loop to do comparison
+            for (int j = i + 1; j < list.size(); j++)
+                if (list[j].grade < list[min].grade)
+                    min = j;
+
+            // now swap, dont forget the ID
+            if (min != i)
+            {
+                swap(list[i].grade, list[min].grade);
+                swap(list[i].id, list[min].id);
+            }
         }
-    // sort array
-        
+    // did it work?
+    cout << "\n\n ID \t GRADE ";
+    for (int i = 0; i < (list.size() - 1); i++)
+        cout << "\n" << list[i].id << "\t" << list[i].grade;
 
     // output array
 
