@@ -15,7 +15,7 @@ struct Student
     double grade;
 };
 
-const int MAX = 255; // just for testing now, probably
+const int MAX = 151; // just for testing now, probably
 
 int main()
 {
@@ -35,12 +35,14 @@ int main()
     else 
         cout << "File not found.\n";
 
+    // checking that the file input worked;
     cout << " ID \t GRADE ";
-    for (int i = 0; i < list.size(); i++)
+    for (int i = 0; i < (list.size() - 1); i++)
         {
             cout << "\n" << list[i].id << "\t" << list[i].grade;
         }
     // sort array
+        
 
     // output array
 
