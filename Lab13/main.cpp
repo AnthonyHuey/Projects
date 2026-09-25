@@ -15,7 +15,7 @@ struct Student
     double grade;
 };
 
-const int MAX = 150; // just for testing now, probably
+const int MAX = 151; // just for testing now, probably
 
 int main()
 {
@@ -61,7 +61,7 @@ int main()
         }
     // did it work?
     cout << "\n\n ID \t GRADE ";
-    for (int i = 0; i < (list.size()); i++)
+    for (int i = 1; i < (list.size()); i++)
         cout << "\n" << list[i].id << "\t" << list[i].grade;
 
     // output array
