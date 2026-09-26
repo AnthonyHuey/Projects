@@ -40,11 +40,14 @@ struct Input
     string name;
 };
 
+const int MAX = 4;
+
 int main()
 {
-    array<Input,4> input;
+    array<Input, MAX> input;
+    array<Movie, MAX> movies;
 
-    cout << "Reading data from file";
+    cout << "Reading data from file...\n";
     ifstream fin;
     fin.open ("input.txt");
     if (fin.good())
@@ -61,12 +64,28 @@ int main()
     else 
         cout << "\nFile not found.\n";
 
+    // put all the input data into the class.
+    for (int i = 0; i < input.size(); i++)
+    {
+        movies[i].setTitle(input[i].title);
+        movies[i].setYear(input[i].year);
+        movies[i].setName(input[i].name);
+    }
+    // output from array
+    //cout << "\nFROM ARRAY";
     for (int i = 0; i <input.size(); i++)
     {
-        cout << "\nTitle: " << input[i].title;
-        cout << "\nYear: " << input[i].year;
-        cout << "\nName: " << input[i].name;
+        cout << "\nMovie: " << input[i].title;
+        cout << "\n\tYear released: " << input[i].year;
+        cout << "\n\tScreenwriter: " << input[i].name;
     }
+
+    // output from class
+    //cout << "\n\nFROM CLASS";
+    //for (int i = 0; i <movies.size(); i++)
+    //    {
+    //       movies[i].print();
+    //    }
 
 
 
