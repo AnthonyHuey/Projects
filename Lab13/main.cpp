@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <array>
+#include <cmath> 
 
 using namespace std;
 
@@ -111,8 +112,20 @@ int main()
         median = list.size() / 2;
     cout << "\nMedian Score: " << list[median].grade 
          << " from ID: " << list[median].id;
-    
 
     // figure out what standard deviation is.
-    
+    // okay, its the "deviation" from the mean.
+
+    // add the sum, of the square, of the difference the grades from the mean...
+    double sum;
+    for (int i = 0; i < list.size(); i++)
+        sum = sum + (list[i].grade - mean) * (list[i].grade - mean);
+
+    // then divide by size of list
+    sum = sum / list.size();
+
+    // take the square root
+    sum = sqrt(sum);
+
+    cout << "\nStandard Deviation: " << sum;
 }
