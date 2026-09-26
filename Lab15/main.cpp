@@ -30,6 +30,7 @@ public:
     void print() const {};
 
 };
+// Hold the input from the file.
 struct Input
 {
     string title;
@@ -39,7 +40,30 @@ struct Input
 
 int main()
 {
+    array<Input,4> input;
 
+    cout << "Reading data from file";
+    ifstream fin;
+    fin.open ("input.txt");
+    if (fin.good())
+    {
+        for (int i = 0; i < input.size(); i ++)
+        {   
+           fin >> input[i].title;
+           fin >> input[i].year;
+           fin >> input[i].name;
+        }
+        fin.close();
+    }
+    else 
+        cout << "\nFile not found.\n";
+
+    for (int i = 0; i <input.size(); i++)
+    {
+        cout << "\nTitle: " << input[i].title;
+        cout << "\nYear: " << input[i].year;
+        cout << "\nName: " << input[i].name;
+    }
 
 
 
