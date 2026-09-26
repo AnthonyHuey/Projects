@@ -73,15 +73,12 @@ int main()
     
     for (int i = 0; i < list.size(); i++)
     {
-        for (int j = 0; j < list.size(); j++)
-        {
-            j = list[i+1].grade;
-            if (list[j].grade < list[i].grade)
-                min = j;
-        }
+        if (list[i].grade < list[min].grade)
+            min = i;
+        if (list[i].grade > list[max].grade)
+            max = i;
     }
-
-    cout << "Min Score: " << list[0].grade << " From ID: " << list[0].id;
+    cout << "Min Score: " << list[min].grade << " From ID: " << list[min].id;
     cout << "\nMax Score: " << list[max].grade << " From ID: " << list[max].id;
 
    
