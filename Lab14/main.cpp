@@ -32,16 +32,22 @@ int main()
     test.setRed(255);
     test.setGreen(150);
     test.setBlue(25);
+    cout << "\n-TEST-";
     test.print();
-    test.setBlue(test.getGreen());
+
+    test.setBlue(test.getGreen()); // Swaping test B with it's green value
+    test.setGreen(15);
+    cout << "\n-TEST-";
     test.print();
 
     Color pink;
     pink.setRed(255);
     pink.setGreen(192);
     pink.setBlue(203);
+    cout << "\n-PINK-";
     pink.print();
-    test.setRed(pink.getBlue());
-    test.print();
 
+    test.setRed(pink.getBlue()); // Swapping test R with pink's blue value
+    cout << "\n-TEST-";
+    test.print();
 }
