@@ -15,7 +15,7 @@ struct Student
     double grade;
 };
 
-const int MAX = 151; // just for testing now, probably
+const int MAX = 150; 
 
 int main()
 {
@@ -66,7 +66,7 @@ int main()
     // output array
     ofstream fout;
     fout.open("210-lab-13-grades-sorted.txt");
-        for (int i = 1; i < list.size(); i++)
+        for (int i = 0; i < list.size(); i++)
             {
                 fout << list[i].id << "\t";
                 fout << list[i].grade << "\n";
@@ -74,14 +74,16 @@ int main()
         fout.close();
 
     // cout summary
-    cout << "Min Score: " << list[1].grade << " From ID: " << list[1].id;
-    cout << "\nMax Score: " << list[150].grade << " From ID: " << list[150].id;
+    cout << "Min Score: " << list[0].grade << " From ID: " << list[0].id;
+    cout << "\nMax Score: " << list[149].grade << " From ID: " << list[149].id;
 
     double mean = 0;
-    for (int i = 1; i < list.size(); i++)
-            mean = (list[i].grade + mean);
+    for (int i = 0; i < list.size(); i++)
+            mean = list[i].grade + mean;
+    
     mean = mean / list.size();
     cout << "\nMean Score: " << mean;
+
 
         
     
