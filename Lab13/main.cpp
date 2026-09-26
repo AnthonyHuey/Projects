@@ -72,4 +72,17 @@ int main()
                 fout << list[i].grade << "\n";
             }
         fout.close();
+
+    // cout summary
+    cout << "Min Score: " << list[1].grade << " From ID: " << list[1].id;
+    cout << "\nMax Score: " << list[150].grade << " From ID: " << list[150].id;
+
+    double mean = 0;
+    for (int i = 1; i < list.size(); i++)
+            mean = (list[i].grade + mean);
+    mean = mean / list.size();
+    cout << "\nMean Score: " << mean;
+
+        
+    
 }
