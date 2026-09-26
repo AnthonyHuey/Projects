@@ -49,9 +49,10 @@ int main()
     {
         for (int i = 0; i < input.size(); i ++)
         {   
-           fin >> input[i].title;
-           fin >> input[i].year;
-           fin >> input[i].name;
+          getline(fin, input[i].title);
+          fin >> input[i].year;
+          fin.ignore();
+          getline(fin, input[i].name);
         }
         fin.close();
     }
