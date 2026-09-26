@@ -23,6 +23,7 @@ int main()
     // create array
     array<Student, MAX> list;
     // fill array with data
+    cout << "Reading data from file";
     ifstream fin;
     fin.open ("210-lab-13-grades.txt");
     if (fin.good())
@@ -56,7 +57,7 @@ int main()
                 swap(list[i].id, list[min].id);
             }
         }
-
+    
     // output array
     ofstream fout;
     fout.open("210-lab-13-grades-sorted.txt");
@@ -66,8 +67,10 @@ int main()
                 fout << list[i].grade << "\n";
             }
         fout.close();
+    cout << "\nData sorted and written to 210-lab-13-grades-sorted.txt\n";
 
     // cout summary
+    cout << "\n--- SUMMARY STATISTICS---";
     int min = 0;
     int max = 0;
     double mean = 0;
@@ -80,7 +83,7 @@ int main()
         if (list[i].grade > list[max].grade)
             max = i;
     }
-    cout << "Min Score: " << list[min].grade << " From ID: " << list[min].id;
+    cout << "\nMin Score: " << list[min].grade << " From ID: " << list[min].id;
     cout << "\nMax Score: " << list[max].grade << " From ID: " << list[max].id;
 
    
