@@ -70,7 +70,7 @@ int main()
     int min = 0;
     int max = 0;
     double mean = 0;
-    double median = 0;
+    int median = 0;
     
     for (int i = 0; i < list.size(); i++)
     {
@@ -92,15 +92,11 @@ int main()
     // need to find median grade. needs to be sorted first. just gonna resort
     for (int i = 0; i < list.size(); i++)
     {
-            // starts at beginning then increments
             int min = i;
-
-            // setup second loop to do comparison
             for (int j = i + 1; j < list.size(); j++)
                 if (list[j].grade < list[min].grade)
                     min = j;
 
-            // now swap, dont forget the grade...
             if (min != i)
             {
                 swap(list[i].grade, list[min].grade);
@@ -108,8 +104,14 @@ int main()
             }
     }
     // then find middle value, it'll be 75 ish
-    median = list.size() / 2;
-    cout << "\n THIS IS THE MEDIAN: " << median;
+    // if th enumber is even, it's more complicated
+    if (list.size() % 2 == 0)
+        median = (list.size() / 2 - 1);
+    else
+        median = list.size() / 2;
+    cout << "\nMedian Score: " << list[median].grade 
+         << " from ID: " << list[median].id;
+    
 
     // figure out what standard deviation is.
     
