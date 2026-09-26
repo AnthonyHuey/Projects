@@ -19,15 +19,17 @@ private:
     int year;
     string name;
 public:
-    void setTitle(string t) {};
-    void setYear(int y) {};
-    void setName(string n) {};
+    void setTitle(string t) {title = t;};
+    void setYear(int y) {year = y;};
+    void setName(string n) {name = n;};
 
-    string getTitle() const {};
-    int getYear() const {};
-    string getName() const {};
+    string getTitle() const {return title;};
+    int getYear() const {return  year;};
+    string getName() const {return name;};
 
-    void print() const {};
+    void print() const {cout << "\nMovie: " << title 
+                            << "\n\tYear released: " << year
+                            << "\n\tScreenwriter: " << name;};
 
 };
 // Hold the input from the file.
