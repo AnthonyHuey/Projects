@@ -22,15 +22,26 @@ public:
    int getGreen() const {return green;}
    int getBlue() const {return blue;}
 
-   void print() const {cout << "Red: " << red << "\nGreen: " << green 
+   void print() const {cout << "\nRed: " << red << "\nGreen: " << green 
                             << "\nBlue: " << blue;} 
-
 };
 
 int main()
 {
+    Color test;
+    test.setRed(255);
+    test.setGreen(150);
+    test.setBlue(25);
+    test.print();
+    test.setBlue(test.getGreen());
+    test.print();
 
-
-
+    Color pink;
+    pink.setRed(255);
+    pink.setGreen(192);
+    pink.setBlue(203);
+    pink.print();
+    test.setRed(pink.getBlue());
+    test.print();
 
 }
