@@ -14,8 +14,8 @@ private:
 public:
 // constructors go here
     Color() {red = 0, green = 0, blue = 0;}                     // Default
-    Color(int r) {red = r;}                                     // Partial
-    Color(int r, int g) {red = r, green = g;}                   // Partial
+    Color(int b) {red = 0, green = 0, blue = b;}                // Partial
+    Color(int r, int g) {red = r, green = g, blue = 0;}         // Partial
     Color(int r, int g, int b) {red = r, green = g, blue = b;}  // Parameter
 
     void setRed(int r) {red = r;}
@@ -34,6 +34,7 @@ int main()
 {
     Color defaultColor;
     Color partial {145, 50};
+    Color partialColor {10};
     Color parameter {250, 75, 90};
 
     cout << "\nDefault: ";
@@ -41,6 +42,9 @@ int main()
 
     cout << "\nPartial: ";
     partial.print();
+
+    cout << "\nThe other Partial: ";
+    partialColor.print();
 
     cout << "\nParameter: ";
     parameter.print();
