@@ -17,7 +17,6 @@ public:
     Color(int r) {red = r;}                                     // Partial
     Color(int r, int g) {red = r, green = g;}                   // Partial
     Color(int r, int g, int b) {red = r, green = g, blue = b;}  // Parameter
-  
 
     void setRed(int r) {red = r;}
     void setGreen(int g) {green = g;}
@@ -33,26 +32,17 @@ public:
 
 int main()
 {
-    Color test;
-    test.setRed(255);
-    test.setGreen(150);
-    test.setBlue(25);
-    cout << "\n-TEST-";
-    test.print();
+   // Color default;
+    Color partial {145, 50};
+    Color parameter {250, 75, 90};
 
-    test.setBlue(test.getGreen()); // Swaping test B with it's green value
-    test.setGreen(15);
-    cout << "\n-TEST-";
-    test.print();
+    cout << "\nDefault: ";
+   // default.print();
 
-    Color pink;
-    pink.setRed(255);
-    pink.setGreen(192);
-    pink.setBlue(203);
-    cout << "\n-PINK-";
-    pink.print();
+    cout << "\nPartial: ";
+    partial.print();
 
-    test.setRed(pink.getBlue()); // Swapping test R with pink's blue value
-    cout << "\n-TEST-";
-    test.print();
+    cout << "Parameter: ";
+    parameter.print();
+
 }
