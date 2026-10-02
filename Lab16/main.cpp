@@ -32,17 +32,17 @@ public:
 
 int main()
 {
-   // Color default;
+    Color defaultColor;
     Color partial {145, 50};
     Color parameter {250, 75, 90};
 
     cout << "\nDefault: ";
-   // default.print();
+    defaultColor.print();
 
     cout << "\nPartial: ";
     partial.print();
 
-    cout << "Parameter: ";
+    cout << "\nParameter: ";
     parameter.print();
 
 }
