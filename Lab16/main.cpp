@@ -12,15 +12,22 @@ private:
     int green;
     int blue;
 public:
-   void setRed(int r) {red = r;}
-   void setGreen(int g) {green = g;}
-   void setBlue(int b) {blue = b;}
+// constructors go here
+    Color() {red = 0, green = 0, blue = 0;}                     // Default
+    Color(int r) {red = r;}                                     // Partial
+    Color(int r, int g) {red = r, green = g;}                   // Partial
+    Color(int r, int g, int b) {red = r, green = g, blue = b;}  // Parameter
+  
 
-   int getRed() const {return red;}
-   int getGreen() const {return green;}
-   int getBlue() const {return blue;}
+    void setRed(int r) {red = r;}
+    void setGreen(int g) {green = g;}
+    void setBlue(int b) {blue = b;}
 
-   void print() const {cout << "\nRed: " << red << "\nGreen: " << green 
+    int getRed() const {return red;}
+    int getGreen() const {return green;}
+    int getBlue() const {return blue;}
+
+    void print() const {cout << "\nRed: " << red << "\nGreen: " << green 
                             << "\nBlue: " << blue;} 
 };
 
