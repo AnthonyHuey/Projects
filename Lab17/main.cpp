@@ -54,8 +54,8 @@ int main()
     output(head);
 
     // delete all
-    //deleteAll(head);
-    //output(head);
+    deleteAll(head);
+    output(head);
 
     return 0;
 }
@@ -97,17 +97,17 @@ void addFront(Node*& head, int input)
 void addTail(Node*& head, int input)
 {
     Node *newVal = new Node;
-    Node *prev = nullptr;
-    Node *count = head;
+    Node *count = head;     // to find the end of the list.
+    Node *prev = nullptr;   // keep track of the previous node, to link new node
     newVal->value = input;
-    if (head == nullptr)
+    if (head == nullptr)    // check if the list is empty
     {
         head = newVal;
         newVal->next = nullptr;
     } 
     else
     {
-        while (count)
+        while (count)       // find the end/null, then append the new node
         {
             prev = count;
             count = count->next;
@@ -194,12 +194,21 @@ void deleteNode(Node*& head)
 }
 
 void deleteAll(Node*& head)
-{
+{   
+    Node *current = head;
+    Node *next = nullptr; 
     if (!head)
     {
         cout << "List is empty!";
         return;
     }
-   
+    
+    while(head)
+    {
+        next = current;
+        delete current;
+        current = next;
+    }
+    cout << endl;
    
 }
