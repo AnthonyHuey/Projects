@@ -29,16 +29,30 @@ void output(Node *);
 int main() 
 {
     Node *head = nullptr;
-    int entry;
-    Node *current = head;
-    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
-    int count = 0;
-    
-    // create a linked list of size SIZE with random numbers 0-99
-    for (int i = 0; i < SIZE; i++) 
-    {
-        addFront(head, rand() % 100);
+    bool exit = false;
+    while (exit = false)
+    {   
+        int entry;
+        cout << "\n---What would you like to do?---" 
+             << "\n[1] Add a node at front."
+             << "\n[2] Add a node at end."
+             << "\n[3] Insert a node anywhere."
+             << "\n[4] Delete a specific node."
+             << "\n[5] Delete the whole list."
+             << "\n[6] Display the list.";
+        cout << endl;
+        cin >> entry;
+        cin.ignore();
+
+        if (entry = 1)
+
+
+
+
     }
+    
+    // add node at head
+    addFront(head, rand() % 100);
     output(head);
 
     // deleting a node
@@ -195,7 +209,6 @@ void deleteNode(Node*& head)
 
 void deleteAll(Node*& head)
 {   
-    Node *current = head;
     Node *next = nullptr; 
     if (!head)
     {
@@ -203,12 +216,11 @@ void deleteAll(Node*& head)
         return;
     }
 
-    next = current;
-    while(head)
+    while(head != nullptr)
     {
-        next = current->next;
-        delete current;
-        current = next;
+        next = head->next;
+        delete head;
+        head = next;
     }
     cout << endl;
    
