@@ -18,7 +18,7 @@ void addFront(Node*&, int);
 
 void addTail(Node*&, int);
 
-void insertNode(Node*&, int);
+void insertNode(Node*&);
 
 void deleteNode(Node*&);
 
@@ -29,8 +29,11 @@ void output(Node *);
 int main() 
 {
     Node *head = nullptr;
+    int entry;
+    Node *current = head;
+    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
     int count = 0;
-
+    
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) 
     {
@@ -42,59 +45,8 @@ int main()
     deleteNode(head);
     output(head);
 
-  
-    int entry;
-    cin >> entry;
-    Node *current = head;
-    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
-   
-  
-
     // insert a node
-    cout << "After which node to insert 10000? " << endl;
-    count = 1;
-    current = head;
-    while (current) 
-    {
-        cout << "[" << count++ << "] " << current->value << endl;
-        current = current->next;
-    }
-    cout << "Choice --> ";
-    cin >> entry;
-
-    current = head;
-    prev = nullptr;  // reset prev to nullptr for same reason
-
-    for (int i = 0; i < entry; i++) 
-    {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, insert a node between prev and current
-    Node *newnode = new Node;
-    newnode->value = 10000;
-    newnode->next = current;
-
-    if (prev == nullptr) 
-    {
-        // inserting before the head
-        head = newnode;
-    } else 
-    {
-        prev->next = newnode;
-    }
-    output(head);
-
-    // deleting the linked list
-    current = head;
-    while (current) 
-    {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-    head = nullptr;
+    insertNode(head);
     output(head);
 
     return 0;
@@ -139,9 +91,46 @@ void addTail(Node*& head, int input)
 
 }
 
-void insertNode(Node*& head, int input)
+void insertNode(Node*& head)
 {
+    int count;
+    int entry;
+    Node *current = head;
+    Node *prev = nullptr; 
+    cout << "After which node to insert 10000? " << endl;
+    count = 1;
+    current = head;
+    while (current) 
+    {
+        cout << "[" << count++ << "] " << current->value << endl;
+        current = current->next;
+    }
+    cout << "Choice --> ";
+    cin >> entry;
 
+    current = head;
+    prev = nullptr;  // reset prev to nullptr for same reason
+
+    for (int i = 0; i < entry; i++) 
+    {
+        prev = current;
+        current = current->next;
+    }
+
+    // at this point, insert a node between prev and current
+    Node *newnode = new Node;
+    newnode->value = 10000;
+    newnode->next = current;
+
+    if (prev == nullptr) 
+    {
+        // inserting before the head
+        head = newnode;
+    } else 
+    {
+        prev->next = newnode;
+    }
+    cout << endl;
 }
 
 void deleteNode(Node*& head)
