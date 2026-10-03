@@ -50,10 +50,12 @@ int main()
     output(head);
 
     //add node at tail
+    addTail(head, rand() % 100);
+    output(head);
 
     // delete all
-    deleteAll(head);
-    output(head);
+    //deleteAll(head);
+    //output(head);
 
     return 0;
 }
@@ -94,7 +96,25 @@ void addFront(Node*& head, int input)
 
 void addTail(Node*& head, int input)
 {
-
+    Node *newVal = new Node;
+    Node *prev = nullptr;
+    Node *count = head;
+    if (head == nullptr)
+    {
+        head = newVal;
+        newVal->next = nullptr;
+        newVal->value = input;
+    } 
+    else
+    {
+        while (count)
+        {
+            prev = count;
+            count = count->next;
+        }
+        newVal
+    }
+       
 }
 
 void insertNode(Node*& head)
@@ -178,22 +198,6 @@ void deleteAll(Node*& head)
         cout << "List is empty!";
         return;
     }
-    Node *current = head;
-    Node *prev = nullptr;
-
-    while (head)
-    {
-      
-        if (prev == nullptr) {
-            // deleting the head node
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        delete current;
-        current = nullptr;
-    
-    }
-
+   
    
 }
