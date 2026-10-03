@@ -6,14 +6,15 @@ using namespace std;
 
 const int SIZE = 7;  
 
-struct Node {
+struct Node 
+{
     float value;
-    Node *next;
+    Node *next; 
 };
 // Chose a pass by reference to avoid having to deal with what to return
 // void functions are simpler for me to understand/write
 
-void addFront(Node*&);
+void addFront(Node*&, int);
 
 void addTail();
 
@@ -33,20 +34,26 @@ int main()
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) 
     {
+        addFront(head, rand() % 100)
+         /*
         int tmp_val = rand() % 100;
+       
         Node *newVal = new Node;
         
         // adds node at head
-        if (!head) {
+        if (!head) 
+        {
             head = newVal;
             newVal->next = nullptr;
             newVal->value = tmp_val;
         }
-        else {
+        else 
+        {
             newVal->next = head;
             newVal->value = tmp_val;
             head = newVal;
         }
+            */
     }
     output(head);
 
@@ -133,22 +140,36 @@ int main()
 
 void output(Node *hd) 
 {
-    if (!hd) {
+    if (!hd) 
+    {
         cout << "Empty list.\n";
         return;
     }
     int count = 1;
     Node *current = hd;
-    while (current) {
+    while (current) 
+    {
         cout << "[" << count++ << "] " << current->value << endl;
         current = current->next;
     }
     cout << endl;
 }
 
-void addFront(Node*&)
+void addFront(Node*& head, int tmp_val)
 {
-
+    Node *newVal = new Node;
+    if (!head) 
+        {
+            head = newVal;
+            newVal->next = nullptr;
+            newVal->value = tmp_val;
+        }
+        else 
+        {
+            newVal->next = head;
+            newVal->value = tmp_val;
+            head = newVal;
+        }
 }
 
 void addTail()
@@ -168,5 +189,5 @@ void deleteNode()
 
 void deleteAll()
 {
-    
+
 }
