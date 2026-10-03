@@ -49,6 +49,12 @@ int main()
     insertNode(head);
     output(head);
 
+    //add node at tail
+
+    // delete all
+    deleteAll(head);
+    output(head);
+
     return 0;
 }
 
@@ -165,7 +171,29 @@ void deleteNode(Node*& head)
     }
 }
 
-void deleteAll(Node*&)
+void deleteAll(Node*& head)
 {
+    if (!head)
+    {
+        cout << "List is empty!";
+        return;
+    }
+    Node *current = head;
+    Node *prev = nullptr;
 
+    while (head)
+    {
+      
+        if (prev == nullptr) {
+            // deleting the head node
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        delete current;
+        current = nullptr;
+    
+    }
+
+   
 }
