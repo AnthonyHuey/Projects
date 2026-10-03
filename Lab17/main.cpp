@@ -52,7 +52,13 @@ int main()
             case 3: insertNode(head); break;
             case 4: deleteNode(head); break;
             case 5: deleteAll(head); break;
-            case 6: output(head); break;
+            case 6: 
+            {
+                output(head); 
+                cout << "\nPress enter to continue...";
+                cin.get();
+                break;
+            }
             case 0: cout << "Exiting...\n"; break;
             default: cout << "Invalid.\n"; break;
         }
@@ -80,6 +86,7 @@ void output(Node *hd)
 void addFront(Node*& head, int input)
 {
     Node *newVal = new Node;
+    cout << "Inserting at front...";
     if (!head) 
         {
             head = newVal;
@@ -100,6 +107,7 @@ void addTail(Node*& head, int input)
     Node *count = head;     // to find the end of the list.
     Node *prev = nullptr;   // keep track of the previous node, to link new node
     newVal->value = input;
+    cout << "Inserting at end...";
     if (head == nullptr)    // check if the list is empty
     {
         head = newVal;
@@ -196,9 +204,10 @@ void deleteNode(Node*& head)
 void deleteAll(Node*& head)
 {   
     Node *next = nullptr; 
+    cout << "Deleting...";
     if (!head)
     {
-        cout << "List is empty!";
+        cout << "\nList is empty!";
         return;
     }
 
