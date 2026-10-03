@@ -202,10 +202,11 @@ void deleteAll(Node*& head)
         cout << "List is empty!";
         return;
     }
-    
+
+    next = current;
     while(head)
     {
-        next = current;
+        next = current->next;
         delete current;
         current = next;
     }
