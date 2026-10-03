@@ -99,11 +99,11 @@ void addTail(Node*& head, int input)
     Node *newVal = new Node;
     Node *prev = nullptr;
     Node *count = head;
+    newVal->value = input;
     if (head == nullptr)
     {
         head = newVal;
         newVal->next = nullptr;
-        newVal->value = input;
     } 
     else
     {
@@ -112,8 +112,10 @@ void addTail(Node*& head, int input)
             prev = count;
             count = count->next;
         }
-        newVal
+        newVal->next = count;
+        prev->next = newVal;
     }
+    cout << endl;
        
 }
 
