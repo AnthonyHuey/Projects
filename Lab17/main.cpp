@@ -29,48 +29,34 @@ void output(Node *);
 int main() 
 {
     Node *head = nullptr;
-    bool exit = false;
-    while (exit = false)
-    {   
-        int entry;
+    int entry = 1;
+  
+    while(entry != 0)
+    {
         cout << "\n---What would you like to do?---" 
-             << "\n[1] Add a node at front."
-             << "\n[2] Add a node at end."
-             << "\n[3] Insert a node anywhere."
-             << "\n[4] Delete a specific node."
-             << "\n[5] Delete the whole list."
-             << "\n[6] Display the list.";
+            << "\n[1] Add a node at front."
+            << "\n[2] Add a node at end."
+            << "\n[3] Insert a node anywhere."
+            << "\n[4] Delete a specific node."
+            << "\n[5] Delete the whole list."
+            << "\n[6] Display the list."
+            << "\n[0] EXIT";
         cout << endl;
         cin >> entry;
         cin.ignore();
 
-        if (entry = 1)
-
-
-
-
+        switch (entry)
+        {
+            case 1: addFront(head, rand() % 100); break;
+            case 2: addTail(head, rand() % 100); break;
+            case 3: insertNode(head); break;
+            case 4: deleteNode(head); break;
+            case 5: deleteAll(head); break;
+            case 6: output(head); break;
+            case 0: cout << "Exiting...\n"; break;
+            default: cout << "Invalid.\n"; break;
+        }
     }
-    
-    // add node at head
-    addFront(head, rand() % 100);
-    output(head);
-
-    // deleting a node
-    deleteNode(head);
-    output(head);
-
-    // insert a node
-    insertNode(head);
-    output(head);
-
-    //add node at tail
-    addTail(head, rand() % 100);
-    output(head);
-
-    // delete all
-    deleteAll(head);
-    output(head);
-
     return 0;
 }
 
@@ -88,7 +74,7 @@ void output(Node *hd)
         cout << "[" << count++ << "] " << current->value << endl;
         current = current->next;
     }
-    cout << endl;
+   // cout << endl;
 }
 
 void addFront(Node*& head, int input)
@@ -129,7 +115,7 @@ void addTail(Node*& head, int input)
         newVal->next = count;
         prev->next = newVal;
     }
-    cout << endl;
+   // cout << endl;
        
 }
 
@@ -172,7 +158,7 @@ void insertNode(Node*& head)
     {
         prev->next = newnode;
     }
-    cout << endl;
+    //cout << endl;
 }
 
 void deleteNode(Node*& head)
@@ -222,6 +208,6 @@ void deleteAll(Node*& head)
         delete head;
         head = next;
     }
-    cout << endl;
+   // cout << endl;
    
 }
