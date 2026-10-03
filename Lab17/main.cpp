@@ -16,13 +16,13 @@ struct Node
 
 void addFront(Node*&, int);
 
-void addTail();
+void addTail(Node*&, int);
 
-void insertNode();
+void insertNode(Node*&, int);
 
-void deleteNode();
+void deleteNode(Node*&);
 
-void deleteAll();
+void deleteAll(Node*&);
 
 void output(Node *);
 
@@ -34,59 +34,21 @@ int main()
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) 
     {
-        addFront(head, rand() % 100)
-         /*
-        int tmp_val = rand() % 100;
-       
-        Node *newVal = new Node;
-        
-        // adds node at head
-        if (!head) 
-        {
-            head = newVal;
-            newVal->next = nullptr;
-            newVal->value = tmp_val;
-        }
-        else 
-        {
-            newVal->next = head;
-            newVal->value = tmp_val;
-            head = newVal;
-        }
-            */
+        addFront(head, rand() % 100);
     }
     output(head);
 
     // deleting a node
-    cout << "Which node to delete? " << endl;
+    deleteNode(head);
     output(head);
-    int entry;
-    cout << "Choice --> ";
-    cin >> entry;
 
-    // traverse that many times and delete that node
+  
+    int entry;
+    cin >> entry;
     Node *current = head;
     Node *prev = nullptr;  // start prev as nullptr to detect head deletion
-
-    for (int i = 0; i < (entry - 1); i++)
-    {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, delete current and reroute pointers
-    if (current) 
-    {
-        if (prev == nullptr) {
-            // deleting the head node
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        delete current;
-        current = nullptr;
-    }
-    output(head);
+   
+  
 
     // insert a node
     cout << "After which node to insert 10000? " << endl;
@@ -155,39 +117,66 @@ void output(Node *hd)
     cout << endl;
 }
 
-void addFront(Node*& head, int tmp_val)
+void addFront(Node*& head, int input)
 {
     Node *newVal = new Node;
     if (!head) 
         {
             head = newVal;
             newVal->next = nullptr;
-            newVal->value = tmp_val;
+            newVal->value = input;
         }
         else 
         {
             newVal->next = head;
-            newVal->value = tmp_val;
+            newVal->value = input;
             head = newVal;
         }
 }
 
-void addTail()
+void addTail(Node*& head, int input)
 {
 
 }
 
-void insertNode()
+void insertNode(Node*& head, int input)
 {
 
 }
 
-void deleteNode()
+void deleteNode(Node*& head)
 {
+    cout << "Which node to delete? " << endl;
+    output(head);
+    int entry;
+    cout << "Choice --> ";
+    cin >> entry;
 
+    // traverse that many times and delete that node
+    Node *current = head;
+    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
+
+    for (int i = 0; i < (entry - 1); i++)
+    {
+        prev = current;
+        current = current->next;
+    }
+
+    // at this point, delete current and reroute pointers
+    if (current) 
+    {
+        if (prev == nullptr) {
+            // deleting the head node
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        delete current;
+        current = nullptr;
+    }
 }
 
-void deleteAll()
+void deleteAll(Node*&)
 {
 
 }
