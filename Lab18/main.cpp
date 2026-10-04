@@ -39,6 +39,7 @@ const int CMAX = 3;
 
 int main()
 {
+    srand(time(0));
     // create the Movies object/container/array
     array<Movie, MAX> movie;
 
@@ -56,8 +57,8 @@ int main()
             for (int n = 0; n < CMAX; n++)
             {
                 getline(fin, line);
-                double rating = 1.0 + (rand() % 5 );
-                movie[i].addReview(line, rating);
+                double rating = (10 + rand() % 41 ) / 10.0; // divide by 10.0
+                movie[i].addReview(line, rating);           // NOT 10
             }
         }
         fin.close();
@@ -74,10 +75,10 @@ int main()
 void Movie::output() const
 {
     Review *current = head;
-    cout << "Movie: " << title;
+    cout << "\nMovie: " << title << endl;
     for (int i = 0; i < CMAX; i++)
     {
-        cout << "\nReview #" << i+1 << ": " << current->rating
+        cout << "Review #" << i+1 << ": " << current->rating
              << ": " << current->comment << endl;
         current = current->next;
     }
@@ -116,7 +117,7 @@ Movie::Movie(const Movie &rhs) // Copy Constructor
             temp->comment = current->comment;
             temp->rating = current->rating;
             temp->next = nullptr;
-            //
+            
             if (tail != nullptr)
                 tail->next = temp;
             else
@@ -141,7 +142,7 @@ Movie& Movie::operator=(const Movie &rhs) // Copy assignment
         // then copy everything else
 
         // okay it took awhile for me to get this so im gonna comment everything
-        Review *current = rhs.head;// track which "node" where gonna copy over
+        Review *current = rhs.head;// track which "node" we're gonna copy over
         Review *tail = nullptr;    // keeps track of the end, to link everything
         while (current != nullptr) // walks to the end of the list
         {
@@ -155,7 +156,7 @@ Movie& Movie::operator=(const Movie &rhs) // Copy assignment
             else
                 head = temp;        // set the head
             tail = temp;            // move tail lto correct position.
-            current = current->next;
+            current = current->next;// don't forget to advance foward
         }
     
     }
