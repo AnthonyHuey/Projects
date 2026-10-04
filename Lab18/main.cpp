@@ -21,35 +21,15 @@ private: // Title / linked list struct, with rating and reviews
     Review *head = nullptr;
 
 public:
+    void setTitle(string t) {title = t;} 
+    string getTitle() const {return title;} 
+    void addReview(); 
+    double averageRating();
+    void output();
 
-// SetTitle
-void setTitle(string t) {title = t;}
-// GetTitle
-string getTitle() const {return title;}
-// AddReview
-void addReview();
-
-// AverageRating
-double averageRating();
-
-// Output
-void output();
-
-// Destructor / It was the ~ i couldn't remember...
-~Movie()
-{
-    while (head != nullptr)
-    {
-        Review *temp = head;
-        head = head->next;
-        delete temp;
-    }
-    
-}
-// Copy Constructor
-Movie (const Movie &rhs);
-// Copy assignment
-Movie& operator=(const Movie&);
+    ~Movie(); // Destructor / It was the ~ i couldn't remember...
+    Movie (const Movie &rhs); // Copy Constructor
+    Movie& operator=(const Movie&); // Copy assignment
 };
 
 const int MAX = 4;
@@ -66,16 +46,38 @@ int main()
 
 
 }
-Movie::Movie(const Movie &rhs)
+
+Movie::~Movie() // Deconstructor
 {
-    
+    while (head != nullptr)
+    {
+        Review *temp = head;
+        head = head->next;
+        delete temp;
+    }
 }
-Movie& Movie::operator=(const Movie &rhs)
+
+Movie::Movie(const Movie &rhs) // Copy Constructor
 {
 
+}
 
-title = rhs.title;
+Movie& Movie::operator=(const Movie &rhs) // Copy assignment
+{
+if (&rhs != this)
+{
+    while (head) // clear data
+    {
+        Review *temp = head;
+        head = head->next;
+        delete temp;
+    }
 
+    title = rhs.title; //copy title
+    // then copy everything else
+
+
+}
 
 return *this;
 }
