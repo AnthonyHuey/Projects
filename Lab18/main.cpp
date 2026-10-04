@@ -59,25 +59,64 @@ Movie::~Movie() // Deconstructor
 
 Movie::Movie(const Movie &rhs) // Copy Constructor
 {
+    //Review *tail = nullptr;
+    //for (Review *current = rhs.head; current; current = current->next)
+    //{
+    //     Review *temp = new Review{current->comment, current->rating, nullptr};
+    //}
+    title = rhs.title;
 
+    Review *current = rhs.head;
+    Review *tail = nullptr;
+    while (current != nullptr)
+        {
+            Review *temp = new Review;
+            temp->comment = current->comment;
+            temp->rating = current->rating;
+            temp->next = nullptr;
+            //
+            if (tail != nullptr)
+                tail->next = temp;
+            else
+                head = temp;
+            tail = temp;
+            current = current->next;
+        }
+    
 }
 
 Movie& Movie::operator=(const Movie &rhs) // Copy assignment
 {
-if (&rhs != this)
-{
-    while (head) // clear data
+    if (&rhs != this)
     {
-        Review *temp = head;
-        head = head->next;
-        delete temp;
+        while (head) // clear data
+        {
+            Review *temp = head;
+            head = head->next;
+            delete temp;
+        }
+
+        title = rhs.title; //copy title
+        // then copy everything else
+
+        // okay it took awhile for me to get this so im gonna comment everything
+        Review *current = rhs.head;// track which "node" where gonna copy over
+        Review *tail = nullptr;    // keeps track of the end, to link everything
+        while (current != nullptr) // walks to the end of the list
+        {
+            Review *temp = new Review;  // new object to hold the copy data
+            temp->comment = current->comment;   // copy over comment
+            temp->rating = current->rating;     // copy over rating
+            temp->next = nullptr;               // set the next to null 
+                                                // in case this is the end  
+            if (tail != nullptr)    // check if this is the head or not
+                tail->next = temp;  // smove tail to correct position
+            else
+                head = temp;        // set the head
+            tail = temp;            // move tail lto correct position.
+
+        }
+    
     }
-
-    title = rhs.title; //copy title
-    // then copy everything else
-    Review *current = rhs.head;
- 
-}
-
-return *this;
+    return *this;
 }
