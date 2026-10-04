@@ -14,11 +14,23 @@ private: // Title / linked list struct, with rating and reviews
     string title;
     struct Review
     {
-        string review;
+        string comment;
         int rating;
         Review *next;
     };
 public:
+
+// AddReview
+
+// Average?
+
+// Output
+
+// Destructor
+
+// Copy Constructor
+
+// Copy assignment
 
 };
 
@@ -26,7 +38,13 @@ const int MAX = 4;
 
 int main()
 {
+    // create the Movies object/container/array
 
+
+    // Fill it with data from input.txt
+    // ratings are a random double from 1.0-5.0
+
+    // output said data
 
 
 }
