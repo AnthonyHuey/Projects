@@ -26,6 +26,7 @@ public:
     void setTitle(string t) {title = t;} 
     string getTitle() const {return title;} 
     void output() const;
+    double getAverage(Review) const;
 
     void addReview(string, double); 
     Movie() = default;
@@ -82,6 +83,16 @@ void Movie::output() const
              << ": " << current->comment << endl;
         current = current->next;
     }
+    cout << "Average rating: " << 
+}
+
+double Movie::getAverage(Review total) const
+{
+    double average= 0.0;
+    for (int i = 0; i < CMAX; i++)
+        average = total.rating + average;
+    return average;
+
 }
 
 void Movie::addReview(string c, double r)
