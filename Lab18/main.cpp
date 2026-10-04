@@ -8,7 +8,7 @@
 
 using namespace std;
  
-class Movies
+class Movie
 {
 private: // Title / linked list struct, with rating and reviews
     string title;
@@ -18,16 +18,34 @@ private: // Title / linked list struct, with rating and reviews
         int rating;
         Review *next;
     };
+    Review *head = nullptr;
+
 public:
 
+// SetTitle
+void setTitle(string t) {title = t;}
+// GetTitle
+string getTtile() const {return title;}
 // AddReview
+void addReview();
 
-// Average?
+// AverageRating
+int averageRating();
 
 // Output
+void output();
 
-// Destructor
-
+// Destructor / It was the ~ i couldn't remember...
+~Movie()
+{
+    while (head != nullptr)
+    {
+        Review *temp = head;
+        head = head->next;
+        delete temp;
+    }
+    
+}
 // Copy Constructor
 
 // Copy assignment
