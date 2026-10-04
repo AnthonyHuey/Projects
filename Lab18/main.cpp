@@ -15,7 +15,7 @@ private: // Title / linked list struct, with rating and reviews
     struct Review
     {
         string comment;
-        int rating;
+        double rating;
         Review *next;
     };
     Review *head = nullptr;
@@ -25,12 +25,12 @@ public:
 // SetTitle
 void setTitle(string t) {title = t;}
 // GetTitle
-string getTtile() const {return title;}
+string getTitle() const {return title;}
 // AddReview
 void addReview();
 
 // AverageRating
-int averageRating();
+double averageRating();
 
 // Output
 void output();
@@ -49,7 +49,7 @@ void output();
 // Copy Constructor
 
 // Copy assignment
-
+Movie operator=(const Movie &);
 };
 
 const int MAX = 4;
@@ -65,4 +65,10 @@ int main()
     // output said data
 
 
+}
+
+Movie Movie::operator=(const Movie &rhs)
+{
+
+    
 }
