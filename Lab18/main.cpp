@@ -6,6 +6,7 @@
 #include <string>
 #include <array>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
  
@@ -56,7 +57,7 @@ int main()
             {
                 getline(fin, line);
                 double rating = 1.0 + (rand() % 5 );
-                movie[n].addReview(line, rating);
+                movie[i].addReview(line, rating);
             }
         }
         fin.close();
@@ -64,16 +65,17 @@ int main()
     else 
         cout << "\nFile not found.\n";
     // output said data
+    cout << fixed << setprecision(1);
     for (int i = 0; i < MAX; i++)
-    movie[i].output();
+     movie[i].output();
 
 }
 
 void Movie::output() const
 {
-    cout << "Movie: " << title;
     Review *current = head;
-    for (int i = 0; i < MAX; i++)
+    cout << "Movie: " << title;
+    for (int i = 0; i < CMAX; i++)
     {
         cout << "\nReview #" << i+1 << ": " << current->rating
              << ": " << current->comment << endl;
