@@ -23,9 +23,9 @@ private: // Title / linked list struct, with rating and reviews
 public:
     void setTitle(string t) {title = t;} 
     string getTitle() const {return title;} 
-    void addReview(Review&, string, double); 
-    double averageRating();
-    void output();
+    void output() const;
+
+    void addReview(string, double); 
 
     ~Movie(); // Destructor / It was the ~ i couldn't remember...
     Movie (const Movie &rhs); // Copy Constructor
@@ -37,7 +37,7 @@ const int MAX = 4;
 int main()
 {
     // create the Movies object/container/array
-
+    array<Movie, MAX> movie;
 
     // Fill it with data from input.txt
     // ratings are a random double from 1.0-5.0
@@ -47,14 +47,15 @@ int main()
 
 }
 
-void Movie::addReview(Review& head, string c, double r)
+void Movie::addReview(string c, double r)
 {
-    Review *temp = new Review;
-    temp->comment = c;
-    temp->rating = r;
-    temp->next = nullptr;
+    Review *temp = new Review; // temp to hold data
 
-    
+    temp->comment = c;  // copy over data
+    temp->rating = r;
+
+    temp->next = head;  // new data point to old data
+    head = temp;        // new data becomes head
 }
 
 Movie::~Movie() // Deconstructor
@@ -87,7 +88,6 @@ Movie::Movie(const Movie &rhs) // Copy Constructor
             tail = temp;
             current = current->next;
         }
-    
 }
 
 Movie& Movie::operator=(const Movie &rhs) // Copy assignment
