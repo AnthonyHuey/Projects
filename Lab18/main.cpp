@@ -47,9 +47,9 @@ void output();
     
 }
 // Copy Constructor
-
+Movie (const Movie &rhs);
 // Copy assignment
-Movie operator=(const Movie &);
+Movie& operator=(const Movie&);
 };
 
 const int MAX = 4;
@@ -66,9 +66,16 @@ int main()
 
 
 }
-
-Movie Movie::operator=(const Movie &rhs)
+Movie::Movie(const Movie &rhs)
+{
+    
+}
+Movie& Movie::operator=(const Movie &rhs)
 {
 
-    
+
+title = rhs.title;
+
+
+return *this;
 }
