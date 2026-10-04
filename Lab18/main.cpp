@@ -27,42 +27,45 @@ public:
     void output() const;
 
     void addReview(string, double); 
-
+    Movie() = default;
     ~Movie(); // Destructor / It was the ~ i couldn't remember...
     Movie (const Movie &rhs); // Copy Constructor
     Movie& operator=(const Movie&); // Copy assignment
 };
 
 const int MAX = 4;
+const int CMAX = 3;
 
 int main()
 {
     // create the Movies object/container/array
     array<Movie, MAX> movie;
 
+    // Fill it with data from input.txt
+    // ratings are a random double from 1.0-5.0
     ifstream fin ("input.txt");
     if (fin.good())
     {   
         string line;
-        for (int i = 0; i < MAX; i ++) // get teh title on outer loop
+        for (int i = 0; i < MAX; i ++) // get the title on outer loop
         {   
-            // then get the comments on inner loop
-            for (int n = 0; n < 3; n++)
+            getline(fin, line);
+            movie[i].setTitle(line);
+            // then get the comments on inner loop, 3 comments per movie
+            for (int n = 0; n < CMAX; n++)
             {
-                
+                getline(fin, line);
+                double rating = 1.0 + (rand() % 5 );
+                movie[i].addReview(line, rating);
             }
         }
         fin.close();
     }
     else 
         cout << "\nFile not found.\n";
-
-
-    // Fill it with data from input.txt
-    // ratings are a random double from 1.0-5.0
-
     // output said data
-
+    for (int i = 0; i < MAX; i++)
+    movie[i].output();
 
 }
 
