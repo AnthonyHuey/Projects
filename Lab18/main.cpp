@@ -75,8 +75,8 @@ if (&rhs != this)
 
     title = rhs.title; //copy title
     // then copy everything else
-
-
+    Review *current = rhs.head;
+ 
 }
 
 return *this;
