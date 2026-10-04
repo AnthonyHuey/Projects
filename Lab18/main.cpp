@@ -56,7 +56,7 @@ int main()
             {
                 getline(fin, line);
                 double rating = 1.0 + (rand() % 5 );
-                movie[i].addReview(line, rating);
+                movie[n].addReview(line, rating);
             }
         }
         fin.close();
@@ -73,10 +73,11 @@ void Movie::output() const
 {
     cout << "Movie: " << title;
     Review *current = head;
-    for (int i = 1; i < MAX; i++)
+    for (int i = 0; i < MAX; i++)
     {
-        cout << "\nReview #" << i << ": " << current->rating
+        cout << "\nReview #" << i+1 << ": " << current->rating
              << ": " << current->comment << endl;
+        current = current->next;
     }
 }
 
@@ -152,6 +153,7 @@ Movie& Movie::operator=(const Movie &rhs) // Copy assignment
             else
                 head = temp;        // set the head
             tail = temp;            // move tail lto correct position.
+            current = current->next;
         }
     
     }
