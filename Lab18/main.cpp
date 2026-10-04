@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <fstream>
 
 using namespace std;
  
@@ -39,12 +40,41 @@ int main()
     // create the Movies object/container/array
     array<Movie, MAX> movie;
 
+    ifstream fin ("input.txt");
+    if (fin.good())
+    {   
+        string line;
+        for (int i = 0; i < MAX; i ++) // get teh title on outer loop
+        {   
+            // then get the comments on inner loop
+            for (int n = 0; n < 3; n++)
+            {
+                
+            }
+        }
+        fin.close();
+    }
+    else 
+        cout << "\nFile not found.\n";
+
+
     // Fill it with data from input.txt
     // ratings are a random double from 1.0-5.0
 
     // output said data
 
 
+}
+
+void Movie::output() const
+{
+    cout << "Movie: " << title;
+    Review *current = head;
+    for (int i = 1; i < MAX; i++)
+    {
+        cout << "\nReview #" << i << ": " << current->rating
+             << ": " << current->comment << endl;
+    }
 }
 
 void Movie::addReview(string c, double r)
