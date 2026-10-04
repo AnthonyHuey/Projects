@@ -23,7 +23,7 @@ private: // Title / linked list struct, with rating and reviews
 public:
     void setTitle(string t) {title = t;} 
     string getTitle() const {return title;} 
-    void addReview(); 
+    void addReview(Review&, string, double); 
     double averageRating();
     void output();
 
@@ -47,6 +47,16 @@ int main()
 
 }
 
+void Movie::addReview(Review& head, string c, double r)
+{
+    Review *temp = new Review;
+    temp->comment = c;
+    temp->rating = r;
+    temp->next = nullptr;
+
+    
+}
+
 Movie::~Movie() // Deconstructor
 {
     while (head != nullptr)
@@ -59,11 +69,6 @@ Movie::~Movie() // Deconstructor
 
 Movie::Movie(const Movie &rhs) // Copy Constructor
 {
-    //Review *tail = nullptr;
-    //for (Review *current = rhs.head; current; current = current->next)
-    //{
-    //     Review *temp = new Review{current->comment, current->rating, nullptr};
-    //}
     title = rhs.title;
 
     Review *current = rhs.head;
@@ -114,7 +119,6 @@ Movie& Movie::operator=(const Movie &rhs) // Copy assignment
             else
                 head = temp;        // set the head
             tail = temp;            // move tail lto correct position.
-
         }
     
     }
