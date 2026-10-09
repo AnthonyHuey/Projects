@@ -60,26 +60,24 @@ class Chair
 };
 int main() 
 {   // test for the defualt constructor, it works :)
-    for (int i = 0; i < 100; i++)
-        cout << rand() % 2 << ", ";
-    cout << endl;
+    //for (int i = 0; i < 100; i++)
+        //cout << rand() % 2 << ", ";
+    //cout << endl;
 
     srand(time(0));
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
     Chair *chairPtr = new Chair;
-    chairPtr->setLegs(4);
-    chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
 
-    //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3);
+    /*creating dynamic chair object with constructor
+    Chair *livingChair = new Chair(3, 525.25, 434.34, 252.52);
     livingChair->setPrices(525.25, 434.34, 252.52);
     livingChair->print();
     delete livingChair;
     livingChair = nullptr;
-    
+    */
     //creating dynamic array of chair objects
     Chair *collection = new Chair[SIZE];
     collection[0].setLegs(4);
