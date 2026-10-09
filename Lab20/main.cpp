@@ -7,6 +7,8 @@
 #include <iomanip>
 using namespace std;
 const int SIZE = 3;
+const int MIN = 10000;
+const int MAX = 99999;
 
 class Chair 
 {
@@ -15,14 +17,15 @@ class Chair
         double * prices;
     public:
     // constructors
-    Chair() 
+    Chair() // defualt
     {
         prices = new double[SIZE];
+        if 
         legs = 0;
         for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+            prices[i] = (rand() % (MAX - MIN+1) + MIN) / 100.00;
     }
-    Chair(int l) 
+    Chair(int l) // paramater
     {
         prices = new double[SIZE];
         legs = l;
@@ -55,6 +58,7 @@ class Chair
 };
 int main() 
 {
+    srand(time(0));
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
