@@ -20,8 +20,10 @@ class Chair
     Chair() // defualt
     {
         prices = new double[SIZE];
-        if 
-        legs = 0;
+        if (rand() % 2 == 0)
+            legs = 3;
+        else
+            legs = 4;
         for (int i = 0; i < SIZE; i++)
             prices[i] = (rand() % (MAX - MIN+1) + MIN) / 100.00;
     }
@@ -57,7 +59,11 @@ class Chair
     }
 };
 int main() 
-{
+{   // test for the defualt constructor, it works :)
+    for (int i = 0; i < 100; i++)
+        cout << rand() % 2 << ", ";
+    cout << endl;
+
     srand(time(0));
     cout << fixed << setprecision(2);
 
