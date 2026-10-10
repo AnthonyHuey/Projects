@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MAX = 15, MIN = 1;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MAX = 15;
 
 class Goat
 {
@@ -27,8 +27,8 @@ public:
     Goat() // Defualt
     {
         age = (rand() % MAX_LS) + 1;
-        name = names[(rand() % (MAX - MIN+1) + MIN) - 1];
-        color = colors[(rand() % (MAX - MIN+1) + MIN) - 1];
+        name = names[(rand() % MAX)];
+        color = colors[(rand() % MAX)];
     }
     Goat(int a, string n, string c)
     {
@@ -131,8 +131,8 @@ public:
             tail = newNode; // Inserting at the end
         temp->next = newNode;
     }
-        /* isolating to deal with later
-    void delete_node(int value) 
+      /*
+    void delete_node(Goat value) 
     {
         if (!head) return; // Empty list
         Node* temp = head;
@@ -214,27 +214,28 @@ int main()
     cout << "List backward:\n";
     list.print_reverse();
 
-    //cout << "Deleting list, then trying to print.\n";
-    //list.~DoublyLinkedList();
+    cout << "Deleting list, then trying to print.\n";
+    list.~DoublyLinkedList();
 
-    //cout << "List forward: ";
-    //list.print();
+    cout << "List forward: ";
+    list.print();
 
-    /*
+    
     //testing for goat object. Ok, got vlaues back from this so Goat works fine
     Goat test;
     cout << "\ntesting goat data: " << test.goatAgeGet() << " " 
          << test.goatColorGet() << " " << test.goatNameGet();
-     test rand, see if im getting the right values
+     //test rand, see if im getting the right values
     cout << "\nrand test: ";
     for (int i = 0; i < 1000; i++)
     {
-        int x = ((rand() % MAX_LS) + 1);
-        if ( x < 1 || x > 20)
+        int x = (rand() % MAX);
+        if ( x < 0 || x > 14)
             cout << " X out of range ";
+        //cout << x << ", ";
     }
     test.pirntGoat();
-    */
+    
 
     return 0;
 }
