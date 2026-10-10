@@ -53,6 +53,11 @@ public:
         for (int i = 0; i < MAX; i++)
             cout << colors[i] << ", ";
     }
+    // overloading == operator for delete_node function
+    bool operator==(const Goat& rhs) const 
+    {
+        return age == rhs.age && name == rhs.name && color == rhs.color;
+    }
 };
 
 class DoublyLinkedList 
@@ -130,14 +135,13 @@ public:
         else
             tail = newNode; // Inserting at the end
         temp->next = newNode;
-    }
-      /*
+    }      
     void delete_node(Goat value) 
     {
         if (!head) return; // Empty list
         Node* temp = head;
-    while (temp && temp->data != value)
-        temp = temp->next;
+    while (temp && !(temp->data == value)) // it didn't know how to compare...
+        temp = temp->next;                 // need to overload it. 
         
     if (!temp) return; // Value not found
     if (temp->prev) 
@@ -152,7 +156,6 @@ public:
 
     delete temp;
     }
-    */
     void print() 
     {
         Node* current = head;
@@ -220,8 +223,7 @@ int main()
     cout << "List forward: ";
     list.print();
 
-    
-    //testing for goat object. Ok, got vlaues back from this so Goat works fine
+    /*testing for goat object. Ok, got vlaues back from this so Goat works fine
     Goat test;
     cout << "\ntesting goat data: " << test.goatAgeGet() << " " 
          << test.goatColorGet() << " " << test.goatNameGet();
@@ -235,7 +237,6 @@ int main()
         //cout << x << ", ";
     }
     test.pirntGoat();
-    
-
+    */
     return 0;
 }
