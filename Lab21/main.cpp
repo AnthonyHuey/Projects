@@ -27,8 +27,8 @@ public:
     Goat() // Defualt
     {
         age = (rand() % MAX_LS) + 1;
-        name = names[(rand() % (MAX - MIN+1) + MIN) + 1];
-        color = colors[(rand() % (MAX - MIN+1) + MIN) + 1];
+        name = names[(rand() % (MAX - MIN+1) + MIN) - 1];
+        color = colors[(rand() % (MAX - MIN+1) + MIN) - 1];
     }
     Goat(int a, string n, string c)
     {
@@ -44,6 +44,15 @@ public:
     int goatAgeGet() const {return age;};
     string goatNameGet() const {return name;};
     string goatColorGet() const {return color;};
+    void pirntGoat() const // for testing
+    {
+        cout << "\nNames: ";
+        for (int i = 0; i < MAX; i++)
+            cout << names[i] << ", ";
+         cout << "\nColors: ";
+        for (int i = 0; i < MAX; i++)
+            cout << colors[i] << ", ";
+    }
 };
 
 class DoublyLinkedList 
@@ -57,7 +66,7 @@ private:
 
         Node(Goat val, Node* p = nullptr, Node* n = nullptr) 
         {
-            //data = Goat();
+            data = val;
             prev = p;
             next = n;
         }
@@ -194,8 +203,8 @@ int main()
     srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
-    //for (int i = 0; i < size; ++i)
-    //    list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    for (int i = 0; i < size; ++i)
+        list.push_back(Goat());
         
     cout << "List forward: ";
     list.print();
@@ -213,6 +222,15 @@ int main()
     Goat test;
     cout << "\ntesting goat data: " << test.goatAgeGet() << " " 
          << test.goatColorGet() << " " << test.goatNameGet();
-    // remeber to test rand later
+    // test rand, see if im getting the right values
+    cout << "\nrand test: ";
+    for (int i = 0; i < 1000; i++)
+    {
+        int x = ((rand() % MAX_LS) + 1);
+        if ( x < 1 || x > 20)
+            cout << " X out of range ";
+    }
+    test.pirntGoat();
+
     return 0;
 }
