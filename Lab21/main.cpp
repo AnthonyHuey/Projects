@@ -6,8 +6,32 @@
 // modify the doublylinkedlist, then excercize everything in main.
 
 #include <iostream>
+#include <string>
 using namespace std;
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MAX = 15;
+
+class Goat
+{
+private:
+    int age;
+    string name;
+    string color;
+    // i'm assuming these are prefilled here.
+    string names[MAX] = {  "Billy", "Nanny", "Clover", "Biscuit", "Pepper",
+    "Gruff", "Daisy", "Hazel", "Ziggy", "Nibbles",
+    "Maple", "Tank", "Pickles", "Willow", "Brutus"};
+    string colors[MAX] = { "Forest Green", "Crimson", "Sage", "Navy", "Emerald",
+    "Gold", "Teal", "Lavender", "Olive", "Coral",
+    "Mint", "Charcoal", "Turquoise", "Burgundy", "Lime"};
+public:
+    Goat()
+    {
+        age = (rand() % MAX_LS) + 1;
+
+    }
+
+};
+
 class DoublyLinkedList 
 {
 private:
@@ -155,6 +179,6 @@ int main()
 
     cout << "List forward: ";
     list.print();
-    
+
     return 0;
 }
