@@ -57,7 +57,7 @@ private:
 
         Node(Goat val, Node* p = nullptr, Node* n = nullptr) 
         {
-            data = val;
+            //data = Goat();
             prev = p;
             next = n;
         }
@@ -122,7 +122,8 @@ public:
             tail = newNode; // Inserting at the end
         temp->next = newNode;
     }
-    void delete_node(Goat value) 
+        /* isolating to deal with later
+    void delete_node(int value) 
     {
         if (!head) return; // Empty list
         Node* temp = head;
@@ -142,10 +143,15 @@ public:
 
     delete temp;
     }
+    */
     void print() 
     {
         Node* current = head;
-        if (!current) return;
+        if (!current)  
+        {
+            cout << " List is empty!"; 
+            return;
+        }
         while (current) 
         {
             cout << current->data.goatAgeGet() << " ";
@@ -158,7 +164,11 @@ public:
     void print_reverse() 
     {
         Node* current = tail;
-        if (!current) return;
+        if (!current) 
+        {
+            cout << " List is empty!"; 
+            return;
+        }
         while (current) 
         {
             cout << current->data.goatAgeGet() << " ";
@@ -190,14 +200,14 @@ int main()
     cout << "List forward: ";
     list.print();
 
-    cout << "List backward: ";
+    cout << "\nList backward: ";
     list.print_reverse();
 
-    cout << "Deleting list, then trying to print.\n";
-    list.~DoublyLinkedList();
+    //cout << "Deleting list, then trying to print.\n";
+    //list.~DoublyLinkedList();
 
-    cout << "List forward: ";
-    list.print();
+    //cout << "List forward: ";
+    //list.print();
 
     return 0;
 }
