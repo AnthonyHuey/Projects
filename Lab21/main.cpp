@@ -162,10 +162,11 @@ public:
             return;
         }
         while (current) 
-        {
-            cout << current->data.goatAgeGet() << " ";
-            cout << current->data.goatColorGet() << " ";
-            cout << current->data.goatNameGet() << " ";
+        {   
+            cout << "\t"
+                << current->data.goatNameGet() << " ("
+                << current->data.goatColorGet() << ", "
+                << current->data.goatAgeGet() << ")\n";
             current = current->next;
         }
         cout << endl;
@@ -179,10 +180,11 @@ public:
             return;
         }
         while (current) 
-        {
-            cout << current->data.goatAgeGet() << " ";
-            cout << current->data.goatColorGet() << " ";
-            cout << current->data.goatNameGet() << " ";
+        {  
+            cout << "\t"
+                << current->data.goatNameGet() << " ("
+                << current->data.goatColorGet() << ", "
+                << current->data.goatAgeGet() << ")\n";
             current = current->prev;
         }
         cout << endl;
@@ -204,12 +206,12 @@ int main()
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
     for (int i = 0; i < size; ++i)
-        list.push_back(Goat());
-        
-    cout << "List forward: ";
+        list.push_back(Goat()); // kind makes sense now why i was getting-
+                                // -nothing, need this to acutally fill the list
+    cout << "List forward:\n";
     list.print();
 
-    cout << "\nList backward: ";
+    cout << "List backward:\n";
     list.print_reverse();
 
     //cout << "Deleting list, then trying to print.\n";
@@ -217,12 +219,13 @@ int main()
 
     //cout << "List forward: ";
     //list.print();
-    
+
+    /*
     //testing for goat object. Ok, got vlaues back from this so Goat works fine
     Goat test;
     cout << "\ntesting goat data: " << test.goatAgeGet() << " " 
          << test.goatColorGet() << " " << test.goatNameGet();
-    // test rand, see if im getting the right values
+     test rand, see if im getting the right values
     cout << "\nrand test: ";
     for (int i = 0; i < 1000; i++)
     {
@@ -231,6 +234,7 @@ int main()
             cout << " X out of range ";
     }
     test.pirntGoat();
+    */
 
     return 0;
 }
