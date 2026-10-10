@@ -27,8 +27,8 @@ public:
     Goat() // Defualt
     {
         age = (rand() % MAX_LS) + 1;
-        name = names[(rand() % (MAX - MIN+1) + MIN)];
-        color = colors[(rand() % (MAX - MIN+1) + MIN)];
+        name = names[(rand() % (MAX - MIN+1) + MIN) + 1];
+        color = colors[(rand() % (MAX - MIN+1) + MIN) + 1];
     }
     Goat(int a, string n, string c)
     {
@@ -208,6 +208,11 @@ int main()
 
     //cout << "List forward: ";
     //list.print();
-
+    
+    //testing for goat object. Ok, got vlaues back from this so Goat works fine
+    Goat test;
+    cout << "\ntesting goat data: " << test.goatAgeGet() << " " 
+         << test.goatColorGet() << " " << test.goatNameGet();
+    // remeber to test rand later
     return 0;
 }
