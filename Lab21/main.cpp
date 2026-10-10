@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MAX = 15;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MAX = 15, MIN = 1;
 
 class Goat
 {
@@ -24,10 +24,17 @@ private:
     "Gold", "Teal", "Lavender", "Olive", "Coral",
     "Mint", "Charcoal", "Turquoise", "Burgundy", "Lime"};
 public:
-    Goat()
+    Goat() // Defualt
     {
         age = (rand() % MAX_LS) + 1;
-
+        name = names[(rand() % (MAX - MIN+1) + MIN)];
+        color = colors[(rand() % (MAX - MIN+1) + MIN)];
+    }
+    Goat(int a, string n, string c)
+    {
+        age = a;
+        name = n;
+        color = c;
     }
 
 };
