@@ -139,19 +139,23 @@ public:
         else 
             tail = temp->prev; // Deleting the tail
 
-
         delete temp;
-
     }
 // pop_front() - delete head node.
     void pop_front() 
     {
-
+        if (!head) return; // Empty list
+        Node* temp = head;
+        head = temp->next;
+        delete temp;
     }
 // pop_back() - delete tail node.
     void pop_back() 
     {
-        
+        if (!tail) return; // Empty list
+        Node* temp = tail;
+        tail = temp->prev;
+        delete tail;
     }
 // delete() - update to delete_val(), fine to keep head node deleteion.
     void delete_val(int value) 
