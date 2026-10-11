@@ -125,7 +125,7 @@ public:
         if (!head) return; // Empty list
 
         Node* temp = head;
-        for (int i = 0; i < pos; i++) // get into the right position.
+        for (int i = 1; i < pos; i++) // get into the right position.
             temp = temp->next;
         
         if (!temp) return; // nothing here.
@@ -193,15 +193,30 @@ int main() {
 
     for (int i = 0; i < size; ++i)
         list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
-    cout << "List forward: ";
+   
+    cout << "\nList forward: ";
     list.print();
 
+    /* dont need this right now
     cout << "List backward: ";
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
     cout << "List forward: ";
+    list.print();
+    */
+
+    list.delete_pos(3);
+    cout << "\nList forward: ";
+    list.print();
+
+    list.pop_front();
+    cout << "\nList forward: ";
+    list.print();
+
+    list.pop_back();
+    cout << "\nList forward: ";
     list.print();
 
     return 0;
