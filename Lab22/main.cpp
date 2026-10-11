@@ -93,7 +93,8 @@ public:
     {
         Node* current = head;
         if (!current) return;
-        while (current) {
+        while (current) 
+        {
             cout << current->data << " ";
             current = current->next;
         }
@@ -147,7 +148,7 @@ public:
         if (!head) return; // Empty list -  writing it out to follow logic
         Node* temp = head; // set temp, the node to be deleted, to heda
 
-        head = temp->next; // set the new head,
+        head = head->next; // set the new head,
         head->prev = nullptr; // reset the head.prev pointer to null
         delete temp;        // delete the head, ahh i need to 
     }
@@ -157,9 +158,9 @@ public:
         if (!tail) return; // Empty list
         Node* temp = tail; 
 
-        tail = temp->prev;
+        tail = tail->prev;
         tail->next = nullptr;
-        delete tail;
+        delete temp;
     }
 // delete() - update to delete_val(), fine to keep head node deleteion.
     void delete_val(int value) 
