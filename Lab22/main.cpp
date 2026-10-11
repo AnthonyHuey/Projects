@@ -19,7 +19,8 @@ private:
         int data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(int val, Node* p = nullptr, Node* n = nullptr) 
+        {
             data = val; 
             prev = p;
             next = n;
@@ -38,7 +39,8 @@ public:
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
-        else {
+        else 
+        {
             tail->next = newNode;
             newNode->prev = tail;
             tail = newNode;
@@ -59,13 +61,15 @@ public:
 
     void insert_after(int value, int position) 
     {
-        if (position < 0) {
+        if (position < 0) 
+        {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
         Node* newNode = new Node(value);
-        if (!head) {
+        if (!head) 
+        {
             head = tail = newNode;
             return;
         }
@@ -74,7 +78,8 @@ public:
         for (int i = 0; i < position && temp; ++i)
             temp = temp->next;
 
-        if (!temp) {
+        if (!temp) 
+        {
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
             return;
@@ -105,7 +110,8 @@ public:
     {
         Node* current = tail;
         if (!current) return;
-        while (current) {
+        while (current) 
+        {
             cout << current->data << " ";
             current = current->prev;
         }
@@ -114,7 +120,8 @@ public:
 
     ~DoublyLinkedList() 
     {
-        while (head) {
+        while (head) 
+        {
             Node* temp = head;
             head = head->next;
             delete temp;
@@ -150,10 +157,13 @@ public:
         if (!head) return; // Empty list -  writing it out to follow logic
         Node* temp = head; // set temp, the node to be deleted, to heda
 
-        head = head->next; // set the new head,
-        head->prev = nullptr; // reset the head.prev pointer to null
+        head = head->next; // set the new head, 
         // crash here if size = 1 hmm... add a check if we delete last node?
-        delete temp;        // delete the head, 
+        if (head)                 // check if head has a vaule/is not null
+            head->prev = nullptr; // 2+ nodes. set the prev pointer to null
+        else                      // there was only one node/list is now empty
+            tail = nullptr;       // fix the tail to point to null
+        delete temp;        // delete the old head, 
     }
 // pop_back() - delete tail node.
     void pop_back() 
@@ -162,7 +172,10 @@ public:
         Node* temp = tail; 
 
         tail = tail->prev;
-        tail->next = nullptr;
+        if (tail)
+            tail->next = nullptr;
+        else
+            head = nullptr;
         delete temp;
     }
 // delete() - update to delete_val(), fine to keep head node deleteion.
@@ -176,17 +189,15 @@ public:
 
         if (!temp) return; // Value not found
 
-        if (temp->prev) {
+        if (temp->prev) 
             temp->prev->next = temp->next;
-        } else {
+        else 
             head = temp->next; // Deleting the head
-        }
 
-        if (temp->next) {
+        if (temp->next) 
             temp->next->prev = temp->prev;
-        } else {
+        else 
             tail = temp->prev; // Deleting the tail
-        }
 
         delete temp;
     }
@@ -195,9 +206,10 @@ public:
 };
 
 // Driver program
-int main() {
+int main() 
+{
     DoublyLinkedList list;
-    int size = 1;
+    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
     // save - rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (int i = 0; i < size; ++i)
@@ -215,19 +227,31 @@ int main() {
     cout << "List forward: ";
     list.print();
     */
-
-    list.delete_pos(10);
+    int x = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    cout << "\ndeleting pos: " << x;
+    list.delete_pos(x);
     cout << "\nList forward: ";
     list.print();
 
- 
+    cout << "\nDeleting head...";
     list.pop_front();
     cout << "\nList forward: ";
     list.print();
 
+    cout << "\nDeleting tail...";
     list.pop_back();
     cout << "\nList forward: ";
     list.print();
 
+    int y;
+    cout << "\nWhich value would you like to delete: ";
+    cin >> y;
+    cin.ignore();
+
+    cout << "\nDeleting value: " << y;
+    list.delete_val(y);
+    cout << "\nList forward: ";
+    list.print();
+    
     return 0;
 }
