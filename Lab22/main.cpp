@@ -208,6 +208,7 @@ public:
 // Driver program
 int main() 
 {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
     // save - rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
@@ -252,6 +253,6 @@ int main()
     list.delete_val(y);
     cout << "\nList forward: ";
     list.print();
-    
+
     return 0;
 }
