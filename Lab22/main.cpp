@@ -127,9 +127,11 @@ public:
 
         Node* temp = head;
         for (int i = 1; i < pos; i++) // get into the right position.
+        { 
             temp = temp->next;
-        
-        if (!temp) return; // nothing here.
+            if (!temp) return; // nothing here.
+        }
+        // crash here if pos is large hmm... fixed :)
 
         if (temp->prev) 
             temp->prev->next = temp->next;
@@ -142,7 +144,7 @@ public:
 
         delete temp;
     }
-// pop_front() - delete head node.
+// pop_front() - delete head node. i think these crash on just one node gonna...
     void pop_front() 
     {
         if (!head) return; // Empty list -  writing it out to follow logic
@@ -150,7 +152,8 @@ public:
 
         head = head->next; // set the new head,
         head->prev = nullptr; // reset the head.prev pointer to null
-        delete temp;        // delete the head, ahh i need to 
+        // crash here if size = 1 hmm... add a check if we delete last node?
+        delete temp;        // delete the head, 
     }
 // pop_back() - delete tail node.
     void pop_back() 
@@ -194,10 +197,11 @@ public:
 // Driver program
 int main() {
     DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int size = 1;
+    // save - rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back(rand() % (MAX_LS-MIN_LS+1) + MIN_LS);
    
     cout << "\nList forward: ";
     list.print();
@@ -212,7 +216,7 @@ int main() {
     list.print();
     */
 
-    list.delete_pos(3);
+    list.delete_pos(10);
     cout << "\nList forward: ";
     list.print();
 
