@@ -144,16 +144,18 @@ public:
 // pop_front() - delete head node.
     void pop_front() 
     {
-        if (!head) return; // Empty list
-        Node* temp = head;
-        head = temp->next;
-        delete temp;
+        if (!head) return; // Empty list -  writing it out to follow logic
+        Node* temp = head; // set temp, the node to be deleted, to heda
+
+        head = temp->next; // set the new head, 
+        delete temp;        // delete the head, ahh i need to reset the next's pointer
     }
 // pop_back() - delete tail node.
     void pop_back() 
     {
         if (!tail) return; // Empty list
-        Node* temp = tail;
+        Node* temp = tail; // 
+
         tail = temp->prev;
         delete tail;
     }
@@ -211,6 +213,7 @@ int main() {
     cout << "\nList forward: ";
     list.print();
 
+ /*
     list.pop_front();
     cout << "\nList forward: ";
     list.print();
@@ -218,6 +221,6 @@ int main() {
     list.pop_back();
     cout << "\nList forward: ";
     list.print();
-
+*/
     return 0;
 }
