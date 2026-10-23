@@ -14,19 +14,27 @@
 using namespace std;
 using namespace std::chrono;
 
-// it would be a lot easier to just write a sinlge function for each race
-// i loosly remember template but i'd have to relearn it, 
-// also i don't even know if it would be allowed. ehh
-
 void nanoOutput(high_resolution_clock::time_point, 
                 high_resolution_clock::time_point); 
 const int MAX = 20000, LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
-   // double chart[CUBE][ROWS][COLS]; // this is right, took me a while.
+    double chart[CUBE][ROWS][COLS]; // this is right, took me a while.
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
+
+    // test for the 3d array
+    for(int i = 0; i < CUBE; i++)
+        for (int j = 0; j < ROWS; j++)
+            for (int n = 0; n < COLS; n++)
+                chart [i][j][n] = rand();
+      for(int i = 0; i < CUBE; i++)
+        for (int j = 0; j < ROWS; j++)
+            for (int n = 0; n < COLS; n++)
+                cout << chart[i][j][n] << " ";
+    cout << "Chart test" << chart[0][0][0];
+    
     cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
     // in the names.txt into each and time it
