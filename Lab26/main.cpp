@@ -15,7 +15,8 @@
 using namespace std;
 using namespace std::chrono;
 
-const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 1;
+enum Row {READ, SORT, INSERT, DELETE_}
+const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
     long chart[CUBE][ROWS][COLS];
@@ -39,7 +40,7 @@ int main()
     - could also return the time/duration?
         - i dont think return would work for the read.
 
-    gonna ingore the read for now, just gonna use return fo the other funcs
+    gonna ingore the read for now, just gonna use return for the other funcs
     why did i think doubles would work?
 */
 
@@ -73,12 +74,17 @@ int main()
     chart[0][3][1] = deleteList(myList);
     chart[0][3][2] = deleteSet(mySet);
 
-    for(int i = 0; i < CUBE; i++)
+    for(int i = 0; i < 1; i++)
+        for (int j = 0; j < ROWS; j++)
+            for (int n = 0; n < COLS; n++)
+                
+
+    for(int i = 0; i < 1; i++)
         for (int j = 0; j < ROWS; j++)
         {
             cout << endl;
             for (int n = 0; n < COLS; n++)
-                cout << chart[i][j][n] << " ";
+                cout << "\t| "<< chart[i][j][n] << " |";
         }
    
     return 0;
