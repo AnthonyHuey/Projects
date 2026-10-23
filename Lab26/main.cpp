@@ -11,12 +11,14 @@
 #include <chrono>
 #include <fstream>
 #include <algorithm>
+#include "VLS.h"
 using namespace std;
 using namespace std::chrono;
 
+//probably getting rid of this
 void nanoOutput(high_resolution_clock::time_point, 
-                high_resolution_clock::time_point);
-void readVector(vector<string>) 
+                high_resolution_clock::time_point); 
+
 const int MAX = 20000, LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
