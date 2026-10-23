@@ -12,14 +12,15 @@
 using namespace std;
 using namespace std::chrono;
 
-const int MAX = 20000;
+const int MAX = 20000; // should write the read functions to not need this...
 
 //probably getting rid of this
-void nanoOutput(high_resolution_clock::time_point start, 
+double nanoOutput(high_resolution_clock::time_point start, 
                 high_resolution_clock::time_point end) 
 { 
     auto duration = duration_cast<nanoseconds>(end - start);
-    cout << "\t| " << duration.count() << " |"; 
+    // cout << "\t| " << duration.count() << " |";
+    return duration.count(); 
 }
 //READ ----------
 vector<string> readVector(const string& filename)
@@ -89,71 +90,71 @@ set<string> readSet(const string& filename)
     return temp;
 }
 //SORT ----------
-void sortVector(vector<string>& v)
+double sortVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     sort(v.begin(), v.end()); 
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
-void sortList(list<string>& l)
+double sortList(list<string>& l)
 {
     auto start = high_resolution_clock::now();
     l.sort();
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
 //INSERT ---------- 
-void insertVector(vector<string>& v)
+double insertVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     v.insert(v.begin() + v.size() / 2, "TESTCODE");
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
-void insertList(list<string>& l)
+double insertList(list<string>& l)
 {
     auto it = l.begin();
     advance(it, l.size() / 2);
     auto start = high_resolution_clock::now();
     l.insert(it, "TESTCODE"); 
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
-void insertSet(set<string>& s) 
+double insertSet(set<string>& s) 
 {
     auto sit = s.begin(); 
     advance(sit, s.size() / 2); 
     auto start = high_resolution_clock::now(); 
     s.insert(sit, "TESTCODE"); 
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
 //DELETE ----------
-void deleteVector(vector<string>& v)
+double deleteVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     v.erase(v.begin() + v.size() / 2 );
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
-void deleteList(list<string>& l)
+double deleteList(list<string>& l)
 {
     auto it = l.begin();
     advance(it, l.size() / 2);
     auto start = high_resolution_clock::now();
     l.erase(it); 
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
-void deleteSet(set<string>& s) 
+double deleteSet(set<string>& s) 
 {
     auto sit = s.begin(); 
     advance(sit, s.size() / 2); 
     auto start = high_resolution_clock::now(); 
     s.erase(sit); 
     auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
+    return nanoOutput(start, end);
 }
 
 #endif

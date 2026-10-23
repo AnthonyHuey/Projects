@@ -18,7 +18,7 @@ using namespace std::chrono;
 const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
-    double chart[CUBE][ROWS][COLS]; // this is right, took me a while.
+    double chart[CUBE][ROWS][COLS];
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
@@ -34,36 +34,45 @@ int main()
                 cout << chart[i][j][n] << " ";
     cout << "Chart test" << chart[0][0][0];
     */
+   /* ok where to start. need to pass the times/duration to the 3D array.
+    - pass the array as a reference?
+    - could also return the time/duration?
+        - i dont think return would work for the read.
+
+    gonna ingore the read for now, just gonna use return fo the other funcs
+*/
 
     cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
-
+    // functions open the file then pass back the filled container
     myVector = readVector("names.txt");
     myList = readList("names.txt");
     mySet = readSet("names.txt");
 
 // --- SORT -------------------------------------------------------------------
-    // simple enough.
+    // sorts the container, simple enough.
     cout << "\nSORT ";
-    sortVector(myVector);
+    chart[0][1][1] sortVector(myVector);
     sortList(myList);
     cout << "\t| -1 |"; // set is already sorted
 
 // -- INSERT ------------------------------------------------------------------
-    // insert "TESTCODE" into the middle of each, and time it.
+    // insert "TESTCODE" into the middle of each
     cout << "\nINSERT ";
     insertVector(myVector);
     insertList(myList);
     insertSet(mySet);
   
 // --- DELETE -----------------------------------------------------------------
-    // delete the middle-ish element of each and time it
+    // delete the middle-ish element of each.
     cout << "\nDELETE "; 
     deleteVector(myVector);
     deleteList(myList);
     deleteSet(mySet);
    
     return 0;
+
+    
 }
 
 /* syntax examples:
