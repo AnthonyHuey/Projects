@@ -15,7 +15,7 @@
 using namespace std;
 using namespace std::chrono;
 
-enum Row {READ, SORT, INSERT, DELETE_}
+enum Row {READ, SORT, INSERT, DELETE_} // for cout loop
 const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
@@ -74,19 +74,42 @@ int main()
     chart[0][3][1] = deleteList(myList);
     chart[0][3][2] = deleteSet(mySet);
 
-    for(int i = 0; i < 1; i++)
-        for (int j = 0; j < ROWS; j++)
-            for (int n = 0; n < COLS; n++)
-                
 
+/*
+    ok
+
+    loop through first layer. 
+    in row 0, column 0 use readVector
+    in row 0, column 1 use readList
+    in row 0, column 2 use readSet
+
+    repeat for each row.
+
+    save each result to a ongoing tally for layer 1. worry later
+
+    repeat 15 times. x
+
+    work backwards?
+*/
+for (int l = 0; l < LOOPS; l++) // loop 15 times
+{
     for(int i = 0; i < 1; i++)
         for (int j = 0; j < ROWS; j++)
         {
-            cout << endl;
+            for (int n = 0; n < COLS; n++)
+            {
+                
+            }
+        }
+}
+
+ for(int i = 0; i < 1; i++)
+        for (int j = 0; j < ROWS; j++)
+        {
+            cout << "\n" << Row[j]
             for (int n = 0; n < COLS; n++)
                 cout << "\t| "<< chart[i][j][n] << " |";
         }
-   
     return 0;
 }
 
