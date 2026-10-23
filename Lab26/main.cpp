@@ -1,8 +1,9 @@
 // Anthony Huey - 9/23/2026 - COMSC 210 - Lab26 DATA Structures Olympics
-// race between, vector, list, set, to see who is fastest.
-// READING, SORTING, INSERTING, DELETING.
+// ok, change things to store the resulting in a 3d array
+// loop the races 15ish times and average the results.
 
 #include <iostream>
+#include <array>
 #include <vector>
 #include <list>
 #include <set>
@@ -22,6 +23,7 @@ void nanoOutput(high_resolution_clock::time_point,
 const int MAX = 20000;
 int main() 
 {
+
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
