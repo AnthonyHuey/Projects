@@ -15,10 +15,10 @@
 using namespace std;
 using namespace std::chrono;
 
-const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
+const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 1;
 int main() 
 {
-    double chart[CUBE][ROWS][COLS];
+    long chart[CUBE][ROWS][COLS];
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
@@ -40,39 +40,48 @@ int main()
         - i dont think return would work for the read.
 
     gonna ingore the read for now, just gonna use return fo the other funcs
+    why did i think doubles would work?
 */
 
-    cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
+   // cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
     // functions open the file then pass back the filled container
     myVector = readVector("names.txt");
     myList = readList("names.txt");
     mySet = readSet("names.txt");
-
+    chart[0][0][0] = 0;
+    chart[0][0][1] = 0;
+    chart[0][0][2] = 0;
 // --- SORT -------------------------------------------------------------------
     // sorts the container, simple enough.
-    cout << "\nSORT ";
-    chart[0][1][1] sortVector(myVector);
-    sortList(myList);
-    cout << "\t| -1 |"; // set is already sorted
+   // cout << "\nSORT ";
+    chart[0][1][0] = sortVector(myVector);
+    chart[0][1][1] = sortList(myList);
+    chart[0][1][2] = -1 ;
 
 // -- INSERT ------------------------------------------------------------------
     // insert "TESTCODE" into the middle of each
-    cout << "\nINSERT ";
-    insertVector(myVector);
-    insertList(myList);
-    insertSet(mySet);
+    //cout << "\nINSERT ";
+    chart[0][2][0] = insertVector(myVector);
+    chart[0][2][1] = insertList(myList);
+    chart[0][2][2] = insertSet(mySet);
   
 // --- DELETE -----------------------------------------------------------------
     // delete the middle-ish element of each.
-    cout << "\nDELETE "; 
-    deleteVector(myVector);
-    deleteList(myList);
-    deleteSet(mySet);
+   // cout << "\nDELETE "; 
+    chart[0][3][0] = deleteVector(myVector);
+    chart[0][3][1] = deleteList(myList);
+    chart[0][3][2] = deleteSet(mySet);
+
+    for(int i = 0; i < CUBE; i++)
+        for (int j = 0; j < ROWS; j++)
+        {
+            cout << endl;
+            for (int n = 0; n < COLS; n++)
+                cout << chart[i][j][n] << " ";
+        }
    
     return 0;
-
-    
 }
 
 /* syntax examples:

@@ -15,7 +15,7 @@ using namespace std::chrono;
 const int MAX = 20000; // should write the read functions to not need this...
 
 //probably getting rid of this
-double nanoOutput(high_resolution_clock::time_point start, 
+long nanoOutput(high_resolution_clock::time_point start, 
                 high_resolution_clock::time_point end) 
 { 
     auto duration = duration_cast<nanoseconds>(end - start);
@@ -90,14 +90,14 @@ set<string> readSet(const string& filename)
     return temp;
 }
 //SORT ----------
-double sortVector(vector<string>& v)
+long sortVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     sort(v.begin(), v.end()); 
     auto end = high_resolution_clock::now();
     return nanoOutput(start, end);
 }
-double sortList(list<string>& l)
+long sortList(list<string>& l)
 {
     auto start = high_resolution_clock::now();
     l.sort();
@@ -105,14 +105,14 @@ double sortList(list<string>& l)
     return nanoOutput(start, end);
 }
 //INSERT ---------- 
-double insertVector(vector<string>& v)
+long insertVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     v.insert(v.begin() + v.size() / 2, "TESTCODE");
     auto end = high_resolution_clock::now();
     return nanoOutput(start, end);
 }
-double insertList(list<string>& l)
+long insertList(list<string>& l)
 {
     auto it = l.begin();
     advance(it, l.size() / 2);
@@ -121,7 +121,7 @@ double insertList(list<string>& l)
     auto end = high_resolution_clock::now();
     return nanoOutput(start, end);
 }
-double insertSet(set<string>& s) 
+long insertSet(set<string>& s) 
 {
     auto sit = s.begin(); 
     advance(sit, s.size() / 2); 
@@ -131,14 +131,14 @@ double insertSet(set<string>& s)
     return nanoOutput(start, end);
 }
 //DELETE ----------
-double deleteVector(vector<string>& v)
+long deleteVector(vector<string>& v)
 {
     auto start = high_resolution_clock::now();
     v.erase(v.begin() + v.size() / 2 );
     auto end = high_resolution_clock::now();
     return nanoOutput(start, end);
 }
-double deleteList(list<string>& l)
+long deleteList(list<string>& l)
 {
     auto it = l.begin();
     advance(it, l.size() / 2);
@@ -147,7 +147,7 @@ double deleteList(list<string>& l)
     auto end = high_resolution_clock::now();
     return nanoOutput(start, end);
 }
-double deleteSet(set<string>& s) 
+long deleteSet(set<string>& s) 
 {
     auto sit = s.begin(); 
     advance(sit, s.size() / 2); 
