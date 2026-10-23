@@ -15,7 +15,8 @@ using namespace std;
 using namespace std::chrono;
 
 void nanoOutput(high_resolution_clock::time_point, 
-                high_resolution_clock::time_point); 
+                high_resolution_clock::time_point);
+void readVector(vector<string>) 
 const int MAX = 20000, LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
@@ -34,10 +35,13 @@ int main()
             for (int n = 0; n < COLS; n++)
                 cout << chart[i][j][n] << " ";
     cout << "Chart test" << chart[0][0][0];
+
+
+
     
     cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
-    // in the names.txt into each and time it
+    // i'm realizing now that there is a lot wrong with this. who made this lol.
     ifstream fin;
     fin.open("names.txt");
     if (fin.good()) 
@@ -145,6 +149,41 @@ void nanoOutput(high_resolution_clock::time_point start,
     auto duration = duration_cast<nanoseconds>(end - start);
     cout << "\t| " << duration.count() << " |"; 
 }
+void readVector(vector<string> test) 
+{
+    ifstream fin;
+    fin.open("names.txt");
+    if (fin.good()) 
+    {   
+        auto start = high_resolution_clock::now();
+        for (int i = 0; i < MAX; i++)
+        {
+            string line;
+            getline(fin, line);
+            test.push_back(line);
+        }
+    }
+    else 
+        cout << "\nFile not found.";
+}
+void readList(list<string> test) 
+{
+    ifstream fin;
+    fin.open("names.txt");
+    if (fin.good()) 
+    {   
+        auto start = high_resolution_clock::now();
+        for (int i = 0; i < MAX; i++)
+        {
+            string line;
+            getline(fin, line);
+            test.push_back(line);
+        }
+    }
+    else 
+        cout << "\nFile not found.";
+}
+
 /* syntax examples:
 auto start = high_resolution_clock::now();
 auto end = high_resolution_clock::now();
