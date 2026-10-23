@@ -23,9 +23,8 @@ long nanoOutput(high_resolution_clock::time_point start,
     return duration.count(); 
 }
 //READ ----------
-vector<string> readVector(const string& filename)
+long readVector(const string& filename, vector<string>& temp )
 {
-    vector<string> temp;
     ifstream fin;
     fin.open(filename);
     if (fin.good()) 
@@ -38,16 +37,14 @@ vector<string> readVector(const string& filename)
             temp.push_back(line);
         }
         auto end = high_resolution_clock::now();
-        nanoOutput(start, end);
         fin.close();
+        return nanoOutput(start, end);;
     }
     else 
         cout << "\nFile not found.";
-    return temp;
 }
-list<string> readList(const string& filename)
+long readList(const string& filename, list<string>& temp)
 {
-    list<string> temp;
     ifstream fin;
     fin.open(filename);
     if (fin.good()) 
@@ -60,16 +57,15 @@ list<string> readList(const string& filename)
             temp.push_back(line);
         }
         auto end = high_resolution_clock::now();
-        nanoOutput(start, end);
         fin.close();
+        return nanoOutput(start, end);
     }
     else 
         cout << "\nFile not found.";
-        return temp;
+
 }
-set<string> readSet(const string& filename)
+long readSet(const string& filename, set<string>& temp)
 {
-    set<string> temp;
     ifstream fin;
     fin.open(filename);
     if (fin.good()) 
@@ -82,12 +78,12 @@ set<string> readSet(const string& filename)
             temp.insert(line);
         }
         auto end = high_resolution_clock::now();
-        nanoOutput(start, end);
         fin.close();
+        return nanoOutput(start, end);
     }
     else 
         cout << "\nFile not found.";
-    return temp;
+    
 }
 //SORT ----------
 long sortVector(vector<string>& v)

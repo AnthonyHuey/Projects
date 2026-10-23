@@ -23,59 +23,7 @@ int main()
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
-
-/*  test for the 3d array
-    for(int i = 0; i < CUBE; i++)
-        for (int j = 0; j < ROWS; j++)
-            for (int n = 0; n < COLS; n++)
-                chart [i][j][n] = rand();
-      for(int i = 0; i < CUBE; i++)
-        for (int j = 0; j < ROWS; j++)
-            for (int n = 0; n < COLS; n++)
-                cout << chart[i][j][n] << " ";
-    cout << "Chart test" << chart[0][0][0];
-    */
-   /* ok where to start. need to pass the times/duration to the 3D array.
-    - pass the array as a reference?
-    - could also return the time/duration?
-        - i dont think return would work for the read.
-
-    gonna ingore the read for now, just gonna use return for the other funcs
-    why did i think doubles would work?
-
-
-   // cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
-// --- READ -------------------------------------------------------------------
-    // functions open the file then pass back the filled container
-    myVector = readVector("names.txt");
-    myList = readList("names.txt");
-    mySet = readSet("names.txt");
-    chart[0][0][0] = 0;
-    chart[0][0][1] = 0;
-    chart[0][0][2] = 0;
-// --- SORT -------------------------------------------------------------------
-    // sorts the container, simple enough.
-   // cout << "\nSORT ";
-    chart[0][1][0] = sortVector(myVector);
-    chart[0][1][1] = sortList(myList);
-    chart[0][1][2] = -1 ;
-
-// -- INSERT ------------------------------------------------------------------
-    // insert "TESTCODE" into the middle of each
-    //cout << "\nINSERT ";
-    chart[0][2][0] = insertVector(myVector);
-    chart[0][2][1] = insertList(myList);
-    chart[0][2][2] = insertSet(mySet);
-  
-// --- DELETE -----------------------------------------------------------------
-    // delete the middle-ish element of each.
-   // cout << "\nDELETE "; 
-    chart[0][3][0] = deleteVector(myVector);
-    chart[0][3][1] = deleteList(myList);
-    chart[0][3][2] = deleteSet(mySet);
-
-
-
+/*
     ok
 
     loop through first layer. 
@@ -94,9 +42,9 @@ int main()
 for (int l = 0; l < LOOPS; l++) // loop 15 times
 {
 // --- READ ---
-    chart[0][0][0] = readVector("names.txt");;
-    chart[0][0][1] = readList("names.txt");;
-    chart[0][0][2] = readSet("names.txt", mySet);;
+    chart[0][0][0] = readVector("names.txt", myVector);
+    chart[0][0][1] = readList("names.txt", myList);
+    chart[0][0][2] = readSet("names.txt", mySet);
 
  //--- SORT ---
     chart[0][1][0] = sortVector(myVector);
@@ -119,20 +67,25 @@ for (int l = 0; l < LOOPS; l++) // loop 15 times
             chart[1][j][n] += chart[0][j][n];
 }
 
+    for (int j = 0; j < ROWS; j++) // don't forget to take the avverage...
+        for (int n = 0; n < COLS; n++)
+            chart[1][j][n] /= LOOPS;
 
+    cout << "Previous runs runtime: ";
     for (int j = 0; j < ROWS; j++)
     {
         cout << endl;
         for (int n = 0; n < COLS; n++)
             cout << "| "<< chart[0][j][n] << " |";
     }
+
+    cout << "\n Average across " << LOOPS << " runs: ";
+    for (int j = 0; j < ROWS; j++)
+    {
+        cout << endl;
+        for (int n = 0; n < COLS; n++)
+            cout << "| "<< chart[1][j][n] << " |";
+    }
     return 0;
 }
 
-/* syntax examples:
-auto start = high_resolution_clock::now();
-auto end = high_resolution_clock::now();
-nanoOutput(start, end);
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
