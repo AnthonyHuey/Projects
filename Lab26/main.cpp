@@ -20,10 +20,10 @@ using namespace std::chrono;
 
 void nanoOutput(high_resolution_clock::time_point, 
                 high_resolution_clock::time_point); 
-const int MAX = 20000, LOOPS = 15, ROWS = 4, COLS = 3;
+const int MAX = 20000, LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
-    double chart[LOOPS][ROWS][COLS]; // i think this is right?
+   // double chart[CUBE][ROWS][COLS]; // this is right, took me a while.
     vector<string> myVector;
     list<string> myList;
     set<string> mySet;
