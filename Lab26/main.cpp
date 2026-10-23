@@ -10,7 +10,7 @@
 #include "VLS.h"
 using namespace std;
 
-const int LOOPS = 5, ROWS = 4, COLS = 3, CUBE = 2;
+const int LOOPS = 2, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
 /*
@@ -26,8 +26,8 @@ int main()
 
     repeat 15 times. x
 */
- long chart[CUBE][ROWS][COLS] = {};
-   
+long chart[CUBE][ROWS][COLS] = {};
+const string labels[ROWS] = {"READ", "SORT", "INSERT", "DELETE"};
 for (int l = 0; l < LOOPS; l++) // loop 15 times
 {
     vector<string> myVector; // was getting huge numbers, gotta clear for each
@@ -65,19 +65,21 @@ for (int l = 0; l < LOOPS; l++) // loop 15 times
             chart[1][j][n] /= LOOPS;
 
     cout << "Previous run runtime: ";
-    cout << "\n\t| VECTOR |\t| LIST |\t| SET | ";
+    cout << "\nOPERATION\t| VECTOR |\t| LIST |\t| SET | ";
     for (int j = 0; j < ROWS; j++)
     {
         cout << endl;
+        cout << labels[j] << "\t";
         for (int n = 0; n < COLS; n++)
             cout << "\t| "<< chart[0][j][n] << " |";
     }
 
     cout << "\n Average across " << LOOPS << " runs: ";
-    cout << "\n\t| VECTOR |\t| LIST |\t| SET | ";
+    cout << "\nOPERATION\t| VECTOR |\t| LIST |\t| SET | ";
     for (int j = 0; j < ROWS; j++)
     {
         cout << endl;
+        cout << labels[j] << "\t";
         for (int n = 0; n < COLS; n++)
             cout << "\t| "<< chart[1][j][n] << " |";
     }
