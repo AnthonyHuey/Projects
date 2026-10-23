@@ -15,7 +15,7 @@
 using namespace std;
 using namespace std::chrono;
 
-enum Row {READ, SORT, INSERT, DELETE_} // for cout loop
+
 const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
@@ -24,7 +24,7 @@ int main()
     list<string> myList;
     set<string> mySet;
 
-    /* test for the 3d array
+/*  test for the 3d array
     for(int i = 0; i < CUBE; i++)
         for (int j = 0; j < ROWS; j++)
             for (int n = 0; n < COLS; n++)
@@ -42,7 +42,7 @@ int main()
 
     gonna ingore the read for now, just gonna use return for the other funcs
     why did i think doubles would work?
-*/
+
 
    // cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
@@ -75,7 +75,7 @@ int main()
     chart[0][3][2] = deleteSet(mySet);
 
 
-/*
+
     ok
 
     loop through first layer. 
@@ -91,24 +91,53 @@ int main()
 
     work backwards?
 */
-for (int l = 0; l < LOOPS; l++) // loop 15 times
-{
-    for(int i = 0; i < 1; i++)
-        for (int j = 0; j < ROWS; j++)
-        {
-            for (int n = 0; n < COLS; n++)
-            {
-                
-            }
-        }
-}
+//for (int l = 0; l < 1; l++) // loop 15 times
+//{
+// --- READ ---
+    chart[0][0][0] = 0;
+    //chart[1][0][0] += chart[0][0][0];
+
+    chart[0][0][1] = 0;
+   // chart[1][0][1] += chart[0][0][1];
+
+    chart[0][0][2] = 0;
+    //chart[1][0][2] += chart[0][0][2];
+// --- SORT ---
+    chart[0][1][0] = sortVector(myVector);
+    //chart[1][1][0] += chart[0][1][0];
+
+    chart[0][1][1] = sortList(myList);
+   // chart[1][1][1] += chart[0][1][1];
+
+    chart[0][1][2] = 0;
+   // chart[1][1][2] += chart[0][1][2];
+// --- INSERT ---              
+    chart[0][2][0] = insertVector(myVector);
+   // chart[1][2][0] += chart[0][2][0];
+
+    chart[0][2][1] = insertList(myList);
+   // chart[1][2][1] += chart[0][2][1];
+
+    chart[0][2][2] = insertSet(mySet);
+   // chart[1][2][2] += chart[0][2][2];
+// --- DELETE ---
+    chart[0][3][0] = deleteVector(myVector);
+   // chart[1][3][0] += chart[0][3][0];
+
+    chart[0][3][1] = deleteList(myList);
+  //  chart[1][3][1] += chart[0][3][1];
+
+    chart[0][3][2] = deleteSet(mySet);
+  //  chart[1][3][2] += chart[0][3][2];
+  
+//}
 
  for(int i = 0; i < 1; i++)
         for (int j = 0; j < ROWS; j++)
         {
-            cout << "\n" << Row[j]
+            cout << endl;
             for (int n = 0; n < COLS; n++)
-                cout << "\t| "<< chart[i][j][n] << " |";
+                cout << "| "<< chart[i][j][n] << " |";
         }
     return 0;
 }
