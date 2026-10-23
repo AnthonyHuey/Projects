@@ -38,10 +38,11 @@ long readVector(const string& filename, vector<string>& temp )
         }
         auto end = high_resolution_clock::now();
         fin.close();
-        return nanoOutput(start, end);;
+        return nanoOutput(start, end);
     }
     else 
         cout << "\nFile not found.";
+    return -1;
 }
 long readList(const string& filename, list<string>& temp)
 {
@@ -62,7 +63,7 @@ long readList(const string& filename, list<string>& temp)
     }
     else 
         cout << "\nFile not found.";
-
+    return -1;
 }
 long readSet(const string& filename, set<string>& temp)
 {
@@ -83,7 +84,7 @@ long readSet(const string& filename, set<string>& temp)
     }
     else 
         cout << "\nFile not found.";
-    
+     return -1;
 }
 //SORT ----------
 long sortVector(vector<string>& v)

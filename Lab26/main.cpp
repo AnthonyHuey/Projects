@@ -3,29 +3,18 @@
 // loop the races 15ish times and average the results.
 
 #include <iostream>
-#include <array>
 #include <vector>
 #include <list>
 #include <set>
 #include <string>
-#include <chrono>
-#include <fstream>
-#include <algorithm>
 #include "VLS.h"
 using namespace std;
-using namespace std::chrono;
 
-
-const int LOOPS = 15, ROWS = 4, COLS = 3, CUBE = 2;
+const int LOOPS = 5, ROWS = 4, COLS = 3, CUBE = 2;
 int main() 
 {
-    long chart[CUBE][ROWS][COLS] = {};
-    vector<string> myVector;
-    list<string> myList;
-    set<string> mySet;
 /*
     ok
-
     loop through first layer. 
     in row 0, column 0 use readVector
     in row 0, column 1 use readList
@@ -36,11 +25,15 @@ int main()
     save each result to a ongoing tally for layer 1. worry later
 
     repeat 15 times. x
-
-    work backwards?
 */
+ long chart[CUBE][ROWS][COLS] = {};
+   
 for (int l = 0; l < LOOPS; l++) // loop 15 times
 {
+    vector<string> myVector; // was getting huge numbers, gotta clear for each
+    list<string> myList;   
+    set<string> mySet;
+
 // --- READ ---
     chart[0][0][0] = readVector("names.txt", myVector);
     chart[0][0][1] = readList("names.txt", myList);
@@ -61,30 +54,32 @@ for (int l = 0; l < LOOPS; l++) // loop 15 times
     chart[0][3][1] = deleteList(myList);
     chart[0][3][2] = deleteSet(mySet);
  
-
     for (int j = 0; j < ROWS; j++)
         for (int n = 0; n < COLS; n++)
             chart[1][j][n] += chart[0][j][n];
+    
 }
 
     for (int j = 0; j < ROWS; j++) // don't forget to take the avverage...
         for (int n = 0; n < COLS; n++)
             chart[1][j][n] /= LOOPS;
 
-    cout << "Previous runs runtime: ";
+    cout << "Previous run runtime: ";
+    cout << "\n\t| VECTOR |\t| LIST |\t| SET | ";
     for (int j = 0; j < ROWS; j++)
     {
         cout << endl;
         for (int n = 0; n < COLS; n++)
-            cout << "| "<< chart[0][j][n] << " |";
+            cout << "\t| "<< chart[0][j][n] << " |";
     }
 
     cout << "\n Average across " << LOOPS << " runs: ";
+    cout << "\n\t| VECTOR |\t| LIST |\t| SET | ";
     for (int j = 0; j < ROWS; j++)
     {
         cout << endl;
         for (int n = 0; n < COLS; n++)
-            cout << "| "<< chart[1][j][n] << " |";
+            cout << "\t| "<< chart[1][j][n] << " |";
     }
     return 0;
 }
