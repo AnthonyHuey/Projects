@@ -8,6 +8,7 @@
 #include <set>
 #include <chrono>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 using namespace std::chrono;
 
@@ -88,7 +89,20 @@ set<string> readSet(const string& filename)
     return temp;
 }
 //SORT ----------
-
+void sortVector(vector<string>& v)
+{
+    auto start = high_resolution_clock::now();
+    sort(v.begin(), v.end()); 
+    auto end = high_resolution_clock::now();
+    nanoOutput(start, end);
+}
+void sortList(list<string>& l)
+{
+    auto start = high_resolution_clock::now();
+    l.sort();
+    auto end = high_resolution_clock::now();
+    nanoOutput(start, end);
+}
 //INSERT ---------- 
 void insertVector(vector<string>& v)
 {

@@ -23,7 +23,7 @@ int main()
     list<string> myList;
     set<string> mySet;
 
-    // test for the 3d array
+    /* test for the 3d array
     for(int i = 0; i < CUBE; i++)
         for (int j = 0; j < ROWS; j++)
             for (int n = 0; n < COLS; n++)
@@ -33,10 +33,8 @@ int main()
             for (int n = 0; n < COLS; n++)
                 cout << chart[i][j][n] << " ";
     cout << "Chart test" << chart[0][0][0];
+    */
 
-
-
-    
     cout << "\t| VECTOR |\t| LIST |\t| SET |\n" << "READ "; // good enough.
 // --- READ -------------------------------------------------------------------
 
@@ -47,17 +45,8 @@ int main()
 // --- SORT -------------------------------------------------------------------
     // simple enough.
     cout << "\nSORT ";
-    
-    auto start = high_resolution_clock::now();
-    sort(myVector.begin(), myVector.end()); // easy way out
-    auto end = high_resolution_clock::now();
-    nanoOutput(start, end);
-
-    start = high_resolution_clock::now();
-    myList.sort();
-    end = high_resolution_clock::now();
-    nanoOutput(start, end);
-
+    sortVector(myVector);
+    sortList(myList);
     cout << "\t| -1 |"; // set is already sorted
 
 // -- INSERT ------------------------------------------------------------------
@@ -69,7 +58,7 @@ int main()
   
 // --- DELETE -----------------------------------------------------------------
     // delete the middle-ish element of each and time it
-    cout << "\nDELETE "; // These all use erase, another good spot for template.
+    cout << "\nDELETE "; 
     deleteVector(myVector);
     deleteList(myList);
     deleteSet(mySet);
