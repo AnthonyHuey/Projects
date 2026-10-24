@@ -8,7 +8,12 @@
 #include <algorithm> // for tuple?
 using namespace std;
 
-void outputVillagers( map<string, tuple<int, string, string>> );
+void outputVillagers(map<string, tuple<int, string, string>>);
+void searchVillagers(map<string, tuple<int, string, string>>);
+void increaseFriendship();
+void decreaseFriendship();
+void addVillager();
+void deleteVillager();
 
 int main() 
 {
@@ -71,4 +76,24 @@ void outputVillagers( map<string, tuple<int, string, string>> output)
         const auto& [level, species, phrase] = stats;
         cout << name << ": " << level << " " << species << " " << phrase << endl;
     }
+}
+void searchVillagers(map<string, tuple<int, string, string>>)
+{
+
+}
+void increaseFriendship()
+{
+
+}
+void decreaseFriendship()
+{
+
+}
+void addVillager()
+{
+
+}
+void deleteVillager()
+{
+
 }
