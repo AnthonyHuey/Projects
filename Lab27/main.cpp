@@ -36,6 +36,11 @@ always output the maps contents after each operation.
 */
   // declarations - Friend - Species - Catchprash
     map<string, tuple<int, string, string>> villager;
+
+    villager["Kevin"] = {3, "Human", "woah..."};
+    villager["Mark"] = {0, "Human", "hmm..."};
+    villager.insert({"Zug", {7, "Orc", "zug zug"}});
+
     bool loop = 0;
     while (loop != 1)
     {
@@ -51,7 +56,7 @@ always output the maps contents after each operation.
 
         switch (choice)
         {
-            case 1: outputVillagers(villager); break;
+            case 1: increaseFriendship(villager); outputVillagers(villager); break;
             case 2: outputVillagers(villager); break;    
             case 3: searchVillagers(villager); outputVillagers(villager); break;
             case 4: loop = 1; cout << "Goodbye!"; break;    
@@ -129,16 +134,40 @@ void searchVillagers(map<string, tuple<int, string, string>> v)
              << get<2>(it->second) << endl;
         cout << endl;
     } 
+     
     else
         cout << endl << searchKey << " not found." << endl;
 }
-void increaseFriendship(map<string, tuple<int, string, string>>&)
+void increaseFriendship(map<string, tuple<int, string, string>>& v)
 {
-
+    string searchKey;
+    cout << "Which villagers friendship would you like to increase: ";
+    getline(cin, searchKey);
+    auto it = v.find(searchKey);
+    if (it != v.end()) // the iterator points to beyond the end of the map
+    {                               // if searchKey is not found                                 
+        cout << "\nFound " << searchKey << "'s Friendship: ";
+        cout << get<0>(it->second) << " increased to ";
+        get<0>(it->second)++;
+        cout << get<0>(it->second);
+        cout << endl;
+    } 
+     
+    else
+        cout << endl << searchKey << " not found." << endl;
 }
-void decreaseFriendship(map<string, tuple<int, string, string>>&)
+void decreaseFriendship(map<string, tuple<int, string, string>>& v)
 {
-
+    string searchKey;
+    cout << "Enter name: ";
+    getline(cin, searchKey);
+    auto it = v.find(searchKey);
+    if (it != v.end()) // the iterator points to beyond the end of the map
+    {                               // if searchKey is not found                                 
+        cout << "\nFound " << searchKey << "'s stats: ";
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
 }
 map<string, tuple<int, string, string>> addVillager()
 {
