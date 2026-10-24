@@ -22,30 +22,19 @@ int main()
     villager["Mark"] = {0, "Human", "hmm..."};
     villager.insert({"Zug", {7, "Orc", "zug zug"}});
 
-    // compile-time indices
-    //int friendshipLevel = get<0>(villager);
-    //string species = get<1>(villager);
-    //string phrase = get<2>(villager)
+    outputVillagers(villager);
     
-    // access the map using a range-based for loop
-    cout << "Villagers details:" << endl;
-    for (const auto& [name, stats] : villager) //ok, first is the key
-    {          // the touple is stats which is all tied together, either unpack
-            //  with another auto&, or point at what you want with get<n>(stats)
-        const auto& [level, species, phrase] = stats;
-        cout << name << ": " << level << " " << species << " " << phrase << endl;
-        cout << endl << name << ": " << get<0>(stats) <<  " " << get<1>(stats)
-                                     << " " << get<2>(stats) << endl;
-    }
-/*
+
+
+
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
     for (map<string, tuple<int,string,string>>::iterator it = villager.begin(); 
                                                it != villager.end(); ++it) 
     {
         cout << it->first << ": ";
-        for (auto color : it->second) 
-            cout << color << " ";
+        for (auto [level, name, phrase] : it->second) 
+            cout << level << " " << name << " " phrase << " ";
         cout << endl;
     }
 
@@ -70,11 +59,18 @@ int main()
     cout << "\nSize before clear: " << villager.size() << endl;
     villager.clear();
     cout << "Size after clear: " << villager.size() << endl;
-*/
+
     return 0;
 }
 
-void outputVillagers( map<string, tuple<int, string, string>> out)
-{
-
+void outputVillagers( map<string, tuple<int, string, string>> output)
+{//ok, first is the key
+ // the touple is stats which is all tied together, either unpack
+ // with another auto&, or point at what you want with get<n>(stats)
+    cout << "Villagers details:" << endl;
+    for (const auto& [name, stats] : output) 
+    {         
+        const auto& [level, species, phrase] = stats;
+        cout << name << ": " << level << " " << species << " " << phrase << endl;
+    }
 }
