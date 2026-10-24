@@ -8,6 +8,8 @@
 #include <algorithm> // for tuple?
 using namespace std;
 
+void outputVillagers( map<string, tuple<int, string, string>> );
+
 int main() 
 {
     // declarations - Friend - Species - Cathprash
@@ -26,16 +28,15 @@ int main()
     //string phrase = get<2>(villager)
     
     // access the map using a range-based for loop
-    cout << "Villagers and their stats:" << endl;
-    for (const auto& [level, species, phrase] : villager)
-        cout << ": " << level << " " << species << " " << phrase;
-    //for (auto pair : villager) 
-    //{
-    //    cout << pair.first << ": ";
-    //    for (auto color : pair.second)
-    //        cout << color << " ";
-    //    cout << endl;
-    //}
+    cout << "Villagers details:" << endl;
+    for (const auto& [name, stats] : villager) //ok, first is the key
+    {          // the touple is stats which is all tied together, either unpack
+            //  with another auto&, or point at what you want with get<n>(stats)
+        const auto& [level, species, phrase] = stats;
+        cout << name << ": " << level << " " << species << " " << phrase << endl;
+        cout << endl << name << ": " << get<0>(stats) <<  " " << get<1>(stats)
+                                     << " " << get<2>(stats) << endl;
+    }
 /*
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
@@ -71,4 +72,9 @@ int main()
     cout << "Size after clear: " << villager.size() << endl;
 */
     return 0;
+}
+
+void outputVillagers( map<string, tuple<int, string, string>> out)
+{
+
 }
