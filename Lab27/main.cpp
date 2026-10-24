@@ -10,11 +10,10 @@ using namespace std;
 
 void outputVillagers(map<string, tuple<int, string, string>>);
 void searchVillagers(map<string, tuple<int, string, string>>);
-void increaseFriendship();
-void decreaseFriendship();
-void addVillager();
-void deleteVillager();
-
+void increaseFriendship(map<string, tuple<int, string, string>>&);
+void decreaseFriendship(map<string, tuple<int, string, string>>&);
+void deleteVillager(map<string, tuple<int, string, string>>&);
+map<string, tuple<int, string, string>> addVillager();
 int main() 
 {
 /* 
@@ -41,12 +40,33 @@ always output the maps contents after each operation.
     while (loop != 1)
     {
         int choice = 0;
-        cout << "1. Increase Friendship"
-            >> "2. Decrease Friendship"
-            >> "3. Search for Villager"
-            >> "4. Exit" >> endl;
-            
+        cout << "1. Increase Friendship\n"
+             << "2. Decrease Friendship\n"
+             << "3. Search for Villager\n"
+             << "4. Exit" << endl;
 
+        cout << "Enter choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        switch (choice)
+            case 1:
+                { 
+
+                    outputVillagers(villager);
+                }
+            case 2:
+                {
+                    
+                    outputVillagers(villager);
+                }
+            case 3:
+                { 
+                    
+                    outputVillagers(villager);
+                }
+            case 4:
+               {cout << "Goodbye!"; loop = 1;
 
 
 
@@ -67,7 +87,7 @@ always output the maps contents after each operation.
 
 
 
-
+}
  return 0;
 /* saving to reference back to later.
     villager["Kevin"] = {3, "Human", "woah..."};
@@ -127,19 +147,19 @@ void searchVillagers(map<string, tuple<int, string, string>>)
 {
 
 }
-void increaseFriendship()
+void increaseFriendship(map<string, tuple<int, string, string>>&)
 {
 
 }
-void decreaseFriendship()
+void decreaseFriendship(map<string, tuple<int, string, string>>&)
 {
 
 }
-void addVillager()
+map<string, tuple<int, string, string>> addVillager()
 {
 
 }
-void deleteVillager()
+void deleteVillager(map<string, tuple<int, string, string>>&)
 {
 
 }
