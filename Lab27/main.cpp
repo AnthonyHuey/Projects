@@ -34,15 +34,18 @@ ok, Loop though an outer menu, while loop until exit
 
 always output the maps contents after each operation.
 */
-  // declarations - Friend - Species - Catchprash
+  // declarations Name -- Friend - Species - Catchprash
     map<string, tuple<int, string, string>> villager;
+                            // phrase looks good here, not in program, bummer
+    villager["Thorin"] = {2, "Dwarf", "Far over the misty mountains cold,"};
+    villager["Balin"] = {8, "Dwarf", "To dungeons deep and caverns old,"};
+    villager["Fili"] = {7, "Dwarf", "We must away ere break of day,"};
+    villager["Kili"] = {7, "Dwarf", "To seek the pale enchanted gold."};
 
-    villager["Kevin"] = {3, "Human", "woah..."};
-    villager["Mark"] = {0, "Human", "hmm..."};
     villager.insert({"Zug", {7, "Orc", "zug zug"}});
 
     bool loop = 0;
-    while (loop != 1)
+    while (loop != 1) // uses a switch to navigate the menu with a bool to exit.   
     {
         int choice = 0;
         cout << "1. Add villager\n"
@@ -69,16 +72,14 @@ always output the maps contents after each operation.
             case 5: searchVillagers(villager); 
                     outputVillagers(villager); break;
             case 6: loop = 1; cout << "Goodbye!"; 
-                                               break;    
+                                               break; 
+            default: cout << "INVALID CHOICE\n\n"; break;  
         }
     }
-  
     return 0;
 }
 void outputVillagers(const map<string, tuple<int, string, string>> output)
-{//ok, first is the key
- // the touple is stats which is all tied together, either unpack
- // with another auto&, or point at what you want with get<n>(stats)
+{ // breaks down the touble so it's easy to output
     cout << "Villagers details:" << endl;
     for (const auto& [name, stats] : output) 
     {         
@@ -89,17 +90,17 @@ void outputVillagers(const map<string, tuple<int, string, string>> output)
     }
 }
 void searchVillagers(const map<string, tuple<int, string, string>> v)
-{
+{ // get user input to find a villager then output all thier stats.
     string searchKey;
     cout << "Enter name: ";
     getline(cin, searchKey);
     auto it = v.find(searchKey);
     if (it != v.end()) // the iterator points to beyond the end of the map
     {                               // if searchKey is not found                                 
-        cout << "\nFound " << searchKey << "'s stats: ";
-        cout << get<0>(it->second) << " "
-             << get<1>(it->second) << " "
-             << get<2>(it->second) << endl;
+        cout << "\nFound " << searchKey << ":" << endl;
+        cout << "Friendship level: " << get<0>(it->second) << endl
+             << "Species: " << get<1>(it->second) << endl
+             << "Catchphrase: " << get<2>(it->second) << endl;
         cout << endl;
     } 
      
@@ -107,7 +108,8 @@ void searchVillagers(const map<string, tuple<int, string, string>> v)
         cout << endl << searchKey << " not found." << endl;
 }
 void increaseFriendship(map<string, tuple<int, string, string>>& v)
-{
+{ // works imilarly to the output, but get the villager as a reference,
+    // then changes the level of the one they pick.
     string searchKey;
     cout << "Which villagers friendship would you like to increase: ";
     getline(cin, searchKey);
@@ -116,7 +118,7 @@ void increaseFriendship(map<string, tuple<int, string, string>>& v)
     {                               // if searchKey is not found   
         if (get<0>(it->second) < 10)
         {                              
-            cout << "\nFound " << searchKey << "'s Friendship: ";
+            cout << "\n" << searchKey << "'s Friendship: ";
             cout << get<0>(it->second) << " increased to ";
             get<0>(it->second)++;
             cout << get<0>(it->second);
@@ -133,7 +135,7 @@ void increaseFriendship(map<string, tuple<int, string, string>>& v)
         cout << endl << searchKey << " not found." << endl;
 }
 void decreaseFriendship(map<string, tuple<int, string, string>>& v)
-{
+{ // same as increase but just decreases this time
     string searchKey;
     cout << "Which villagers friendship would you like to decrease: ";
     getline(cin, searchKey);
@@ -142,7 +144,7 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& v)
     {                               // if searchKey is not found                                 
         if (get<0>(it->second) > 1)
         {                              
-            cout << "\nFound " << searchKey << "'s Friendship: ";
+            cout << "\n" << searchKey << "'s Friendship: ";
             cout << get<0>(it->second) << " decreased to ";
             get<0>(it->second)--;
             cout << get<0>(it->second);
@@ -158,34 +160,34 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& v)
         cout << endl << searchKey << " not found." << endl;
 }
 void addVillager(map<string, tuple<int, string, string>>& v)
-{
+{ // get the map as a reference then just add to it, simple
     string name;
     int level = 0;
     string species;
     string phrase;
 
-    cout << "What is this villager's name: ";
+    cout << "Villager's name: ";
     getline(cin, name);
-    cout << "What is this villager's friendship level(1 - 10): ";
+    cout << "Friendship level(1 - 10): ";
     cin >> level;
     cin.ignore();
     while ( level < 0 || level > 10)
     {
         cin.clear();
-        cout << "Friendship can only be between 0 - 10!";
-        cout << "What is this villager's friendship level:";
+        cout << "Friendship can only be between 0 - 10!" << endl;
+        cout << "Friendship level:";
         cin >> level;
         cin.ignore();
     }
-    cout << "What is this villager's species: ";
+    cout << "Species: ";
     getline(cin, species);
-    cout << "What is this villager's catchphrase: ";
+    cout << "Catchphrase: ";
     getline(cin, phrase);
 
     v.insert({name, {level, species, phrase}});
 }
 void deleteVillager(map<string, tuple<int, string, string>>& v)
-{
+{ // .erase func makes this easy.
     string rip;
     cout << "which villager to delete: ";
     getline(cin, rip);
