@@ -50,45 +50,17 @@ always output the maps contents after each operation.
         cin.ignore();
 
         switch (choice)
-            case 1:
-                { 
-
-                    outputVillagers(villager);
-                }
-            case 2:
-                {
-                    
-                    outputVillagers(villager);
-                }
-            case 3:
-                { 
-                    
-                    outputVillagers(villager);
-                }
-            case 4:
-               {cout << "Goodbye!"; loop = 1;
-
-
-
-
+        {
+            case 1: outputVillagers(villager); break;
+            case 2: outputVillagers(villager); break;    
+            case 3: searchVillagers(villager); outputVillagers(villager); break;
+            case 4: loop = 1; cout << "Goodbye!"; break;    
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    return 0;
 }
- return 0;
+
 /* saving to reference back to later.
     villager["Kevin"] = {3, "Human", "woah..."};
     villager["Mark"] = {0, "Human", "hmm..."};
@@ -130,7 +102,7 @@ always output the maps contents after each operation.
     cout << "Size after clear: " << villager.size() << endl;
 */
    
-}
+
 
 void outputVillagers( map<string, tuple<int, string, string>> output)
 {//ok, first is the key
@@ -143,9 +115,22 @@ void outputVillagers( map<string, tuple<int, string, string>> output)
         cout << name << ": " << level << " " << species << " " << phrase << endl;
     }
 }
-void searchVillagers(map<string, tuple<int, string, string>>)
+void searchVillagers(map<string, tuple<int, string, string>> v)
 {
-
+    string searchKey;
+    cout << "Enter name: ";
+    getline(cin, searchKey);
+    auto it = v.find(searchKey);
+    if (it != v.end()) // the iterator points to beyond the end of the map
+    {                               // if searchKey is not found                                 
+        cout << "\nFound " << searchKey << "'s stats: ";
+        cout << get<0>(it->second) << " "
+             << get<1>(it->second) << " "
+             << get<2>(it->second) << endl;
+        cout << endl;
+    } 
+    else
+        cout << endl << searchKey << " not found." << endl;
 }
 void increaseFriendship(map<string, tuple<int, string, string>>&)
 {
