@@ -13,7 +13,7 @@ void searchVillagers(map<string, tuple<int, string, string>>);
 void increaseFriendship(map<string, tuple<int, string, string>>&);
 void decreaseFriendship(map<string, tuple<int, string, string>>&);
 void deleteVillager(map<string, tuple<int, string, string>>&);
-map<string, tuple<int, string, string>> addVillager();
+void addVillager(map<string, tuple<int, string, string>>&);
 int main() 
 {
 /* 
@@ -45,10 +45,12 @@ always output the maps contents after each operation.
     while (loop != 1)
     {
         int choice = 0;
-        cout << "1. Increase Friendship\n"
-             << "2. Decrease Friendship\n"
-             << "3. Search for Villager\n"
-             << "4. Exit" << endl;
+        cout << "1. Add villager\n"
+             << "2. Delete villager\n"
+             << "3. Increase Friendship\n"
+             << "4. Decrease Friendship\n"
+             << "5. Search for Villager\n"
+             << "6. Exit" << endl;
 
         cout << "Enter choice: ";
         cin >> choice;
@@ -56,7 +58,7 @@ always output the maps contents after each operation.
 
         switch (choice)
         {
-            case 1: addVillager();
+            case 1: addVillager(villager);
                     outputVillagers(villager); break;
             case 2: deleteVillager(villager);
                     outputVillagers(villager); break;
@@ -155,26 +157,24 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& v)
     else
         cout << endl << searchKey << " not found." << endl;
 }
-map<string, tuple<int, string, string>> addVillager()
+void addVillager(map<string, tuple<int, string, string>>& v)
 {
     string name;
     int level;
     string species;
     string phrase;
 
-    cout << "What is this villager's name: "
+    cout << "What is this villager's name: ";
     getline(cin, name);
-    cout << "What is this villager's friendship level: "
+    cout << "What is this villager's friendship level: ";
     cin >> level;
     cin.ignore();
-    cout << "What is this villager's species: "
+    cout << "What is this villager's species: ";
     getline(cin, species);
-    cout << "What is this villager's catchphrase: "
+    cout << "What is this villager's catchphrase: ";
     getline(cin, phrase);
 
-    map<string, tuple<int, string, string>> temp;
-    temp.insert({name, {level, species, phrase}});
-    return temp
+    v.insert({name, {level, species, phrase}});
 }
 void deleteVillager(map<string, tuple<int, string, string>>& v)
 {
