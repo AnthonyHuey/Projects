@@ -56,10 +56,14 @@ always output the maps contents after each operation.
 
         switch (choice)
         {
-            case 1: increaseFriendship(villager); outputVillagers(villager); break;
-            case 2: outputVillagers(villager); break;    
-            case 3: searchVillagers(villager); outputVillagers(villager); break;
-            case 4: loop = 1; cout << "Goodbye!"; break;    
+            case 1: increaseFriendship(villager); 
+                    outputVillagers(villager); break;
+            case 2: decreaseFriendship(villager);  
+                    outputVillagers(villager); break;    
+            case 3: searchVillagers(villager); 
+                    outputVillagers(villager); break;
+            case 4: loop = 1; cout << "Goodbye!"; 
+                                               break;    
         }
     }
   
@@ -117,7 +121,9 @@ void outputVillagers( map<string, tuple<int, string, string>> output)
     for (const auto& [name, stats] : output) 
     {         
         const auto& [level, species, phrase] = stats;
-        cout << name << ": " << level << " " << species << " " << phrase << endl;
+        cout << name << " [" << level << ", " 
+                             << species << ", " 
+                             << phrase << "]" << endl;
     }
 }
 void searchVillagers(map<string, tuple<int, string, string>> v)
@@ -145,12 +151,20 @@ void increaseFriendship(map<string, tuple<int, string, string>>& v)
     getline(cin, searchKey);
     auto it = v.find(searchKey);
     if (it != v.end()) // the iterator points to beyond the end of the map
-    {                               // if searchKey is not found                                 
-        cout << "\nFound " << searchKey << "'s Friendship: ";
-        cout << get<0>(it->second) << " increased to ";
-        get<0>(it->second)++;
-        cout << get<0>(it->second);
-        cout << endl;
+    {                               // if searchKey is not found   
+        if (get<0>(it->second) < 10)
+        {                              
+            cout << "\nFound " << searchKey << "'s Friendship: ";
+            cout << get<0>(it->second) << " increased to ";
+            get<0>(it->second)++;
+            cout << get<0>(it->second);
+            cout << endl;
+        }
+        else 
+        {
+            cout << "Friendship limit reached!\n";
+            return;
+        }
     } 
      
     else
@@ -159,12 +173,24 @@ void increaseFriendship(map<string, tuple<int, string, string>>& v)
 void decreaseFriendship(map<string, tuple<int, string, string>>& v)
 {
     string searchKey;
-    cout << "Enter name: ";
+    cout << "Which villagers friendship would you like to decrease: ";
     getline(cin, searchKey);
     auto it = v.find(searchKey);
     if (it != v.end()) // the iterator points to beyond the end of the map
     {                               // if searchKey is not found                                 
-        cout << "\nFound " << searchKey << "'s stats: ";
+        if (get<0>(it->second) > 1)
+        {                              
+            cout << "\nFound " << searchKey << "'s Friendship: ";
+            cout << get<0>(it->second) << " decreased to ";
+            get<0>(it->second)--;
+            cout << get<0>(it->second);
+            cout << endl;
+        }
+        else 
+        {
+            cout << "Friendship limit reached!\n";
+            return;
+        }
     }
     else
         cout << endl << searchKey << " not found." << endl;
