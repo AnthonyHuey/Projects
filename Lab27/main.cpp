@@ -56,63 +56,23 @@ always output the maps contents after each operation.
 
         switch (choice)
         {
-            case 1: increaseFriendship(villager); 
+            case 1: addVillager();
                     outputVillagers(villager); break;
-            case 2: decreaseFriendship(villager);  
+            case 2: deleteVillager(villager);
+                    outputVillagers(villager); break;
+            case 3: increaseFriendship(villager); 
+                    outputVillagers(villager); break;
+            case 4: decreaseFriendship(villager);  
                     outputVillagers(villager); break;    
-            case 3: searchVillagers(villager); 
+            case 5: searchVillagers(villager); 
                     outputVillagers(villager); break;
-            case 4: loop = 1; cout << "Goodbye!"; 
+            case 6: loop = 1; cout << "Goodbye!"; 
                                                break;    
         }
     }
   
     return 0;
 }
-
-/* saving to reference back to later.
-    villager["Kevin"] = {3, "Human", "woah..."};
-    villager["Mark"] = {0, "Human", "hmm..."};
-    villager.insert({"Zug", {7, "Orc", "zug zug"}});
-    outputVillagers(villager);
-    
-    // access the map using iterators
-    cout << "\nVillagers and their stats (iterators):" << endl;
-    for (map<string, tuple<int,string,string>>::iterator it = villager.begin(); 
-                                               it != villager.end(); ++it) 
-    {
-        cout << it->first << ": " << get<0>(it->second) << " "
-                                  << get<1>(it->second) << " "
-                                  << get<2>(it->second) << endl;
-        
-        cout << endl;
-    }
-
-    // delete an element
-    villager.erase("Mark");
-
-    // search for an element using .find() to avoid errors
-    string searchKey = "Zug";
-    auto it = villager.find(searchKey);
-    if (it != villager.end()) // the iterator points to beyond the end of the map
-    {                               // if searchKey is not found                                 
-        cout << "\nFound " << searchKey << "'s stats: ";
-        cout << get<0>(it->second) << " "
-             << get<1>(it->second) << " "
-             << get<2>(it->second) << endl;
-        cout << endl;
-    } 
-    else
-        cout << endl << searchKey << " not found." << endl;
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villager.size() << endl;
-    villager.clear();
-    cout << "Size after clear: " << villager.size() << endl;
-*/
-   
-
-
 void outputVillagers( map<string, tuple<int, string, string>> output)
 {//ok, first is the key
  // the touple is stats which is all tied together, either unpack
@@ -197,9 +157,69 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& v)
 }
 map<string, tuple<int, string, string>> addVillager()
 {
+    string name;
+    int level;
+    string species;
+    string phrase;
 
+    cout << "What is this villager's name: "
+    getline(cin, name);
+    cout << "What is this villager's friendship level: "
+    cin >> level;
+    cin.ignore();
+    cout << "What is this villager's species: "
+    getline(cin, species);
+    cout << "What is this villager's catchphrase: "
+    getline(cin, phrase);
+
+    map<string, tuple<int, string, string>> temp;
+    temp.insert({name, {level, species, phrase}});
+    return temp
 }
-void deleteVillager(map<string, tuple<int, string, string>>&)
+void deleteVillager(map<string, tuple<int, string, string>>& v)
 {
 
 }
+
+/* saving to reference back to later.
+    villager["Kevin"] = {3, "Human", "woah..."};
+    villager["Mark"] = {0, "Human", "hmm..."};
+    villager.insert({"Zug", {7, "Orc", "zug zug"}});
+    outputVillagers(villager);
+    
+    // access the map using iterators
+    cout << "\nVillagers and their stats (iterators):" << endl;
+    for (map<string, tuple<int,string,string>>::iterator it = villager.begin(); 
+                                               it != villager.end(); ++it) 
+    {
+        cout << it->first << ": " << get<0>(it->second) << " "
+                                  << get<1>(it->second) << " "
+                                  << get<2>(it->second) << endl;
+        
+        cout << endl;
+    }
+
+    // delete an element
+    villager.erase("Mark");
+
+    // search for an element using .find() to avoid errors
+    string searchKey = "Zug";
+    auto it = villager.find(searchKey);
+    if (it != villager.end()) // the iterator points to beyond the end of the map
+    {                               // if searchKey is not found                                 
+        cout << "\nFound " << searchKey << "'s stats: ";
+        cout << get<0>(it->second) << " "
+             << get<1>(it->second) << " "
+             << get<2>(it->second) << endl;
+        cout << endl;
+    } 
+    else
+        cout << endl << searchKey << " not found." << endl;
+
+    // report size, clear, report size again to confirm map operations
+    cout << "\nSize before clear: " << villager.size() << endl;
+    villager.clear();
+    cout << "Size after clear: " << villager.size() << endl;
+*/
+   
+
