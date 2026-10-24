@@ -17,16 +17,62 @@ void deleteVillager();
 
 int main() 
 {
-    // declarations - Friend - Species - Cathprash
-    map<string, tuple<int, string, string>> villager;
+/* 
+ok, Loop though an outer menu, while loop until exit
 
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
-    //villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+1. Add Villager
+    - make anew villager from user input
+2. Delete Villager
+    - use .erase
+3. Increase Friendship
+    - add a single point, 0 - 10
+4. Decrease Friendship
+    - remove a single point 0 -10
+5. Search for Villager
+    - outputs a villagers stats?
+6. Exit
+    - breaks free from the while ending program
+
+always output the maps contents after each operation.
+*/
+  // declarations - Friend - Species - Catchprash
+    map<string, tuple<int, string, string>> villager;
+    bool loop = 0;
+    while (loop != 1)
+    {
+        int choice = 0;
+        cout << "1. Increase Friendship"
+            >> "2. Decrease Friendship"
+            >> "3. Search for Villager"
+            >> "4. Exit" >> endl;
+            
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ return 0;
+/* saving to reference back to later.
     villager["Kevin"] = {3, "Human", "woah..."};
     villager["Mark"] = {0, "Human", "hmm..."};
     villager.insert({"Zug", {7, "Orc", "zug zug"}});
-
     outputVillagers(villager);
     
     // access the map using iterators
@@ -62,8 +108,8 @@ int main()
     cout << "\nSize before clear: " << villager.size() << endl;
     villager.clear();
     cout << "Size after clear: " << villager.size() << endl;
-
-    return 0;
+*/
+   
 }
 
 void outputVillagers( map<string, tuple<int, string, string>> output)
