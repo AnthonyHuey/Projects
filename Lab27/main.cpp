@@ -8,8 +8,8 @@
 #include <algorithm> // for tuple?
 using namespace std;
 
-void outputVillagers(map<string, tuple<int, string, string>>);
-void searchVillagers(map<string, tuple<int, string, string>>);
+void outputVillagers(const map<string, tuple<int, string, string>>);
+void searchVillagers(const map<string, tuple<int, string, string>>);
 void increaseFriendship(map<string, tuple<int, string, string>>&);
 void decreaseFriendship(map<string, tuple<int, string, string>>&);
 void deleteVillager(map<string, tuple<int, string, string>>&);
@@ -75,7 +75,7 @@ always output the maps contents after each operation.
   
     return 0;
 }
-void outputVillagers( map<string, tuple<int, string, string>> output)
+void outputVillagers(const map<string, tuple<int, string, string>> output)
 {//ok, first is the key
  // the touple is stats which is all tied together, either unpack
  // with another auto&, or point at what you want with get<n>(stats)
@@ -88,7 +88,7 @@ void outputVillagers( map<string, tuple<int, string, string>> output)
                              << phrase << "]" << endl;
     }
 }
-void searchVillagers(map<string, tuple<int, string, string>> v)
+void searchVillagers(const map<string, tuple<int, string, string>> v)
 {
     string searchKey;
     cout << "Enter name: ";
@@ -160,15 +160,23 @@ void decreaseFriendship(map<string, tuple<int, string, string>>& v)
 void addVillager(map<string, tuple<int, string, string>>& v)
 {
     string name;
-    int level;
+    int level = 0;
     string species;
     string phrase;
 
     cout << "What is this villager's name: ";
     getline(cin, name);
-    cout << "What is this villager's friendship level: ";
+    cout << "What is this villager's friendship level(1 - 10): ";
     cin >> level;
     cin.ignore();
+    while ( level < 0 || level > 10)
+    {
+        cin.clear();
+        cout << "Friendship can only be between 0 - 10!";
+        cout << "What is this villager's friendship level:";
+        cin >> level;
+        cin.ignore();
+    }
     cout << "What is this villager's species: ";
     getline(cin, species);
     cout << "What is this villager's catchphrase: ";
@@ -178,7 +186,11 @@ void addVillager(map<string, tuple<int, string, string>>& v)
 }
 void deleteVillager(map<string, tuple<int, string, string>>& v)
 {
+    string rip;
+    cout << "which villager to delete: ";
+    getline(cin, rip);
 
+    v.erase(rip);
 }
 
 /* saving to reference back to later.
