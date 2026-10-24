@@ -24,20 +24,19 @@ int main()
 
     outputVillagers(villager);
     
-
-
-
     // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
+    cout << "\nVillagers and their stats (iterators):" << endl;
     for (map<string, tuple<int,string,string>>::iterator it = villager.begin(); 
                                                it != villager.end(); ++it) 
     {
         cout << it->first << ": ";
-        for (auto [level, name, phrase] : it->second) 
-            cout << level << " " << name << " " phrase << " ";
+        cout << get<0>(it->second) << " "
+             << get<1>(it->second) << " "
+             << get<2>(it->second) << endl;
+        
         cout << endl;
     }
-
+/*
     // delete an element
     villager.erase("Raymond");
 
@@ -59,7 +58,7 @@ int main()
     cout << "\nSize before clear: " << villager.size() << endl;
     villager.clear();
     cout << "Size after clear: " << villager.size() << endl;
-
+*/
     return 0;
 }
 
