@@ -243,16 +243,21 @@ void any_goat(list<Goat> &trip) // find if any goat older than n.
     cin >> n;
     // thats what those brackets are for.
     bool ageCheck = any_of(trip.begin(), trip.end(),
-                    [n](Goat &g) {return g.get_age() > n;});
+                    [n](Goat &g) {return g.get_age() > n; });
     cout << endl << (ageCheck ? "Yes" : "No") << endl;
 }
 
-void transform_goat(list<Goat> &trip, string colors[]) // turns all goats green
+void transform_goat(list<Goat> &trip, string colors[]) // turns all goats color
 {
     cout << "Pick a color to transform all goats into: ";
     for (int i = 0; i <colors->size(); i++)
         cout << "\n[" << i + 1 << "] " << colors[i];
     int choice = 0;
     cin >> choice;
-    transform
+    string clr = colors[choice];
+    // need to return a Goat.
+    transform(trip.begin(), trip.end(), trip.begin(),
+                [choice, colors[choice]](Goat &g) 
+                {return Goat(g.get_age(), g.get_name(), colors[choice]); });
+    cout << "Goats are now " << colors[choice] << endl;
 }
