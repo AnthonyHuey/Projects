@@ -15,7 +15,8 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
-
+// New STL algorithms ------------------
+void clear_goat(list<Goat> &trip);
 int main() 
 {
     srand(time(0));
@@ -66,9 +67,9 @@ int main()
                 display_trip(trip);
                 break;
 // New STL Algorithms -----------------------
-            case 4:    
-                cout << "\n";
-               
+            case 4:    // clears all the data from the list
+                cout << "Clearing goat data\n";
+               clear_goat(trip);
                 break;   
             case 5:
                 cout << "\n";
@@ -117,7 +118,7 @@ int main_menu()
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     // New STL Algorithms ----------
-    cout << "[4] \n";
+    cout << "[4] Clear all goats\n";
     cout << "[5] \n";
     cout << "[6] \n";
     cout << "[7] \n";
@@ -182,4 +183,10 @@ int select_goat(list<Goat> trp)
         cin >> input;
     }
     return input;
+}
+
+void clear_goat(list<Goat> &trip) // clears the list of all data.
+{
+    trip.clear();
+    cout << "Goat data cleared.\n";
 }
