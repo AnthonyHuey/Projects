@@ -20,6 +20,7 @@ void clear_goat(list<Goat> &trip);
 void reverse_goat(list<Goat> &trip);
 void find_goat(list<Goat> &trip);
 void each_goat(list<Goat> &trip);
+void accumulate_goat(list<Goat> &trip);
 
 
 int main() 
@@ -214,9 +215,17 @@ void find_goat(list<Goat> &trip) // Finds a goat by name, depend on operator==
         cout << "Goat not found...\n";
 }
 
-void each_goat(list<Goat> &trip)
+void each_goat(list<Goat> &trip) // add 1 to all the goats age.
 {   
     for_each(trip.begin(), trip.end(),
                 [](Goat &n) {n.set_age(n.get_age() + 1); });
      cout << "Happy birthday to all goats!\n";
+}
+
+void accumulate_goat(list<Goat> &trip) // add all the goats ages together
+{
+    
+    int total = accumulate(trip.begin(), trip.end(), 0,
+                [](Goat &n) {n.get_age(); });
+    cout << "All the goats ages added together is: " << total;
 }
