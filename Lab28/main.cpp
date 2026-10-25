@@ -249,15 +249,18 @@ void any_goat(list<Goat> &trip) // find if any goat older than n.
 
 void transform_goat(list<Goat> &trip, string colors[]) // turns all goats color
 {
-    cout << "Pick a color to transform all goats into: ";
-    for (int i = 0; i <colors->size(); i++)
+    cout << "Avaliable colors: ";
+    for (int i = 0; i < SZ_COLORS; i++)
         cout << "\n[" << i + 1 << "] " << colors[i];
     int choice = 0;
+    cout << "\nPick a color: ";
     cin >> choice;
-    string clr = colors[choice];
-    // need to return a Goat.
+    string clr = colors[choice - 1];
+    // need to return a Goat. 
     transform(trip.begin(), trip.end(), trip.begin(),
-                [choice, colors[choice]](Goat &g) 
-                {return Goat(g.get_age(), g.get_name(), colors[choice]); });
-    cout << "Goats are now " << colors[choice] << endl;
+                [clr](const Goat &g) 
+                {return Goat(g.get_name(), g.get_age(), clr); });
+    // it was the order of the constructor. string, int string, oops.
+    // also simplifing it to just a string and not an array helped.
+    cout << "Goats are now " << colors[choice - 1] << endl;
 }
