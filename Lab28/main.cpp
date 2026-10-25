@@ -22,7 +22,7 @@ void reverse_goat(list<Goat> &trip);
 void find_goat(list<Goat> &trip);
 void each_goat(list<Goat> &trip);
 void accumulate_goat(list<Goat> &trip);
-
+void any_goat (list<Goat> &trip);
 
 int main() 
 {
@@ -192,6 +192,8 @@ int select_goat(list<Goat> trp)
     return input;
 }
 
+// STL Algorithms -----------------------------
+
 void clear_goat(list<Goat> &trip) // clears the list of all data.
 {
     trip.clear();
@@ -231,4 +233,15 @@ void accumulate_goat(list<Goat> &trip) // add all the goats ages together
     cout << "All of the goats age added together is: " << total << endl;
     //reading the wacky error from stl_numeric helped a lot with this one.
     // put sum in enough places and it evetually works.
+}
+
+void any_goat (list<Goat> &trip) // find if any goat older than n.
+{
+    int n;
+    cout << "Age: ";
+    cin >> n;
+
+    bool ageCheck = any_of(trip.begin(), trip.end(),
+                    [](Goat &g) {return g.get_age() > n;});
+    cout << endl << (ageCheck ? "Yes" : "No") << endl;
 }
