@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <list>
 #include <algorithm>
+#include <numeric>
 #include "Goat.h"
 using namespace std;
 
@@ -90,8 +91,8 @@ int main()
                 each_goat(trip);
                 break;   
             case 8:    
-                cout << "\n";
-               
+                cout << "Finding sum of all the goats age\n";
+                accumulate_goat(trip);
                 break;   
             case 9:
                 cout << "\n";
@@ -128,7 +129,7 @@ int main_menu()
     cout << "[5] Reverse all goats\n";
     cout << "[6] Find a goat\n"; // find a goat you know everything about
     cout << "[7] Birthday for all goats\n";
-    cout << "[8] \n";
+    cout << "[8] Sum of all goat age\n";
     cout << "[9] \n";
     cout << "[10] \n";
     cout << "[11] \n";
@@ -224,8 +225,10 @@ void each_goat(list<Goat> &trip) // add 1 to all the goats age.
 
 void accumulate_goat(list<Goat> &trip) // add all the goats ages together
 {
-    
+    // needed numeric. need to return a sum.
     int total = accumulate(trip.begin(), trip.end(), 0,
-                [](Goat &n) {n.get_age(); });
-    cout << "All the goats ages added together is: " << total;
+                [](int sum, Goat &n) {return sum + n.get_age(); });
+    cout << "All of the goats age added together is: " << total << endl;
+    //reading the wacky error from stl_numeric helped a lot with this one.
+    // put sum in enough places and it evetually works.
 }
