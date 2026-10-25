@@ -18,7 +18,7 @@ int main_menu();
 // New STL algorithms ------------------
 void clear_goat(list<Goat> &trip);
 void reverse_goat(list<Goat> &trip);
-void sort_goat(list<Goat> &trip);
+void find_goat(list<Goat> &trip);
 void _goat(list<Goat> &trip);
 
 
@@ -125,7 +125,7 @@ int main_menu()
     // New STL Algorithms ----------
     cout << "[4] Clear all goats\n";
     cout << "[5] Reverse all goats\n";
-    cout << "[6]  all goats\n";
+    cout << "[6] Find a goat\n";
     cout << "[7] \n";
     cout << "[8] \n";
     cout << "[9] \n";
@@ -204,10 +204,17 @@ void reverse_goat(list<Goat> &trip)
 
 void find_goat(list<Goat> &trip)
 {
-    
+    string g;
+    cout << "Enter the name of goat you would like to find: ";
+    cin >> g;
+    auto it = find(trip.begin(), trip.end(), g);
+    if (it != trip.end())
+        cout << "Found the goat: " << it->get_name() << endl;
+    else
+        cout << "Goat not found...\n";
 }
 
 void _goat(list<Goat> &trip)
 {
-    
+
 }

@@ -25,8 +25,14 @@ public:
     void set_color(string c)        { color = c; }
     string get_color() const        { return color; }
 
-    bool operator< (const Goat &other) const {
+    bool operator< (const Goat &other) const 
+    {
         return name < other.name;
+    }
+    // need more overloaded operators
+    bool operator== (const Goat &rhs) const
+    {
+        return name == rhs.name && age == rhs.age && color == rhs.color;
     }
 };
 
