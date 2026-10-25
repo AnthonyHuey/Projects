@@ -23,6 +23,7 @@ void find_goat(list<Goat> &trip);
 void each_goat(list<Goat> &trip);
 void accumulate_goat(list<Goat> &trip);
 void any_goat (list<Goat> &trip);
+void transform_goat (list<Goat> &trip, string []);
 
 int main() 
 {
@@ -95,12 +96,12 @@ int main()
                 accumulate_goat(trip);
                 break;   
             case 9:
-                cout << "\n";
-               
+                cout << "Checking goat age\n";
+                any_goat(trip);
                 break;   
             case 10:    
-                cout << "\n";
-               
+                cout << "Transforming goat data\n";
+                transform_goat(trip, colors);
                 break;   
             case 11:    
                 cout << "\n";
@@ -130,8 +131,8 @@ int main_menu()
     cout << "[6] Find a goat\n"; // find a goat you know everything about
     cout << "[7] Birthday for all goats\n";
     cout << "[8] Sum of all goat age\n";
-    cout << "[9] \n";
-    cout << "[10] \n";
+    cout << "[9] Any goat older than\n";
+    cout << "[10] Transform goats\n";
     cout << "[11] \n";
     //------------------------------
     cout << "[12] Quit\n";
@@ -235,13 +236,23 @@ void accumulate_goat(list<Goat> &trip) // add all the goats ages together
     // put sum in enough places and it evetually works.
 }
 
-void any_goat (list<Goat> &trip) // find if any goat older than n.
+void any_goat(list<Goat> &trip) // find if any goat older than n.
 {
     int n;
     cout << "Age: ";
     cin >> n;
-
+    // thats what those brackets are for.
     bool ageCheck = any_of(trip.begin(), trip.end(),
-                    [](Goat &g) {return g.get_age() > n;});
+                    [n](Goat &g) {return g.get_age() > n;});
     cout << endl << (ageCheck ? "Yes" : "No") << endl;
+}
+
+void transform_goat(list<Goat> &trip, string colors[]) // turns all goats green
+{
+    cout << "Pick a color to transform all goats into: ";
+    for (int i = 0; i <colors->size(); i++)
+        cout << "\n[" << i + 1 << "] " << colors[i];
+    int choice = 0;
+    cin >> choice;
+    transform
 }
