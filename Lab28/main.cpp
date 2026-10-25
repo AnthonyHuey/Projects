@@ -18,6 +18,9 @@ int main_menu();
 // New STL algorithms ------------------
 void clear_goat(list<Goat> &trip);
 void reverse_goat(list<Goat> &trip);
+void sort_goat(list<Goat> &trip);
+void _goat(list<Goat> &trip);
+
 
 int main() 
 {
@@ -78,8 +81,8 @@ int main()
                 reverse_goat(trip);
                 break;   
             case 6:    
-                cout << "\n";
-               
+                cout << "find a goat\n";
+                find_goat(trip);
                 break;   
             case 7:    
                 cout << "\n";
@@ -121,8 +124,8 @@ int main_menu()
     cout << "[3] List goats\n";
     // New STL Algorithms ----------
     cout << "[4] Clear all goats\n";
-    cout << "[5] Reverse goats\n";
-    cout << "[6] \n";
+    cout << "[5] Reverse all goats\n";
+    cout << "[6]  all goats\n";
     cout << "[7] \n";
     cout << "[8] \n";
     cout << "[9] \n";
@@ -197,4 +200,14 @@ void reverse_goat(list<Goat> &trip)
 {
     reverse(trip.begin(),trip.end());
     cout << "Goats have been reversed!\n";
+}
+
+void find_goat(list<Goat> &trip)
+{
+    
+}
+
+void _goat(list<Goat> &trip)
+{
+    
 }
