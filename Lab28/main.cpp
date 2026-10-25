@@ -22,8 +22,9 @@ void reverse_goat(list<Goat> &trip);
 void find_goat(list<Goat> &trip);
 void each_goat(list<Goat> &trip);
 void accumulate_goat(list<Goat> &trip);
-void any_goat (list<Goat> &trip);
-void transform_goat (list<Goat> &trip, string []);
+void any_goat(list<Goat> &trip);
+void transform_goat(list<Goat> &trip, string []);
+void replace_goat(list<Goat> &trip, string [], string []);
 
 int main() 
 {
@@ -100,12 +101,12 @@ int main()
                 any_goat(trip);
                 break;   
             case 10:    
-                cout << "Transforming goat data\n";
+                cout << "Transforming goats\n";
                 transform_goat(trip, colors);
                 break;   
             case 11:    
-                cout << "\n";
-               
+                cout << "Replacing goat\n";
+                replace_goat(trip, names, colors);
                 break;
 // ---------------------------------------------                             
             default:
@@ -133,7 +134,7 @@ int main_menu()
     cout << "[8] Sum of all goat age\n";
     cout << "[9] Any goat older than\n";
     cout << "[10] Transform goats\n";
-    cout << "[11] \n";
+    cout << "[11] Replace a goat\n";
     //------------------------------
     cout << "[12] Quit\n";
     cout << "Choice --> ";
@@ -265,17 +266,22 @@ void transform_goat(list<Goat> &trip, string colors[]) // turns all goats color
     cout << "Goats are now " << colors[choice - 1] << endl;
 }
 
-void replace_goat(list<Goat> &trip, string names[], strin colors[])
+void replace_goat(list<Goat> &trip, string names[], string colors[])
 {
-    cout << "Replace which goat: "
+    cout << "Replace which goat: ";
     string name;
     cin >> name;
 
     cout << "\nGenerating new goat...";
     Goat newGoat = { names[rand() % SZ_NAMES], 
                            rand() % MAX_AGE, 
-                    colors[rand() % SZ_COLORS] } 
-    auto it = find(trip.begin(), trip.end(), name);
+                    colors[rand() % SZ_COLORS] }; 
 
-    replace(trip.begin(), trip.end(),)
+    auto it = find(trip.begin(), trip.end(), name);
+    Goat oldGoat = *it;
+
+    // old goat, new goat
+    replace(trip.begin(), trip.end(), oldGoat, newGoat);
+
+    cout << "\nOld goat has been replaced!" << endl;
 }
