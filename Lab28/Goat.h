@@ -30,9 +30,9 @@ public:
         return name < other.name;
     }
     // need more overloaded operators
-    bool operator== (const Goat &rhs) const
+    bool operator== (const Goat &rhs) const // for the find_goat
     {
-        return name == rhs.name && age == rhs.age && color == rhs.color;
+        return name == rhs.name; //&& age == rhs.age && color == rhs.color;
     }
 };
 

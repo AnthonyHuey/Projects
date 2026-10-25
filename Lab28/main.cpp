@@ -125,7 +125,7 @@ int main_menu()
     // New STL Algorithms ----------
     cout << "[4] Clear all goats\n";
     cout << "[5] Reverse all goats\n";
-    cout << "[6] Find a goat\n";
+    cout << "[6] Find a goat\n"; // find a goat you know everything about
     cout << "[7] \n";
     cout << "[8] \n";
     cout << "[9] \n";
@@ -196,18 +196,18 @@ void clear_goat(list<Goat> &trip) // clears the list of all data.
     cout << "Goat data cleared.\n";
 }
 
-void reverse_goat(list<Goat> &trip)
+void reverse_goat(list<Goat> &trip) // Reverses the list of data
 {
     reverse(trip.begin(),trip.end());
     cout << "Goats have been reversed!\n";
 }
 
-void find_goat(list<Goat> &trip)
+void find_goat(list<Goat> &trip) // Finds a goat by name, depend on operator==
 {
-    string g;
+    string name;
     cout << "Enter the name of goat you would like to find: ";
-    cin >> g;
-    auto it = find(trip.begin(), trip.end(), g);
+    cin >> name; 
+    auto it = find(trip.begin(), trip.end(), name);
     if (it != trip.end())
         cout << "Found the goat: " << it->get_name() << endl;
     else
