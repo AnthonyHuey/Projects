@@ -19,7 +19,7 @@ int main_menu();
 void clear_goat(list<Goat> &trip);
 void reverse_goat(list<Goat> &trip);
 void find_goat(list<Goat> &trip);
-void _goat(list<Goat> &trip);
+void each_goat(list<Goat> &trip);
 
 
 int main() 
@@ -81,12 +81,12 @@ int main()
                 reverse_goat(trip);
                 break;   
             case 6:    
-                cout << "find a goat\n";
+                cout << "Find a goat\n";
                 find_goat(trip);
                 break;   
             case 7:    
-                cout << "\n";
-               
+                cout << "Birthday!\n";
+                each_goat(trip);
                 break;   
             case 8:    
                 cout << "\n";
@@ -126,7 +126,7 @@ int main_menu()
     cout << "[4] Clear all goats\n";
     cout << "[5] Reverse all goats\n";
     cout << "[6] Find a goat\n"; // find a goat you know everything about
-    cout << "[7] \n";
+    cout << "[7] Birthday for all goats\n";
     cout << "[8] \n";
     cout << "[9] \n";
     cout << "[10] \n";
@@ -136,7 +136,7 @@ int main_menu()
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 13) 
+    while (choice < 1 || choice > 12) 
     {
         cout << "Invalid, again --> ";
         cin >> choice;
@@ -214,7 +214,9 @@ void find_goat(list<Goat> &trip) // Finds a goat by name, depend on operator==
         cout << "Goat not found...\n";
 }
 
-void _goat(list<Goat> &trip)
-{
-
+void each_goat(list<Goat> &trip)
+{   
+    for_each(trip.begin(), trip.end(),
+                [](Goat &n) {n.set_age(n.get_age() + 1); });
+     cout << "Happy birthday to all goats!\n";
 }
