@@ -17,6 +17,8 @@ void display_trip(list<Goat> trip);
 int main_menu();
 // New STL algorithms ------------------
 void clear_goat(list<Goat> &trip);
+void reverse_goat(list<Goat> &trip);
+
 int main() 
 {
     srand(time(0));
@@ -71,9 +73,9 @@ int main()
                 cout << "Clearing goat data\n";
                clear_goat(trip);
                 break;   
-            case 5:
-                cout << "\n";
-               
+            case 5: // Reverses the data from the list
+                cout << "Reverse goat data\n";
+                reverse_goat(trip);
                 break;   
             case 6:    
                 cout << "\n";
@@ -119,7 +121,7 @@ int main_menu()
     cout << "[3] List goats\n";
     // New STL Algorithms ----------
     cout << "[4] Clear all goats\n";
-    cout << "[5] \n";
+    cout << "[5] Reverse goats\n";
     cout << "[6] \n";
     cout << "[7] \n";
     cout << "[8] \n";
@@ -189,4 +191,10 @@ void clear_goat(list<Goat> &trip) // clears the list of all data.
 {
     trip.clear();
     cout << "Goat data cleared.\n";
+}
+
+void reverse_goat(list<Goat> &trip)
+{
+    reverse(trip.begin(),trip.end());
+    cout << "Goats have been reversed!\n";
 }
