@@ -1,7 +1,10 @@
+// Anthony Huey - 10/25/2026 - COMSC 210 - Lab 28: STL algorithms
+// Using lab 24 lab soloution, add 8 different stl algo's to the menu.
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <algorithm>
 #include "Goat.h"
 using namespace std;
 
@@ -46,7 +49,7 @@ int main()
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 4) 
+    while (sel != 12) 
     {
         switch (sel) 
         {
@@ -62,6 +65,40 @@ int main()
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+// New STL Algorithms -----------------------
+            case 4:    
+                cout << "\n";
+               
+                break;   
+            case 5:
+                cout << "\n";
+               
+                break;   
+            case 6:    
+                cout << "\n";
+               
+                break;   
+            case 7:    
+                cout << "\n";
+               
+                break;   
+            case 8:    
+                cout << "\n";
+               
+                break;   
+            case 9:
+                cout << "\n";
+               
+                break;   
+            case 10:    
+                cout << "\n";
+               
+                break;   
+            case 11:    
+                cout << "\n";
+               
+                break;
+// ---------------------------------------------                             
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -79,11 +116,21 @@ int main_menu()
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    // New STL Algorithms ----------
+    cout << "[4] \n";
+    cout << "[5] \n";
+    cout << "[6] \n";
+    cout << "[7] \n";
+    cout << "[8] \n";
+    cout << "[9] \n";
+    cout << "[10] \n";
+    cout << "[11] \n";
+    //------------------------------
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) 
+    while (choice < 1 || choice > 13) 
     {
         cout << "Invalid, again --> ";
         cin >> choice;
