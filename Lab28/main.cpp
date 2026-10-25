@@ -264,3 +264,18 @@ void transform_goat(list<Goat> &trip, string colors[]) // turns all goats color
     // also simplifing it to just a string and not an array helped.
     cout << "Goats are now " << colors[choice - 1] << endl;
 }
+
+void replace_goat(list<Goat> &trip, string names[], strin colors[])
+{
+    cout << "Replace which goat: "
+    string name;
+    cin >> name;
+
+    cout << "\nGenerating new goat...";
+    Goat newGoat = { names[rand() % SZ_NAMES], 
+                           rand() % MAX_AGE, 
+                    colors[rand() % SZ_COLORS] } 
+    auto it = find(trip.begin(), trip.end(), name);
+
+    replace(trip.begin(), trip.end(),)
+}
