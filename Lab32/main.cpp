@@ -6,10 +6,11 @@
 #include "Car.h"
 #include <deque>
 #include <iostream>
-const int INITIAL = 2;
+const int INITIAL = 2, R_MAX = 100;
 
 int main()
 {
+    srand(time(0));
     deque<Car> booth(INITIAL);
 
     cout << "Initial queue: " << endl;
@@ -17,11 +18,18 @@ int main()
     booth[0].print();
     cout << "\t";
     booth[1].print();
-
-    for (int i = 0; i < booth.size(); i++)
+    while (booth.size() != 0)
     {
-
-
+        int roll = (rand() % R_MAX);
+        if (roll < 45)
+            booth.push_back(Car());
+        else
+            booth.pop_front();
+        
+        for (int i = 0; i < booth.size(); i++)
+        {   
+            cout <<  "Time: " << i + 1; 
+            booth[i].print();
+        }
     }
-
 }
