@@ -5,11 +5,23 @@
 
 #include "Car.h"
 #include <deque>
+#include <iostream>
+const int INITIAL = 2;
 
 int main()
 {
-    deque<Car> booth {{},{}};
-    booth.push_front(Car());
-    booth.push_front(Car());
+    deque<Car> booth(INITIAL);
+
+    cout << "Initial queue: " << endl;
+    cout << "\t";
     booth[0].print();
+    cout << "\t";
+    booth[1].print();
+
+    for (int i = 0; i < booth.size(); i++)
+    {
+
+
+    }
+
 }
