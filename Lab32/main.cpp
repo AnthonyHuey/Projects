@@ -18,18 +18,31 @@ int main()
     booth[0].print();
     cout << "\t";
     booth[1].print();
+    int time = 1;
     while (booth.size() != 0)
-    {
+    {   
+        cout <<  "Time: " << time; 
         int roll = (rand() % R_MAX);
         if (roll < 45)
+        {
+            cout << "Time: " << time << " Operation: ";
             booth.push_back(Car());
+            cout << "Joined lane: "; 
+            booth.back().print();
+        }
         else
+        {
+            cout << "Time: " << time << " Operation: ";
+            cout << "Car paid: "; 
+            booth.front().print();
             booth.pop_front();
+        }
         
         for (int i = 0; i < booth.size(); i++)
         {   
-            cout <<  "Time: " << i + 1; 
+            cout << "\t";
             booth[i].print();
         }
+        time++;
     }
 }
