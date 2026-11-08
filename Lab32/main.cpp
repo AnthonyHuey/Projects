@@ -38,16 +38,30 @@ int main()
     int time = 0;
     while (time < 20)
     {
-        int roll = rand() % R_MAX; 
-        if (roll < 46)
+        for (int i = 0; i < MAX; i++)
         {
-            
-        }
-        else if (roll < 85)
-        {
+            int roll = rand() % R_MAX; 
+            if (roll < 50) // LEAVE
+            {
+                cout << "Lane: " << i + 1 << " Paid: ";
+                booth[i].front().print(); 
+                booth[i].pop_front();
+            }
+            else  // JOIN
+            {
+                  booth[i].push_back(Car());
+                  cout << "Lane: " << i + 1 << " Joined: ";
+                  booth[i].front().print();
+            }
+            /*
+            else // SHIFT if (roll < 85)
+            {
+               cout << "Lane: " << i + 1 << " Switched: ";
+               booth[i].back() 
 
+            }
+            */
         }
-        else
     }
 
   
