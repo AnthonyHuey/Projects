@@ -1,7 +1,8 @@
 // Anthony Huey - 10/5/2026 - COSMC 210 - Lab 32: Toll Booth
-// Use Car.h, to create a "toll booth",
-// Use a structure of Car's in a deque, 
-// start with 2 cars, 55% one leaves , 45% one arrives
+// Add multiple lane to the toll booth
+// Add a chance for cars to switch lanes
+// 46% a car leaves / 39% a car joins / 15% a car shifts
+// if a lnae is empty, 50/50 a car joins
 
 #include "Car.h"
 #include <deque>
