@@ -42,36 +42,50 @@ int main()
         for (int i = 0; i < MAX; i++)
         {
             int roll = rand() % R_MAX; 
-            if (roll < LEAVE && !booth[i].empty()) // LEAVE
+            if (!booth[i].empty()) // if the queue is not empty
             {
-                cout << "Lane: " << i + 1 << " Paid: ";
-                booth[i].front().print(); 
-                booth[i].pop_front();
-            }
-            else if (roll < JOIN) // JOIN
-            {
-                    booth[i].push_back(Car());
-                    cout << "Lane: " << i + 1 << " Joined: ";
+                if (roll < LEAVE) // LEAVE
+                {
+                    cout << "Lane: " << i + 1 << " Paid: ";
                     booth[i].front().print(); 
+                    booth[i].pop_front();
+                }
+                else if (roll < JOIN) // JOIN
+                {
+                        booth[i].push_back(Car());
+                        cout << "Lane: " << i + 1 << " Joined: ";
+                        booth[i].back().print(); 
+                }
+                else  // SHIFT 
+                {   
+                    cout << "Lane: " << i + 1 << " Switched: ";
+                    booth[i].back().print();
+                    int lane = rand() % MAX; // picking a lane
+                    while (lane == i) // can't be the lane we're in.
+                        lane = rand() % MAX; // pick again
+                    booth[lane].push_back(booth[i].back()); // copies car over.
+                    booth[i].pop_back(); // delete original
+                }
             }
-            else // SHIFT 
-            {   
-                cout << "Lane: " << i + 1 << " Switched: ";
-                booth[i].back().print();
-                int lane = rand() % MAX; // picking a lane
-                while (lane == i) // can't be the lane we're in.
-                    lane = rand() & MAX; // pick again
-                booth[lane].push_back(booth[i].back()); // copies car over.
-                booth[i].pop_back(); // delete original
+            else if (roll < 50) // if it is empty, 50% to add a new car.
+            {
+                booth[i].push_back(Car());
+                cout << "Lane: " << i + 1 << " Joined: ";
+                booth[i].back().print(); 
             }
         }
         for (int i = 0; i < MAX; i++)
         {
-            cout << "Lane " << i + 1 << ":" << endl;
+            cout << "Lane " << i + 1 << " Queue:" << endl;
             for (int n = 0; n < booth[i].size(); n++) // Cars
             {
-                cout << "\t";
-                booth[i][n].print();
+                if (booth[i].empty())
+                    cout << " empty";
+                else
+                {
+                    cout << "\t";
+                    booth[i][n].print();
+                }
             }
         }
     }   
