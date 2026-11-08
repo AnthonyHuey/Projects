@@ -76,15 +76,15 @@ int main()
         }
         for (int i = 0; i < MAX; i++)
         {
-            cout << "Lane " << i + 1 << " Queue:" << endl;
-            for (int n = 0; n < booth[i].size(); n++) // Cars
+            if (booth[i].empty())
+                cout << "Lane " << i + 1 << " Queue: empty" << endl;
+            else
             {
-                if (booth[i].empty())
-                    cout << " empty";
-                else
+                cout << "Lane " << i + 1 << " Queue:" << endl;
+                for (int n = 0; n < booth[i].size(); n++) // Cars
                 {
-                    cout << "\t";
-                    booth[i][n].print();
+                        cout << "\t";
+                        booth[i][n].print();               
                 }
             }
         }
