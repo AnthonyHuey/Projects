@@ -10,7 +10,7 @@
 #include <array>
 
 const int INITIAL = 2, R_MAX = 100, MAX = 4;
-const int LEAVE = 46, JOIN = 39, SHIFT = 15;
+const int LEAVE = 46, JOIN = 85;
 
 int main()
 {
@@ -34,91 +34,45 @@ int main()
     // roll for each lane
         // output results
     // repeat, keep track of time.
-    
     int time = 0;
     while (time < 20)
     {
         cout << "\nTime: " << time + 1 << endl;
+        time++;
         for (int i = 0; i < MAX; i++)
         {
             int roll = rand() % R_MAX; 
-            if (roll < 50) // LEAVE
+            if (roll < LEAVE && !booth[i].empty()) // LEAVE
             {
-                if (booth[i].empty())
-                    cout << "Lane empty." << endl;
-                else
-                {
-                    cout << "Lane: " << i + 1 << " Paid: ";
-                    booth[i].front().print(); 
-                    booth[i].pop_front();
-                }
+                cout << "Lane: " << i + 1 << " Paid: ";
+                booth[i].front().print(); 
+                booth[i].pop_front();
             }
-            else // JOIN
+            else if (roll < JOIN) // JOIN
             {
                     booth[i].push_back(Car());
                     cout << "Lane: " << i + 1 << " Joined: ";
                     booth[i].front().print(); 
             }
-            /*
-            else // SHIFT if (roll < 85)
-            {
-               cout << "Lane: " << i + 1 << " Switched: ";
-               booth[i].back() 
-
+            else // SHIFT 
+            {   
+                cout << "Lane: " << i + 1 << " Switched: ";
+                booth[i].back().print();
+                int lane = rand() % MAX; // picking a lane
+                while (lane == i) // can't be the lane we're in.
+                    lane = rand() & MAX; // pick again
+                booth[lane].push_back(booth[i].back()); // copies car over.
+                booth[i].pop_back(); // delete original
             }
-            */
         }
-           
-            for (int i = 0; i < MAX; i++)
+        for (int i = 0; i < MAX; i++)
+        {
+            cout << "Lane " << i + 1 << ":" << endl;
+            for (int n = 0; n < booth[i].size(); n++) // Cars
             {
-                cout << "Lane " << i + 1 << ":" << endl;
-                for (int n = 0; n < booth[i].size(); n++) // Cars
-                {
-                    cout << "\t";
-                    booth[i][n].print();
-                }
+                cout << "\t";
+                booth[i][n].print();
             }
-            time++; 
-    }
-
-  
-
-
-
-/*
-    cout << "Initial queue: " << endl;
-    cout << "\t";
-    booth[0].print();
-    cout << "\t";
-    booth[1].print();
-    int time = 1;
-    while (booth.size() != 0)
-    {   
-        int roll = (rand() % R_MAX);
-        if (roll < 45)
-        {
-            cout << "\nTime: " << time << " Operation: ";
-            booth.push_back(Car());
-            cout << "Joined lane: "; 
-            booth.back().print();
         }
-        else
-        {
-            cout << "\nTime: " << time << " Operation: ";
-            cout << "Car paid: "; 
-            booth.front().print();
-            booth.pop_front();
-        }
-        
-        for (int i = 0; i < booth.size(); i++)
-        {   
-            cout << "\t";
-            booth[i].print();
-        }
-        time++;
-        if (booth.empty())
-            cout << "Queue:\n     Empty";
-         
-    }
-*/   
+    }   
 }
