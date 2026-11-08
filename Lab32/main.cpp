@@ -10,14 +10,14 @@
 #include <array>
 
 const int INITIAL = 2, R_MAX = 100, MAX = 4;
+const int LEAVE = 46, JOIN = 39, SHIFT = 15;
 
 int main()
 {
     srand(time(0));
     array<deque<Car>, MAX> booth;
-   // booth[0].push_back(Car());
-   // booth[0][0].print();
 
+    cout << "Initial queue:" << endl;
     for (int i = 0; i < MAX; i++)           // how many booths/lanes
         for (int n = 0; n < INITIAL; n++)   // how many cars
             booth[i].push_back(Car());      // add cars.
@@ -31,6 +31,29 @@ int main()
             booth[i][n].print();
         } 
     }
+    // roll for each lane
+        // output results
+    // repeat, keep track of time.
+    
+    int time = 0;
+    while (time < 20)
+    {
+        int roll = rand() % R_MAX; 
+        if (roll < 46)
+        {
+            
+        }
+        else if (roll < 85)
+        {
+
+        }
+        else
+    }
+
+  
+
+
+
 /*
     cout << "Initial queue: " << endl;
     cout << "\t";
