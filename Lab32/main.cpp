@@ -7,13 +7,18 @@
 #include "Car.h"
 #include <deque>
 #include <iostream>
-const int INITIAL = 2, R_MAX = 100;
+#include <array>
+
+const int INITIAL = 2, R_MAX = 100, MAX = 4;
 
 int main()
 {
     srand(time(0));
-    deque<Car> booth(INITIAL);
+    array<deque<Car>, MAX> booth;
+    booth[0].push_back(Car());
+    booth[0][0].print();
 
+/*
     cout << "Initial queue: " << endl;
     cout << "\t";
     booth[0].print();
@@ -46,5 +51,7 @@ int main()
         time++;
         if (booth.empty())
             cout << "Queue:\n     Empty";
+         
     }
+*/   
 }
