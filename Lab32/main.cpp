@@ -15,9 +15,22 @@ int main()
 {
     srand(time(0));
     array<deque<Car>, MAX> booth;
-    booth[0].push_back(Car());
-    booth[0][0].print();
+   // booth[0].push_back(Car());
+   // booth[0][0].print();
 
+    for (int i = 0; i < MAX; i++)           // how many booths/lanes
+        for (int n = 0; n < INITIAL; n++)   // how many cars
+            booth[i].push_back(Car());      // add cars.
+    
+    for (int i = 0; i < MAX; i++) // Lanes
+    {
+        cout << "Lane " << i + 1 << ":" << endl;
+        for (int n = 0; n < INITIAL; n++) // Cars
+        {
+            cout << "\t";
+            booth[i][n].print();
+        } 
+    }
 /*
     cout << "Initial queue: " << endl;
     cout << "\t";
