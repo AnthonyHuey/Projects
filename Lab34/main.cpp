@@ -2,6 +2,7 @@
 //
 #include <iostream>
 #include <vector>
+#include <queue> // for the BFS
 using namespace std;
 
 const int SIZE = 7;
@@ -45,6 +46,54 @@ public:
             cout << endl;
         }
     }
+
+    // BFS & DFS
+    void DFSRun (int node, vector<bool> &visited) // the acutal DFS
+    {
+        visited[node] = true;
+        cout << node << " ";
+
+        for (Pair neighbor : adjList[node])
+        {
+            if (!visited[neighbor.first])
+                DFSRun(neighbor.first, visited);
+        }
+    }
+
+    void DFS(int start) // Start a DFS from the "start" node.
+        {
+            vector<bool> visited(SIZE, false);
+            cout << "DFS starting from vertex " << start << ":" << endl;
+            DFSRun(start, visited);
+            cout << endl;    
+        }
+
+    void BFS(int start)
+    {
+        vector<bool> visited(SIZE, false);
+        queue<int> q;
+
+        visited[start] = true;
+        q.push(start);
+
+        cout << "BFS starting from vertex " << start << ":" << endl;
+        while (!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            cout << node << " ";
+
+            for (Pair neighbor : adjList[node])
+            {
+                if (!visited[neighbor.first])
+                {
+                    visited[neighbor.first] = true;
+                    q.push(neighbor.first);
+                }
+            }
+        }
+        cout << endl;
+    }
 };
 
 int main() {
@@ -59,6 +108,9 @@ int main() {
 
     // Prints adjacency list representation of graph
     graph.printGraph();
+
+    graph.DFS(0);
+    graph.BFS(0);
 
     return 0;
 }
