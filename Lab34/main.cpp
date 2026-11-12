@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <queue> // for the BFS
+#include <stack> // For the DFS
 using namespace std;
 
 const int SIZE = 7;
@@ -48,52 +49,55 @@ public:
     }
 
     // BFS & DFS
-    void DFSRun (int node, vector<bool> &visited) // the acutal DFS
-    {
-        visited[node] = true;
-        cout << node << " ";
-
-        for (Pair neighbor : adjList[node])
+    void DFS(int start) // Depth First Search
         {
-            if (!visited[neighbor.first])
-                DFSRun(neighbor.first, visited);
-        }
-    }
+            vector<bool> visited(SIZE, false); // flags each node as false
+            stack<int> s; // hold value to be explored.
+            s.push(start); // start at this node
 
-    void DFS(int start) // Start a DFS from the "start" node.
-        {
-            vector<bool> visited(SIZE, false);
             cout << "DFS starting from vertex " << start << ":" << endl;
-            DFSRun(start, visited);
+            while(!s.empty()) // go until nothing left
+            {
+                int node = s.top(); // gets the top of the stack
+                s.pop(); // delete its
+
+                if(visited[node]) continue; // skip if we've already visited
+                visited[node] = true; // mark this node as visited
+                cout << node << " "; // print it
+
+                for (Pair neighbor : adjList[node]) // cehck all the neighbors
+                    if (!visited[neighbor.first]) // push unvisited neighbors
+                        s.push(neighbor.first);
+            }
             cout << endl;    
         }
 
-    void BFS(int start)
+    void BFS(int start) // Breadth First Search
     {
-        vector<bool> visited(SIZE, false);
-        queue<int> q;
+        vector<bool> visited(SIZE, false); // flags each node as false 
+        queue<int> q; // holds value to be explored
 
-        visited[start] = true;
+        visited[start] = true; // input & mark the starting node
         q.push(start);
 
         cout << "BFS starting from vertex " << start << ":" << endl;
-        while (!q.empty())
+        while (!q.empty()) // go until empty
         {
-            int node = q.front();
-            q.pop();
-            cout << node << " ";
+            int node = q.front(); // read the front of the queue
+            q.pop(); // delete it
+            cout << node << " "; // print it
 
-            for (Pair neighbor : adjList[node])
-            {
-                if (!visited[neighbor.first])
+            for (Pair neighbor : adjList[node]) // cehck neighbors
+                if (!visited[neighbor.first]) // if we haven't visited them
                 {
-                    visited[neighbor.first] = true;
+                    visited[neighbor.first] = true; // mark them and push.
                     q.push(neighbor.first);
                 }
-            }
         }
         cout << endl;
     }
+    // they're both basically identical, just one uses a stack and the other a 
+    // queue, and when they mark that they've "visited" a node.
 };
 
 int main() {
