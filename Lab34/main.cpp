@@ -8,6 +8,20 @@ using namespace std;
 
 const int SIZE = 9;
 
+// names for the nodes/"intersections"
+const string NAMES[SIZE] = 
+{
+    "Central Station",      // 0
+    "City Hall",            // 1
+    "Market Square",        // 2
+    "Harbor Gate",          // 3
+    "University Ave",       // 4
+    "Stadium Junction",     // 5
+    "Highway Interchange",  // 6
+    "Airport Terminal",     // 7
+    "Industrial Park",      // 8
+}
+
 struct Edge {
     int src, dest, weight;
 };
@@ -39,11 +53,15 @@ public:
 
     // Print the graph's adjacency list
     void printGraph() {
-        cout << "Graph's adjacency list:" << endl;
-        for (int i = 0; i < adjList.size(); i++) {
-            cout << i << " --> ";
+        cout << "City Traffic Network Topology:" << endl;
+        cout << "==============================" << endl;
+        for (int i = 0; i < adjList.size(); i++) 
+        {
+            cout << "Intersection " << i << " (" << NAMES[i] 
+                                                 << ") connects to:" << endl;
             for (Pair v : adjList[i])
-                cout << "(" << v.first << ", " << v.second << ") ";
+                cout << "-> Intersection " << v.first << " (" << NAMES[v.first] 
+                     << ") - Travel time: " << v.second << " min" << endl;
             cout << endl;
         }
     }
@@ -55,7 +73,9 @@ public:
             stack<int> s; // hold value to be explored.
             s.push(start); // start at this node
 
-            cout << "DFS starting from vertex " << start << ":" << endl;
+            cout << "Route Trace (DFS) from Intersection " << start 
+                 << " (" << NAMES[start] << "):" endl;
+            cout << ""
             while(!s.empty()) // go until nothing left
             {
                 int node = s.top(); // gets the top of the stack
