@@ -4,6 +4,7 @@
 #include <vector>
 #include <queue> // for the BFS
 #include <stack> // For the DFS
+#include <string>
 using namespace std;
 
 const int SIZE = 9;
@@ -20,7 +21,7 @@ const string NAMES[SIZE] =
     "Highway Interchange",  // 6
     "Airport Terminal",     // 7
     "Industrial Park",      // 8
-}
+};
 
 struct Edge {
     int src, dest, weight;
@@ -74,8 +75,12 @@ public:
             s.push(start); // start at this node
 
             cout << "Route Trace (DFS) from Intersection " << start 
-                 << " (" << NAMES[start] << "):" endl;
-            cout << ""
+                 << " (" << NAMES[start] << "):" << endl;
+            cout << "Purpose: Following one route as far as it goes to plan detours"
+                 << endl;
+            cout << "=============================================================="
+                 << endl;
+
             while(!s.empty()) // go until nothing left
             {
                 int node = s.top(); // gets the top of the stack
@@ -83,11 +88,19 @@ public:
 
                 if(visited[node]) continue; // skip if we've already visited
                 visited[node] = true; // mark this node as visited
-                cout << node << " "; // print it
+
+                cout << "Inspecting Intersection " << node << " (" 
+                     << NAMES[node] << ")" << endl; 
+
 
                 for (Pair neighbor : adjList[node]) // cehck all the neighbors
                     if (!visited[neighbor.first]) // push unvisited neighbors
+                    {
+                        cout << " -> Possible route to Intersection " << neighbor.first 
+                             << " (" << NAMES[neighbor.first] << ") - Travel time: " 
+                             << neighbor.second << "min" << endl;
                         s.push(neighbor.first);
+                    }
             }
             cout << endl;    
         }
@@ -100,18 +113,28 @@ public:
         visited[start] = true; // input & mark the starting node
         q.push(start);
 
-        cout << "BFS starting from vertex " << start << ":" << endl;
+        cout << "Layer-by-Layer Dispatch Review (BFS) from Intersection " 
+             << start << " (" << NAMES[start] << "):" << endl;
+        cout << "Purpose: Finding which intersection emergency crews reach first"
+             << endl;
+        cout << "==============================================================="
+             << endl;
         while (!q.empty()) // go until empty
         {
             int node = q.front(); // read the front of the queue
             q.pop(); // delete it
-            cout << node << " "; // print it
+
+            cout << "Checking intersection " << node << " (" << NAMES[node] << ")" 
+                 << endl; 
 
             for (Pair neighbor : adjList[node]) // cehck neighbors
                 if (!visited[neighbor.first]) // if we haven't visited them
                 {
                     visited[neighbor.first] = true; // mark them and push.
                     q.push(neighbor.first);
+                    cout << " -> Next respose zone: Intersection " << neighbor.first
+                         <<" (" << NAMES[neighbor.first] << ") - Travel time: "
+                         << neighbor.second << " min" << endl;
                 }
         }
         cout << endl;
