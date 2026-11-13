@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 
-const int SIZE = 9;
+const int SIZE = 9, BIG = 1000000;
 
 // names for the nodes/"intersections"
 const string NAMES[SIZE] = 
@@ -141,6 +141,43 @@ public:
     }
     // they're both basically identical, just one uses a stack and the other a 
     // queue, and when they mark that they've "visited" a node.
+
+    void shortestPath(int start) // Dijkstra' algo,
+    {
+        vector<int> dist(SIZE, BIG); // stores the best travel time, starts big  
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+        // P_Q give s back the "best" item, greater<pair> flips the order so 
+        // we get the smallest
+        dist[start] = 0;
+        pq.push(make_pair(0, start)); // starting here,
+
+        while (!pq.empty()) // until empty, check nodes, pop them, compare.
+        {
+            int d = pq.top().first;        
+            int node = pq.top().second;
+            pq.pop();
+
+            if (d > dist[node]) continue;  
+
+            for (Pair neighbor : adjList[node]) 
+            {
+                int next = neighbor.first;
+                int w = neighbor.second;
+                if (dist[node] + w < dist[next]) // is this faster than what we know?
+                {
+                    dist[next] = dist[node] + w;
+                    pq.push(make_pair(dist[next], next));
+                }
+            }
+        }
+
+        cout << "Shortest travel time from Intersection " << start
+             << " (" << NAMES[start] << "):" << endl;
+        for (int i = 0; i < SIZE; i++)
+            cout << start << " -> " << i << " : " << dist[i]
+                 << " min  (" << NAMES[i] << ")" << endl;
+        cout << endl;
+    }
 };
 
 int main() {
@@ -159,6 +196,8 @@ int main() {
 
     graph.DFS(0);
     graph.BFS(0);
+    cout << endl;
+    graph.shortestPath(0);
 
     return 0;
 }
