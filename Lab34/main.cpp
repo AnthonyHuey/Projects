@@ -178,6 +178,44 @@ public:
                  << " min  (" << NAMES[i] << ")" << endl;
         cout << endl;
     }
+
+    void minimumTree(int start) // Prim's algorithm
+    {
+        vector<int> key(SIZE, BIG);  
+        vector<int> parent(SIZE, -1);   
+        vector<bool> visited(SIZE, false);  // same as BFS/DFS tracks the nodes
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq; 
+
+        key[start] = 0;
+        pq.push(make_pair(0, start)); //start here
+
+        cout << "Minimum Spanning Tree edges:" << endl;
+        while (!pq.empty()) {
+            int node = pq.top().second; 
+            pq.pop();
+
+            if (visited[node]) continue;    
+            visited[node] = true;
+
+           
+            if (parent[node] != -1)
+                cout << "Road from " << node << " to " << parent[node]
+                     << " with travel time: " << key[node] << " min" << endl;
+
+            for (Pair neighbor : adjList[node]) {
+                int next = neighbor.first;
+                int w = neighbor.second;
+
+                
+                if (!visited[next] && w < key[next]) {
+                    key[next] = w;
+                    parent[next] = node;
+                    pq.push(make_pair(w, next));
+                }
+            }
+        }
+        cout << endl;
+    }
 };
 
 int main() {
@@ -198,6 +236,8 @@ int main() {
     graph.BFS(0);
     cout << endl;
     graph.shortestPath(0);
+    cout << endl;
+    graph.minimumTree(0);
 
     return 0;
 }
