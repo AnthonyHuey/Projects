@@ -228,8 +228,39 @@ int main() {
 
     // Creates graph
     Graph graph(edges);
+    bool exit = false;
+    int choice = 1;
+    while (!exit)
+    {
+        cout << "City Traffic Menu: " << endl
+             << "[1] Display city traffic times" << endl
+             << "[2] Check emergency crew response times" << endl
+             << "[3] Inspect city-wide travel times " << endl
+             << "[4] Calculate shortest paths" << endl
+             << "[5] Minimum spanning tree" << endl
+             << "[0] EXIT" << endl
+             << "Enter your choice: ";
+        cin >> choice;
+        cin.ignore();
 
-    // Prints adjacency list representation of graph
+        switch(choice)
+            case 1:
+
+            case 2:
+            
+            case 3:
+
+            case 4:
+
+            case 5:
+
+            case 0:
+                cout << "Goodbye!"
+          
+
+
+    }
+    /* Prints adjacency list representation of graph
     graph.printGraph();
 
     graph.DFS(0);
@@ -238,6 +269,6 @@ int main() {
     graph.shortestPath(0);
     cout << endl;
     graph.minimumTree(0);
-
+    */
     return 0;
 }
